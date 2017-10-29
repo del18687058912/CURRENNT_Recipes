@@ -1,0 +1,170 @@
+{
+    "layers": [
+        {
+            "size": 382,
+            "name": "input",
+            "type": "input"
+        },
+        {
+            "size": 512,
+            "name": "forward_1",
+            "bias": 1.0,
+            "type": "feedforward_logistic"
+        },
+        {
+            "size": 512,
+            "name": "forward_2",
+            "bias": 1.0,
+            "type": "feedforward_logistic"
+        },
+        {
+            "size": 256,
+            "name": "blstm_level_1",
+            "bias": 1.0,
+            "type": "blstm"
+        },
+        {
+            "size": 256,
+            "name": "blstm_level_2",
+            "bias": 1.0,
+            "type": "blstm"
+        },
+        {
+            "size": 256,
+            "name": "f1",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 256,
+            "name": "f2",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{
+	    "size": 256,
+            "name": "s2",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+	},
+	{	
+            "size": 256,
+            "name": "f3",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 256,
+            "name": "f4",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{
+	    "size": 256,
+            "name": "s3",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+	},
+	{	
+            "size": 256,
+            "name": "f5",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 256,
+            "name": "f6",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{
+	    "size": 256,
+            "name": "s4",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+	},
+	{	
+            "size": 256,
+            "name": "f7",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 256,
+            "name": "f8",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{
+	    "size": 256,
+            "name": "s5",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+	},
+	{	
+            "size": 256,
+            "name": "f9",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 256,
+            "name": "f10",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{
+	    "size": 256,
+            "name": "s6",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+	},
+	{	
+            "size": 256,
+            "name": "f11",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 256,
+            "name": "f12",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{
+	    "size": 256,
+            "name": "s7",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+	},
+	{	
+            "size": 256,
+            "name": "f13",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 256,
+            "name": "f14",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{
+	    "size": 256,
+            "name": "s8",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+	},
+        {
+            "size": 259,
+            "name": "output",
+            "bias": 1.0,
+            "type": "feedforward_identity"
+        },
+        {
+            "size": 259,
+            "name": "postoutput",
+            "type": "sse"
+        }
+    ]
+}

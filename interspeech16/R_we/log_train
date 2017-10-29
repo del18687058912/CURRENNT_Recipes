@@ -1,0 +1,86 @@
+Started in hybrid online/batch training mode.
+Mini-batches (1 sequences each) will be shuffled during training.
+Using input noise with a standard deviation of 0.1.
+The trained network will be written to 'trained_network.jsn'.
+Validation error will be calculated every 1 epochs.
+Training will be stopped after 40 epochs or if there is no new lowest validation error within 5 epochs.
+Autosave after EVERY EPOCH enabled.
+Utilizing the GPU for computations with 1 sequences in parallel.
+Normal distribution with mean=0 and sigma=0.1. Random seed: 873426453
+
+Using device #1 (Quadro K4000)
+Reading network from '/home/smg/wang/PROJ/WE/DNNAM/MODEL/nancy/nancy_f0w/MODEL2001/network.jsn'... done.
+
+Loading training set '/mnt/tmp/wang/data_f0wp1/data.nc1' '/mnt/tmp/wang/data_f0wp1/data.nc2' '/mnt/tmp/wang/data_f0wp1/data.nc3' '/mnt/tmp/wang/data_f0wp1/data.nc4' '/mnt/tmp/wang/data_f0wp1/data.nc5' '/mnt/tmp/wang/data_f0wp1/data.nc6' '/mnt/tmp/wang/data_f0wp1/data.nc7' '/mnt/tmp/wang/data_f0wp1/data.nc8' '/mnt/tmp/wang/data_f0wp1/data.nc9' '/mnt/tmp/wang/data_f0wp1/data.nc10' '/mnt/tmp/wang/data_f0wp1/data.nc11train' ...
+using cache file: /tmp/a145-e07f-0d75-355c
+... done.
+Loaded fraction:  100%
+Sequences:        11572
+Sequence lengths: 140..4034
+Total timesteps:  11544584
+
+Loading validation set '/mnt/tmp/wang/data_f0wp1/data.nc11val' ...
+using cache file: /tmp/c469-8147-6ab9-02f7
+... done.
+Loaded fraction:  100%
+Sequences:        500
+Sequence lengths: 172..3226
+Total timesteps:  490430
+
+Creating the neural network... done.
+Layers:
+(0) input [size: 372]
+(1) feedforward_logistic [size: 512, bias: 1.0, weights: 190976]
+(2) feedforward_logistic [size: 512, bias: 1.0, weights: 262656]
+(3) blstm [size: 256, bias: 1.0, weights: 657152]
+(4) blstm [size: 50, bias: 1.0, weights: 56550]
+(5) feedforward_identity [size: 4, bias: 1.0, weights: 204]
+(6) sse [size: 4]
+Total weights: 1167538
+
+
+Creating the optimizer... done.
+Optimizer type: Steepest descent with momentum
+Max training epochs:       40
+Max epochs until new best: 5
+Validation error every:    1
+Test error every:          1
+Learning rate:             4e-05
+Momentum:                  0
+
+Starting training...
+
+ Epoch | Duration |  Training error  | Validation error |    Test error    | New best 
+-------+----------+------------------+------------------+------------------+----------
+     1 |   5289.4 |         1237.251 |         1148.383 |                  |  yes   
+     2 |   5307.6 |         1054.477 |         1046.357 |                  |  yes   
+     3 |   5314.4 |         1005.210 |         1025.361 |                  |  yes   
+     4 |   5312.3 |          975.630 |         1006.262 |                  |  yes   
+     5 |   5309.6 |          954.966 |          987.925 |                  |  yes   
+     6 |   5365.0 |          938.393 |          978.558 |                  |  yes   
+     7 |   5286.3 |          924.845 |          970.242 |                  |  yes   
+     8 |   5285.5 |          912.836 |          959.730 |                  |  yes   
+     9 |   5285.1 |          902.329 |          953.390 |                  |  yes   
+    10 |   5285.0 |          892.789 |          960.245 |                  |  no    
+    11 |   5284.9 |          884.193 |          947.323 |                  |  yes   
+    12 |   5285.1 |          875.737 |          963.583 |                  |  no    
+    13 |   5287.5 |          870.020 |          946.337 |                  |  yes   
+    14 |   5286.0 |          862.729 |          943.931 |                  |  yes   
+    15 |   5286.1 |          855.714 |          944.206 |                  |  no    
+    16 |   5287.3 |          848.907 |          947.514 |                  |  no    
+    17 |   5285.5 |          842.399 |          940.561 |                  |  yes   
+    18 |   5286.9 |          836.196 |          930.844 |                  |  yes   
+    19 |   5292.7 |          830.195 |          944.908 |                  |  no    
+    20 |   5298.6 |          824.024 |          938.748 |                  |  no    
+    21 |   5284.3 |          818.800 |          930.111 |                  |  yes   
+    22 |   5285.9 |          813.152 |          930.243 |                  |  no    
+    23 |   5285.4 |          807.779 |          930.958 |                  |  no    
+    24 |   5286.1 |          802.937 |          935.318 |                  |  no    
+    25 |   5285.9 |          797.605 |          933.792 |                  |  no    
+    26 |   5286.0 |          792.484 |          946.119 |                  |  no    
+
+No new lowest error since 5 epochs. Training stopped.
+Lowest validation error: 930.111206
+
+Storing the trained network in 'trained_network.jsn'... done.
+Removing cache file(s) ...

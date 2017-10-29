@@ -1,0 +1,18 @@
+
+depth: recipes to train highway network with different depth
+   hs**: highway single-stream network
+   hm**: highway multi-stream network
+   	 each directory contains a createWeightMask.py that generates
+ 	 the weight mask to implement the multi-stream network
+   ds**: feedforward single-stream network
+
+   
+
+rnn_highway: receipts to train RNN plus highway networks
+   R-B:  RNN baseline
+   R-D:  deep RNN network
+   R-FF: RNN + deep feedforward layers
+   R-HS: RNN + deep highway layers (single-stream)
+
+   Please check this paper:
+   http://www.nii.ac.jp/TechReports/public_html/17-003E.html

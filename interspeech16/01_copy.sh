@@ -1,0 +1,60 @@
+#!/bin/sh
+
+
+sourceDir=/work/smg/wang/PROJ/F0MODEL/MODEL/RNN/nancy_f0n/MODEL2001/
+targetDir=R_N
+
+mkdir ${targetDir}
+for y in config.cfg config_syn.cfg network.jsn log_train
+do    
+    cp ${sourceDir}/${y} ${targetDir}/${y} 
+done
+
+
+sourceDir=/work/smg/wang/PROJ/F0MODEL/MODEL/RNN/InputInfor/RNN01/
+targetDir=R_p
+
+mkdir ${targetDir}
+for y in config.cfg config_syn.cfg network.jsn log_train
+do    
+    cp ${sourceDir}/${y} ${targetDir}/${y} 
+done
+
+sourceDir=/work/smg/wang/PROJ/F0MODEL/MODEL/RNN/nancy_f0w/MODEL2001/
+targetDir=R_wr
+
+mkdir ${targetDir}
+for y in config.cfg config_syn.cfg network.jsn log_train
+do    
+    cp ${sourceDir}/${y} ${targetDir}/${y} 
+done
+
+
+sourceDir=/work/smg/wang/PROJ/F0MODEL/MODEL/RNN/nancy_f0wp1/MODEL2001/
+targetDir=R_we
+
+mkdir ${targetDir}
+for y in config.cfg config_syn.cfg network.jsn log_train
+do    
+    cp ${sourceDir}/${y} ${targetDir}/${y} 
+done
+
+
+sourceDir=/work/smg/wang/PROJ/F0MODEL/MODEL/RNN/nancy_f0w_ft/MODEL2002/
+targetDir=R_wr_bp
+
+mkdir ${targetDir}
+for y in config.cfg config_syn.cfg network.jsn log_train
+do    
+    cp ${sourceDir}/${y} ${targetDir}/${y} 
+done
+
+
+sourceDir=/work/smg/wang/PROJ/F0MODEL/MODEL/RNN/nancy_f0wp2/MODEL2003/
+targetDir=R_we_bp
+
+mkdir ${targetDir}
+for y in config.cfg config_syn.cfg network.jsn log_train
+do    
+    cp ${sourceDir}/${y} ${targetDir}/${y} 
+done

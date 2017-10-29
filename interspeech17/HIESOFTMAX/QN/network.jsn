@@ -1,0 +1,45 @@
+{
+    "layers": [
+        {
+            "size": 382,
+            "name": "input",
+            "type": "input"
+        },
+        {
+            "size": 512,
+            "name": "forward_1",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 512,
+            "name": "forward_2",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 256,
+            "name": "blstm_level_1",
+            "bias": 1.0,
+            "type": "blstm"
+        },
+        {
+            "size": 128,
+            "name": "blstm_level_2",
+            "bias": 1.0,
+            "type": "blstm"
+        },
+        {
+            "size": 128,
+            "name": "output",
+            "bias": 1.0,
+            "type": "feedforward_identity"
+        },
+        {
+            "size": 1,
+            "name": "postoutput",
+            "type": "mdn",
+	    "uvSigmoidSoftmax": "y"
+        }
+    ]
+}

@@ -1,0 +1,184 @@
+Configuration Infor:
+	Training Mode: Started in hybrid online/batch
+		Mini-batches (parallel 1 sequences each) will be shuffled during training.
+		Writting network  to 'trained_network.jsn'.
+	Validation every 1 epochs.
+
+	Training will be stopped after 100 epochs or after no new lowest validation error for 10 epochs.
+	Autosave after EVERY EPOCH enabled.
+	Utilizing the GPU on 1 sequences in parallel.
+
+	Initialization method:
+		Uniform dist. with layer-wise range
+
+		Random seed: 3839368179
+
+Using device #0 (Tesla P100-PCIE-16GB)
+Reading network from './network.jsn'... done.
+
+Loading training set '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc1' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc2' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc3' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc4' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc5' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc6' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc7' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc8' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc9' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc10' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc11train' ...
+using cache file: /tmp/xwtemp/e376-7ece-c66c-677d
+... done.
+Loaded fraction:  100%
+Sequences:        11572
+Sequence lengths: 140..4034
+Total timesteps:  11544584
+
+Loading validation set '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc11val' ...
+using cache file: /tmp/xwtemp/b372-e365-21eb-001f
+... done.
+Loaded fraction:  100%
+Sequences:        500
+Sequence lengths: 172..3226
+Total timesteps:  490430
+
+Creating the neural network...
+Layer (0) input 
+Layer (1) feedforward_logistic Trainable layer: initialize weight
+Layer (2) feedforward_logistic Trainable layer: initialize weight
+Layer (3) feedforward_logistic Trainable layer: initialize weight
+Layer (4) blstm Trainable layer: initialize weight
+Layer (5) blstm Trainable layer: initialize weight
+Layer (6) blstm Trainable layer: initialize weight
+Layer (7) blstm Trainable layer: initialize weight
+Layer (8) blstm Trainable layer: initialize weight
+Layer (9) feedforward_identity Trainable layer: initialize weight
+Layer (10) sse 
+Network construction done.
+
+Network summary:
+(0) input [size: 382]
+(1) feedforward_logistic [size: 512, bias: 1.0, weights: 196096]
+(2) feedforward_logistic [size: 512, bias: 1.0, weights: 262656]
+(3) feedforward_logistic [size: 512, bias: 1.0, weights: 262656]
+(4) blstm [size: 256, bias: 1.0, weights: 657152]
+(5) blstm [size: 256, bias: 1.0, weights: 395008]
+(6) blstm [size: 256, bias: 1.0, weights: 395008]
+(7) blstm [size: 256, bias: 1.0, weights: 395008]
+(8) blstm [size: 256, bias: 1.0, weights: 395008]
+(9) feedforward_identity [size: 259, bias: 1.0, weights: 66563]
+(10) sse [size: 259]
+Total weights: 3025155
+
+
+Creating the optimizer... 
+Optimization: plain SGD 
+done.
+Optimizer type: Steepest descent with momentum
+Max training epochs:       100
+Max epochs until new best: 10
+Validation error every:    1
+Test error every:          1
+Learning rate:             4e-06
+Momentum:                  0
+
+Starting training...
+Print error per sequence / per timestep
+ Epoch | Duration |           Training error  |           Validation error|           Test error      |New best 
+-------+----------+---------------------------+---------------------------+---------------------------+---------
+     1 |   9282.6 |    124491.805 /   124.787 |    114422.914 /   116.656 |                           |  yes SGD
+     2 |   9087.4 |    113937.742 /   114.208 |    110307.406 /   112.460 |                           |  yes SGD
+     3 |   9005.1 |    110700.445 /   110.963 |    107446.742 /   109.543 |                           |  yes SGD
+     4 |   9277.7 |    108420.828 /   108.678 |    105646.422 /   107.708 |                           |  yes SGD
+     5 |   9718.4 |    106742.797 /   106.996 |    104315.859 /   106.351 |                           |  yes SGD
+     6 |   9487.5 |    105507.203 /   105.758 |    103280.555 /   105.296 |                           |  yes SGD
+     7 |   9686.3 |    104578.211 /   104.827 |    102517.430 /   104.518 |                           |  yes SGD
+     8 |   9652.7 |    103846.266 /   104.093 |    101911.469 /   103.900 |                           |  yes SGD
+     9 |   9266.3 |    103265.906 /   103.511 |    101459.680 /   103.440 |                           |  yes SGD
+    10 |   8878.6 |    102788.625 /   103.033 |    101026.047 /   102.997 |                           |  yes SGD
+    11 |   8652.0 |    102391.125 /   102.634 |    100854.414 /   102.822 |                           |  yes SGD
+    12 |   8723.4 |    102051.867 /   102.294 |    100483.117 /   102.444 |                           |  yes SGD
+    13 |   8666.8 |    101755.477 /   101.997 |    100251.352 /   102.208 |                           |  yes SGD
+    14 |   8652.5 |    101503.508 /   101.745 |     99838.844 /   101.787 |                           |  yes SGD
+    15 |   8651.2 |    101274.578 /   101.515 |     99869.641 /   101.818 |                           |  no  SGD
+    16 |   8658.6 |    101065.609 /   101.306 |     99436.211 /   101.377 |                           |  yes SGD
+    17 |   8650.7 |    100891.391 /   101.131 |     99286.484 /   101.224 |                           |  yes SGD
+    18 |   8657.0 |    100721.297 /   100.960 |     99172.000 /   101.107 |                           |  yes SGD
+    19 |   8661.6 |    100563.695 /   100.803 |     99098.492 /   101.032 |                           |  yes SGD
+    20 |   8671.2 |    100421.711 /   100.660 |     99007.758 /   100.940 |                           |  yes SGD
+    21 |   8650.9 |    100288.766 /   100.527 |     98842.375 /   100.771 |                           |  yes SGD
+    22 |   8652.9 |    100165.531 /   100.403 |     98798.422 /   100.726 |                           |  yes SGD
+    23 |   8658.7 |    100052.820 /   100.290 |     98722.742 /   100.649 |                           |  yes SGD
+    24 |   8654.6 |     99939.727 /   100.177 |     98458.633 /   100.380 |                           |  yes SGD
+    25 |   8651.7 |     99840.156 /   100.077 |     98557.617 /   100.481 |                           |  no  SGD
+    26 |   8659.6 |     99740.531 /    99.977 |     98477.438 /   100.399 |                           |  no  SGD
+    27 |   8651.6 |     99648.719 /    99.885 |     98256.844 /   100.174 |                           |  yes SGD
+    28 |   8664.1 |     99557.898 /    99.794 |     98252.969 /   100.170 |                           |  yes SGD
+    29 |   8698.6 |     99473.219 /    99.709 |     98267.047 /   100.185 |                           |  no  SGD
+    30 |   8702.5 |     99394.922 /    99.631 |     98028.734 /    99.942 |                           |  yes SGD
+    31 |   8714.0 |     99319.789 /    99.556 |     98293.633 /   100.212 |                           |  no  SGD
+    32 |   8706.5 |     99243.227 /    99.479 |     98078.461 /    99.992 |                           |  no  SGD
+    33 |   8704.7 |     99173.109 /    99.409 |     97923.875 /    99.835 |                           |  yes SGD
+    34 |   8730.3 |     99103.906 /    99.339 |     97815.453 /    99.724 |                           |  yes SGD
+    35 |   8821.3 |     99037.852 /    99.273 |     97769.234 /    99.677 |                           |  yes SGD
+    36 |   8654.9 |     98976.227 /    99.211 |     97705.508 /    99.612 |                           |  yes SGD
+    37 |   8817.2 |     98911.633 /    99.147 |     97657.750 /    99.563 |                           |  yes SGD
+    38 |   8651.7 |     98853.094 /    99.088 |     97830.734 /    99.740 |                           |  no  SGD
+    39 |   9077.8 |     98795.188 /    99.030 |     97641.258 /    99.547 |                           |  yes SGD
+    40 |   8657.2 |     98741.664 /    98.976 |     97570.094 /    99.474 |                           |  yes SGD
+    41 |   8662.4 |     98689.211 /    98.924 |     97600.977 /    99.506 |                           |  no  SGD
+    42 |   8662.9 |     98634.820 /    98.869 |     97502.648 /    99.405 |                           |  yes SGD
+    43 |   9282.7 |     98585.719 /    98.820 |     97403.789 /    99.304 |                           |  yes SGD
+    44 |   9022.7 |     98531.492 /    98.765 |     97380.391 /    99.281 |                           |  yes SGD
+    45 |   9085.2 |     98484.062 /    98.718 |     97334.031 /    99.233 |                           |  yes SGD
+    46 |   9085.4 |     98437.734 /    98.672 |     97381.312 /    99.282 |                           |  no  SGD
+    47 |   9288.0 |     98390.398 /    98.624 |     97303.812 /    99.203 |                           |  yes SGD
+    48 |   8705.6 |     98348.703 /    98.582 |     97302.102 /    99.201 |                           |  yes SGD
+    49 |   8709.3 |     98302.977 /    98.536 |     97309.344 /    99.208 |                           |  no  SGD
+    50 |   8798.9 |     98261.758 /    98.495 |     97251.367 /    99.149 |                           |  yes SGD
+    51 |   8726.0 |     98219.469 /    98.453 |     97158.633 /    99.055 |                           |  yes SGD
+    52 |   8738.7 |     98178.148 /    98.411 |     97150.250 /    99.046 |                           |  yes SGD
+    53 |   8695.0 |     98137.297 /    98.370 |     97112.484 /    99.007 |                           |  yes SGD
+    54 |   8714.1 |     98096.609 /    98.330 |     97069.414 /    98.964 |                           |  yes SGD
+    55 |   9159.2 |     98056.219 /    98.289 |     97025.133 /    98.918 |                           |  yes SGD
+    56 |   9297.1 |     98015.945 /    98.249 |     97104.922 /    99.000 |                           |  no  SGD
+    57 |   8948.7 |     97983.805 /    98.216 |     96973.219 /    98.866 |                           |  yes SGD
+    58 |   8673.1 |     97944.266 /    98.177 |     97086.250 /    98.981 |                           |  no  SGD
+    59 |   8688.2 |     97907.742 /    98.140 |     96954.836 /    98.847 |                           |  yes SGD
+    60 |   8691.5 |     97879.062 /    98.112 |     96927.180 /    98.819 |                           |  yes SGD
+    61 |   8693.6 |     97843.047 /    98.075 |     96866.672 /    98.757 |                           |  yes SGD
+    62 |   8654.6 |     97802.938 /    98.035 |     96886.508 /    98.777 |                           |  no  SGD
+    63 |   8690.2 |     97774.242 /    98.006 |     96914.141 /    98.805 |                           |  no  SGD
+    64 |   8655.5 |     97740.836 /    97.973 |     96852.141 /    98.742 |                           |  yes SGD
+    65 |   8656.6 |     97707.680 /    97.940 |     96842.195 /    98.732 |                           |  yes SGD
+    66 |   8656.7 |     97675.883 /    97.908 |     96951.984 /    98.844 |                           |  no  SGD
+    67 |   8685.5 |     97648.109 /    97.880 |     96828.641 /    98.718 |                           |  yes SGD
+    68 |   8656.3 |     97616.359 /    97.848 |     96855.320 /    98.745 |                           |  no  SGD
+    69 |   8657.9 |     97582.859 /    97.815 |     96770.766 /    98.659 |                           |  yes SGD
+    70 |   8682.3 |     97552.156 /    97.784 |     96764.023 /    98.652 |                           |  yes SGD
+    71 |   8688.2 |     97522.320 /    97.754 |     96780.359 /    98.669 |                           |  no  SGD
+    72 |   8660.5 |     97491.477 /    97.723 |     96707.594 /    98.595 |                           |  yes SGD
+    73 |   8675.3 |     97465.477 /    97.697 |     96776.461 /    98.665 |                           |  no  SGD
+    74 |   8656.6 |     97436.641 /    97.668 |     96838.352 /    98.728 |                           |  no  SGD
+    75 |   8655.2 |     97406.664 /    97.638 |     96620.188 /    98.506 |                           |  yes SGD
+    76 |   8654.7 |     97378.602 /    97.610 |     96669.977 /    98.556 |                           |  no  SGD
+    77 |   8665.2 |     97352.047 /    97.583 |     96828.047 /    98.717 |                           |  no  SGD
+    78 |   8655.2 |     97327.188 /    97.558 |     96593.492 /    98.478 |                           |  yes SGD
+    79 |   8671.6 |     97294.555 /    97.526 |     96572.570 /    98.457 |                           |  yes SGD
+    80 |   8689.0 |     97269.859 /    97.501 |     96629.883 /    98.515 |                           |  no  SGD
+    81 |   8693.2 |     97250.148 /    97.481 |     96625.742 /    98.511 |                           |  no  SGD
+    82 |   8720.9 |     97222.898 /    97.454 |     96583.758 /    98.468 |                           |  no  SGD
+    83 |   9160.1 |     97193.344 /    97.424 |     96566.695 /    98.451 |                           |  yes SGD
+    84 |   8900.1 |     97167.070 /    97.398 |     96550.961 /    98.435 |                           |  yes SGD
+    85 |   8654.9 |     97145.141 /    97.376 |     96492.289 /    98.375 |                           |  yes SGD
+    86 |   8666.8 |     97115.734 /    97.346 |     96513.070 /    98.396 |                           |  no  SGD
+    87 |   8661.5 |     97088.539 /    97.319 |     96550.086 /    98.434 |                           |  no  SGD
+    88 |   8657.8 |     97069.430 /    97.300 |     96485.539 /    98.368 |                           |  yes SGD
+    89 |   8703.5 |     97044.383 /    97.275 |     96557.320 /    98.441 |                           |  no  SGD
+    90 |   8707.1 |     97023.570 /    97.254 |     96496.617 /    98.380 |                           |  no  SGD
+    91 |   8718.8 |     96999.180 /    97.230 |     96536.148 /    98.420 |                           |  no  SGD
+    92 |   8725.6 |     96973.484 /    97.204 |     96423.836 /    98.305 |                           |  yes SGD
+    93 |   8717.5 |     96950.750 /    97.181 |     96496.375 /    98.379 |                           |  no  SGD
+    94 |   8712.5 |     96928.398 /    97.159 |     96416.812 /    98.298 |                           |  yes SGD
+    95 |   8716.1 |     96906.781 /    97.137 |     96397.852 /    98.279 |                           |  yes SGD
+    96 |   8696.2 |     96882.617 /    97.113 |     96458.125 /    98.340 |                           |  no  SGD
+    97 |   8965.3 |     96860.766 /    97.091 |     96532.273 /    98.416 |                           |  no  SGD
+    98 |   8680.7 |     96837.477 /    97.067 |     96410.648 /    98.292 |                           |  no  SGD
+    99 |   8680.0 |     96813.344 /    97.043 |     96417.164 /    98.299 |                           |  no  SGD
+   100 |   8769.2 |     96794.875 /    97.025 |     96399.531 /    98.281 |                           |  no  Finished
+
+Maximum number of training epochs reached. Training stopped.
+Lowest validation error: 96397.851562
+
+Storing the trained network in 'trained_network.jsn'... done.
+Removing cache file(s) ...

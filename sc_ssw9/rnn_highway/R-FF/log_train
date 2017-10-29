@@ -1,0 +1,193 @@
+Configuration Infor:
+	Training Mode: Started in hybrid online/batch
+		Mini-batches (parallel 1 sequences each) will be shuffled during training.
+		Writting network  to 'trained_network.jsn'.
+	Validation every 1 epochs.
+
+	Training will be stopped after 100 epochs or after no new lowest validation error for 10 epochs.
+	Autosave after EVERY EPOCH enabled.
+	Utilizing the GPU on 1 sequences in parallel.
+
+	Initialization method:
+		Uniform dist. with layer-wise range
+
+		Random seed: 3839368179
+
+Using device #2 (Tesla K80)
+Reading network from './network.jsn'... done.
+
+Loading training set '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc1' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc2' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc3' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc4' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc5' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc6' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc7' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc8' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc9' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc10' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc11train' ...
+using cache file: /tmp/xwtemp/85a6-6654-6e90-30a9
+... done.
+Loaded fraction:  100%
+Sequences:        11572
+Sequence lengths: 140..4034
+Total timesteps:  11544584
+
+Loading validation set '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc11val' ...
+using cache file: /tmp/xwtemp/d725-d702-7d13-a826
+... done.
+Loaded fraction:  100%
+Sequences:        500
+Sequence lengths: 172..3226
+Total timesteps:  490430
+
+Creating the neural network...
+Layer (0) input 
+Layer (1) feedforward_logistic Trainable layer: initialize weight
+Layer (2) feedforward_logistic Trainable layer: initialize weight
+Layer (3) blstm Trainable layer: initialize weight
+Layer (4) blstm Trainable layer: initialize weight
+Layer (5) feedforward_tanh Trainable layer: initialize weight
+Layer (6) feedforward_tanh Trainable layer: initialize weight
+Layer (7) feedforward_tanh Trainable layer: initialize weight
+Layer (8) feedforward_tanh Trainable layer: initialize weight
+Layer (9) feedforward_tanh Trainable layer: initialize weight
+Layer (10) feedforward_tanh Trainable layer: initialize weight
+Layer (11) feedforward_tanh Trainable layer: initialize weight
+Layer (12) feedforward_tanh Trainable layer: initialize weight
+Layer (13) feedforward_tanh Trainable layer: initialize weight
+Layer (14) feedforward_tanh Trainable layer: initialize weight
+Layer (15) feedforward_tanh Trainable layer: initialize weight
+Layer (16) feedforward_tanh Trainable layer: initialize weight
+Layer (17) feedforward_tanh Trainable layer: initialize weight
+Layer (18) feedforward_tanh Trainable layer: initialize weight
+Layer (19) feedforward_tanh Trainable layer: initialize weight
+Layer (20) feedforward_tanh Trainable layer: initialize weight
+Layer (21) feedforward_tanh Trainable layer: initialize weight
+Layer (22) feedforward_tanh Trainable layer: initialize weight
+Layer (23) feedforward_tanh Trainable layer: initialize weight
+Layer (24) feedforward_tanh Trainable layer: initialize weight
+Layer (25) feedforward_tanh Trainable layer: initialize weight
+Layer (26) feedforward_identity Trainable layer: initialize weight
+Layer (27) sse 
+Network construction done.
+
+Network summary:
+(0) input [size: 382]
+(1) feedforward_logistic [size: 512, bias: 1.0, weights: 196096]
+(2) feedforward_logistic [size: 512, bias: 1.0, weights: 262656]
+(3) blstm [size: 256, bias: 1.0, weights: 657152]
+(4) blstm [size: 256, bias: 1.0, weights: 395008]
+(5) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(6) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(7) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(8) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(9) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(10) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(11) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(12) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(13) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(14) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(15) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(16) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(17) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(18) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(19) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(20) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(21) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(22) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(23) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(24) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(25) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(26) feedforward_identity [size: 259, bias: 1.0, weights: 66563]
+(27) sse [size: 259]
+Total weights: 2959107
+
+
+Creating the optimizer... 
+Optimization: plain SGD 
+done.
+Optimizer type: Steepest descent with momentum
+Max training epochs:       100
+Max epochs until new best: 10
+Validation error every:    1
+Test error every:          1
+Learning rate:             4e-06
+Momentum:                  0
+Model Parameter:           /work/smg/wang/PROJ/WE/DNNAM/MODEL/nancy/nancy_all/MODEL2001/train1/trained_network.jsn
+
+Read NN parameter from /work/smg/wang/PROJ/WE/DNNAM/MODEL/nancy/nancy_all/MODEL2001/train1/trained_network.jsn
+
+	(1) read weight for layer forward_1
+	(2) read weight for layer forward_2
+	(3) read weight for layer blstm_level_1
+	(4) read weight for layer blstm_level_2
+	(5) not read weight for layer f1
+	(6) not read weight for layer f2
+	(7) not read weight for layer s2
+	(8) not read weight for layer f3
+	(9) not read weight for layer f4
+	(10) not read weight for layer s3
+	(11) not read weight for layer f5
+	(12) not read weight for layer f6
+	(13) not read weight for layer s4
+	(14) not read weight for layer f7
+	(15) not read weight for layer f8
+	(16) not read weight for layer s5
+	(17) not read weight for layer f9
+	(18) not read weight for layer f10
+	(19) not read weight for layer s6
+	(20) not read weight for layer f11
+	(21) not read weight for layer f12
+	(22) not read weight for layer s7
+	(23) not read weight for layer f13
+	(24) not read weight for layer f14
+	(25) not read weight for layer s8
+	(26) not read weight for layer output	done
+
+Starting training...
+Print error per sequence / per timestep
+ Epoch | Duration |           Training error  |           Validation error|           Test error      |New best 
+-------+----------+---------------------------+---------------------------+---------------------------+---------
+     1 |   4658.0 |    101961.648 /   102.204 |     99319.984 /   101.258 |                           |  yes SGD
+     2 |   4633.2 |     99091.086 /    99.326 |     98451.258 /   100.372 |                           |  yes SGD
+     3 |   4628.3 |     98389.789 /    98.623 |     98174.047 /   100.090 |                           |  yes SGD
+     4 |   4635.9 |     98014.906 /    98.248 |     98108.016 /   100.022 |                           |  yes SGD
+     5 |   4616.9 |     97764.289 /    97.996 |     97816.531 /    99.725 |                           |  yes SGD
+     6 |   4630.2 |     97572.219 /    97.804 |     97663.938 /    99.570 |                           |  yes SGD
+     7 |   4648.2 |     97425.125 /    97.656 |     97597.664 /    99.502 |                           |  yes SGD
+     8 |   4650.3 |     97306.648 /    97.538 |     97470.797 /    99.373 |                           |  yes SGD
+     9 |   4635.8 |     97210.492 /    97.441 |     97472.664 /    99.375 |                           |  no  SGD
+    10 |   5306.2 |     97123.000 /    97.354 |     97437.820 /    99.339 |                           |  yes SGD
+    11 |   4821.9 |     97042.078 /    97.273 |     97484.461 /    99.387 |                           |  no  SGD
+    12 |   4695.4 |     96970.938 /    97.201 |     97360.438 /    99.260 |                           |  yes SGD
+    13 |   4621.9 |     96906.961 /    97.137 |     97226.117 /    99.123 |                           |  yes SGD
+    14 |   4639.5 |     96848.922 /    97.079 |     97125.312 /    99.021 |                           |  yes SGD
+    15 |   4628.7 |     96793.414 /    97.023 |     97392.758 /    99.293 |                           |  no  SGD
+    16 |   4613.3 |     96744.242 /    96.974 |     97111.336 /    99.006 |                           |  yes SGD
+    17 |   4618.4 |     96702.234 /    96.932 |     97123.508 /    99.019 |                           |  no  SGD
+    18 |   4623.3 |     96654.891 /    96.884 |     97098.258 /    98.993 |                           |  yes SGD
+    19 |   4619.1 |     96611.977 /    96.841 |     97163.102 /    99.059 |                           |  no  SGD
+    20 |   4633.3 |     96573.430 /    96.803 |     97103.172 /    98.998 |                           |  no  SGD
+    21 |   4626.0 |     96536.570 /    96.766 |     96990.820 /    98.883 |                           |  yes SGD
+    22 |   4632.1 |     96499.539 /    96.729 |     97057.555 /    98.951 |                           |  no  SGD
+    23 |   4621.9 |     96462.523 /    96.692 |     97067.188 /    98.961 |                           |  no  SGD
+    24 |   4626.6 |     96430.234 /    96.659 |     97010.664 /    98.904 |                           |  no  SGD
+    25 |   4674.2 |     96400.883 /    96.630 |     96974.539 /    98.867 |                           |  yes SGD
+    26 |   4630.0 |     96368.906 /    96.598 |     96986.344 /    98.879 |                           |  no  SGD
+    27 |   4629.7 |     96340.672 /    96.569 |     96995.531 /    98.888 |                           |  no  SGD
+    28 |   4859.9 |     96311.008 /    96.540 |     96950.008 /    98.842 |                           |  yes SGD
+    29 |   4609.2 |     96282.625 /    96.511 |     97060.805 /    98.955 |                           |  no  SGD
+    30 |   4597.4 |     96257.945 /    96.487 |     96923.516 /    98.815 |                           |  yes SGD
+    31 |   4596.2 |     96228.930 /    96.457 |     97446.031 /    99.348 |                           |  no  SGD
+    32 |   4630.4 |     96206.891 /    96.435 |     97061.453 /    98.955 |                           |  no  SGD
+    33 |   4602.0 |     96181.258 /    96.410 |     96992.398 /    98.885 |                           |  no  SGD
+    34 |   4578.5 |     96154.523 /    96.383 |     96895.805 /    98.787 |                           |  yes SGD
+    35 |   4529.9 |     96132.469 /    96.361 |     96855.852 /    98.746 |                           |  yes SGD
+    36 |   4524.9 |     96111.312 /    96.340 |     96896.641 /    98.787 |                           |  no  SGD
+    37 |   4527.3 |     96088.867 /    96.317 |     96939.414 /    98.831 |                           |  no  SGD
+    38 |   4526.1 |     96065.477 /    96.294 |     96958.156 /    98.850 |                           |  no  SGD
+    39 |   4522.9 |     96042.320 /    96.270 |     96933.172 /    98.825 |                           |  no  SGD
+    40 |   4519.8 |     96023.414 /    96.251 |     96946.195 /    98.838 |                           |  no  SGD
+    41 |   4520.1 |     96003.672 /    96.232 |     96919.633 /    98.811 |                           |  no  SGD
+    42 |   4521.4 |     95982.234 /    96.210 |     96933.297 /    98.825 |                           |  no  SGD
+    43 |   4524.3 |     95964.141 /    96.192 |     96883.750 /    98.774 |                           |  no  SGD
+    44 |   4520.6 |     95939.672 /    96.168 |     96891.414 /    98.782 |                           |  no  SGD
+    45 |   4518.6 |     95924.273 /    96.152 |     96920.695 /    98.812 |                           |  no  Finished
+
+No new lowest error since 10 epochs. Training stopped.
+Lowest validation error: 96855.851562
+
+Storing the trained network in 'trained_network.jsn'... done.
+Removing cache file(s) ...

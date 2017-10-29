@@ -1,0 +1,56 @@
+{
+    "layers": [
+        {
+            "size": 382,
+            "name": "input",
+            "type": "input"
+        },
+	{
+            "size": 768,
+            "name": "t1",
+            "bias": 1.0,
+            "type": "feedforward_identity"
+        },
+	{
+	    "size": 768,
+            "name": "s1",
+            "bias": 1.0,
+            "type": "skipadd"
+	},
+        {
+            "size": 768,
+            "name": "f1",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 768,
+            "name": "f2",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{
+	    "size": 768,
+            "name": "s2",
+            "bias": 1.0,
+            "type": "skippara_logistic"
+	},
+        {
+            "size": 768,
+            "name": "f100",
+            "bias": 1.0,
+            "type": "feedforward_identity"
+        },
+        {
+            "size": 259,
+            "name": "output",
+            "bias": 1.0,
+            "type": "feedforward_identity"
+        },
+        {
+            "size": 259,
+            "name": "postoutput",
+            "type": "sse"
+        }
+    ]
+}

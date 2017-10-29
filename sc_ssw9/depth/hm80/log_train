@@ -1,0 +1,252 @@
+Started in hybrid online/batch training mode.
+Mini-batches (1 sequences each) will be shuffled during training.
+The trained network will be written to 'trained_network.jsn'.
+Validation error will be calculated every 1 epochs.
+Training will be stopped after 100 epochs or if there is no new lowest validation error within 10 epochs.
+Autosave after EVERY EPOCH enabled.
+Utilizing the GPU for computations with 1 sequences in parallel.
+Uniform distribution with layer-wise range
+. Random seed: 3839368179
+
+Using device #3 (Tesla K80)
+Reading network from 'network.jsn'... done.
+
+Loading training set '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc1' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc2' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc3' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc4' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc5' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc6' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc7' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc8' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc9' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc10' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc11train' ...
+using cache file: /tmp/8f74-c429-4f62-6d8f
+... done.
+Loaded fraction:  100%
+Sequences:        11572
+Sequence lengths: 140..4034
+Total timesteps:  11544584
+
+Loading validation set '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc11val' ...
+using cache file: /tmp/d932-197e-091f-c8bc
+... done.
+Loaded fraction:  100%
+Sequences:        500
+Sequence lengths: 172..3226
+Total timesteps:  490430
+
+Creating the neural network... done.
+Layers:
+(0) input [size: 382]
+(1) feedforward_identity [size: 768, bias: 1.0, weights: 294144]
+(2) skipini [size: 768, bias: 1.0, weights: 590592]
+(3) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(4) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(5) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(6) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(7) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(8) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(9) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(10) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(11) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(12) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(13) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(14) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(15) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(16) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(17) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(18) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(19) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(20) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(21) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(22) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(23) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(24) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(25) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(26) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(27) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(28) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(29) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(30) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(31) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(32) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(33) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(34) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(35) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(36) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(37) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(38) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(39) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(40) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(41) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(42) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(43) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(44) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(45) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(46) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(47) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(48) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(49) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(50) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(51) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(52) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(53) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(54) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(55) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(56) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(57) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(58) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(59) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(60) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(61) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(62) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(63) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(64) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(65) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(66) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(67) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(68) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(69) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(70) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(71) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(72) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(73) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(74) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(75) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(76) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(77) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(78) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(79) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(80) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(81) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(82) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(83) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(84) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(85) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(86) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(87) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(88) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(89) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(90) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(91) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(92) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(93) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(94) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(95) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(96) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(97) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(98) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(99) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(100) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(101) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(102) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(103) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(104) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(105) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(106) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(107) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(108) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(109) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(110) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(111) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(112) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(113) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(114) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(115) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(116) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(117) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(118) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(119) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(120) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(121) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(122) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(123) feedforward_identity [size: 768, bias: 1.0, weights: 590592]
+(124) feedforward_identity [size: 259, bias: 1.0, weights: 199171]
+(125) sse [size: 259]
+Total weights: 72545539
+
+Read 72545539 weight mask elements
+
+Creating the optimizer... done.
+Optimizer type: Steepest descent with momentum
+Max training epochs:       100
+Max epochs until new best: 10
+Validation error every:    1
+Test error every:          1
+Learning rate:             1e-05
+Momentum:                  0
+
+Starting training...
+Print error per sequence / per timestep
+ Epoch | Duration |           Training error  |           Validation error|           Test error      |New best 
+-------+----------+---------------------------+---------------------------+---------------------------+---------
+     1 |   3419.0 |    129217.734 /   129.525 |    126928.789 /   129.406 |                           |  yes   
+     2 |   3415.8 |    129213.320 /   129.520 |    126912.961 /   129.389 |                           |  yes   
+     3 |   3417.2 |    129201.164 /   129.508 |    126807.984 /   129.282 |                           |  yes   
+     4 |   3418.3 |    124211.156 /   124.506 |    121274.383 /   123.641 |                           |  yes   
+     5 |   3421.2 |    121307.984 /   121.596 |    117929.859 /   120.231 |                           |  yes   
+     6 |   3421.4 |    119310.094 /   119.593 |    116529.742 /   118.804 |                           |  yes   
+     7 |   3418.8 |    117526.023 /   117.805 |    114403.867 /   116.636 |                           |  yes   
+     8 |   3421.1 |    115021.805 /   115.295 |    112061.539 /   114.248 |                           |  yes   
+     9 |   3423.0 |    113007.727 /   113.276 |    110452.086 /   112.607 |                           |  yes   
+    10 |   3419.0 |    111559.695 /   111.825 |    109205.031 /   111.336 |                           |  yes   
+    11 |   3419.9 |    110528.320 /   110.791 |    108384.203 /   110.499 |                           |  yes   
+    12 |   3419.9 |    109582.180 /   109.842 |    107397.344 /   109.493 |                           |  yes   
+    13 |   3420.2 |    108689.805 /   108.948 |    106584.047 /   108.664 |                           |  yes   
+    14 |   3420.4 |    107781.914 /   108.038 |    105738.766 /   107.802 |                           |  yes   
+    15 |   3422.1 |    106946.625 /   107.201 |    105125.148 /   107.177 |                           |  yes   
+    16 |   3421.6 |    106276.461 /   106.529 |    104447.633 /   106.486 |                           |  yes   
+    17 |   3423.3 |    105672.062 /   105.923 |    103791.195 /   105.817 |                           |  yes   
+    18 |   3423.0 |    104972.828 /   105.222 |    103207.812 /   105.222 |                           |  yes   
+    19 |   3426.3 |    104413.344 /   104.661 |    102750.062 /   104.755 |                           |  yes   
+    20 |   3431.9 |    103906.898 /   104.154 |    102288.734 /   104.285 |                           |  yes   
+    21 |   3430.2 |    103463.188 /   103.709 |    101978.977 /   103.969 |                           |  yes   
+    22 |   3439.2 |    103063.648 /   103.308 |    101575.375 /   103.557 |                           |  yes   
+    23 |   3425.1 |    102700.617 /   102.945 |    101387.117 /   103.366 |                           |  yes   
+    24 |   3429.1 |    102375.414 /   102.619 |    101086.711 /   103.059 |                           |  yes   
+    25 |   3427.7 |    102075.469 /   102.318 |    100908.539 /   102.878 |                           |  yes   
+    26 |   3428.8 |    101806.664 /   102.048 |    100631.875 /   102.596 |                           |  yes   
+    27 |   3427.6 |    101559.039 /   101.800 |    100501.727 /   102.463 |                           |  yes   
+    28 |   3425.5 |    101331.078 /   101.572 |    100352.688 /   102.311 |                           |  yes   
+    29 |   3426.2 |    101077.805 /   101.318 |    100185.891 /   102.141 |                           |  yes   
+    30 |   3428.0 |    100841.156 /   101.081 |     99921.453 /   101.871 |                           |  yes   
+    31 |   3424.6 |    100647.266 /   100.886 |     99999.977 /   101.951 |                           |  no    
+    32 |   3427.3 |    100467.359 /   100.706 |     99897.016 /   101.846 |                           |  yes   
+    33 |   3425.6 |    100306.602 /   100.545 |     99616.820 /   101.561 |                           |  yes   
+    34 |   3427.0 |    100145.930 /   100.384 |     99659.305 /   101.604 |                           |  no    
+    35 |   3425.9 |     99996.750 /   100.234 |     99580.273 /   101.523 |                           |  yes   
+    36 |   3425.3 |     99859.680 /   100.097 |     99398.617 /   101.338 |                           |  yes   
+    37 |   3424.3 |     99719.234 /    99.956 |     99322.219 /   101.260 |                           |  yes   
+    38 |   3425.3 |     99591.820 /    99.828 |     99298.648 /   101.236 |                           |  yes   
+    39 |   3425.7 |     99467.016 /    99.703 |     99230.086 /   101.166 |                           |  yes   
+    40 |   3431.4 |     99351.984 /    99.588 |     99204.188 /   101.140 |                           |  yes   
+    41 |   3423.5 |     99233.781 /    99.469 |     99126.406 /   101.061 |                           |  yes   
+    42 |   3426.1 |     99125.312 /    99.361 |     99085.039 /   101.019 |                           |  yes   
+    43 |   3424.2 |     99017.891 /    99.253 |     99074.359 /   101.008 |                           |  yes   
+    44 |   3411.2 |     98913.070 /    99.148 |     99016.812 /   100.949 |                           |  yes   
+    45 |   3415.2 |     98811.672 /    99.046 |     99100.781 /   101.035 |                           |  no    
+    46 |   3414.2 |     98716.680 /    98.951 |     99036.492 /   100.969 |                           |  no    
+    47 |   3414.1 |     98617.641 /    98.852 |     98949.898 /   100.881 |                           |  yes   
+    48 |   3415.1 |     98524.516 /    98.758 |     99093.969 /   101.028 |                           |  no    
+    49 |   3417.6 |     98434.789 /    98.669 |     98886.359 /   100.816 |                           |  yes   
+    50 |   3423.3 |     98340.344 /    98.574 |     98913.305 /   100.843 |                           |  no    
+    51 |   3429.4 |     98245.453 /    98.479 |     98865.805 /   100.795 |                           |  yes   
+    52 |   3427.6 |     98151.508 /    98.385 |     98929.539 /   100.860 |                           |  no    
+    53 |   3428.6 |     98062.445 /    98.295 |     98844.859 /   100.774 |                           |  yes   
+    54 |   3428.1 |     97975.469 /    98.208 |     98885.141 /   100.815 |                           |  no    
+    55 |   3431.0 |     97892.281 /    98.125 |     98809.141 /   100.737 |                           |  yes   
+    56 |   3430.4 |     97809.664 /    98.042 |     98803.359 /   100.731 |                           |  yes   
+    57 |   3431.5 |     97731.031 /    97.963 |     98887.453 /   100.817 |                           |  no    
+    58 |   3429.9 |     97652.484 /    97.884 |     98784.594 /   100.712 |                           |  yes   
+    59 |   3431.3 |     97578.977 /    97.811 |     98849.383 /   100.778 |                           |  no    
+    60 |   3430.3 |     97501.016 /    97.733 |     98814.148 /   100.742 |                           |  no    
+    61 |   3431.8 |     97432.969 /    97.664 |     98779.812 /   100.707 |                           |  yes   
+    62 |   3430.3 |     97362.672 /    97.594 |     98767.430 /   100.695 |                           |  yes   
+    63 |   3426.6 |     97292.695 /    97.524 |     98826.195 /   100.755 |                           |  no    
+    64 |   3432.7 |     97225.648 /    97.457 |     98875.570 /   100.805 |                           |  no    
+    65 |   3431.3 |     97154.469 /    97.385 |     98845.273 /   100.774 |                           |  no    
+    66 |   3432.0 |     97090.562 /    97.321 |     98839.945 /   100.769 |                           |  no    
+    67 |   3431.3 |     97022.117 /    97.253 |     98876.367 /   100.806 |                           |  no    
+    68 |   3429.6 |     96957.758 /    97.188 |     98836.711 /   100.765 |                           |  no    
+    69 |   3431.0 |     96897.695 /    97.128 |     98877.922 /   100.807 |                           |  no    
+    70 |   3427.2 |     96838.672 /    97.069 |     98851.867 /   100.781 |                           |  no    
+    71 |   3428.6 |     96773.398 /    97.003 |     98916.797 /   100.847 |                           |  no    
+    72 |   3412.8 |     96712.211 /    96.942 |     98916.016 /   100.846 |                           |  no    
+
+No new lowest error since 10 epochs. Training stopped.
+Lowest validation error: 98767.429688
+
+Storing the trained network in 'trained_network.jsn'... done.
+Removing cache file(s) ...

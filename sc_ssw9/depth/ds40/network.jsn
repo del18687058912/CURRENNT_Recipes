@@ -1,0 +1,272 @@
+{
+    "layers": [
+        {
+            "size": 382,
+            "name": "input",
+            "type": "input"
+        },
+	{
+            "size": 382,
+            "name": "t1",
+            "bias": 1.0,
+            "type": "feedforward_identity"
+        },
+        {
+            "size": 382,
+            "name": "f1",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 382,
+            "name": "f2",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{	
+            "size": 382,
+            "name": "f3",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 382,
+            "name": "f4",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{	
+            "size": 382,
+            "name": "f5",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 382,
+            "name": "f6",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{	
+            "size": 382,
+            "name": "f7",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 382,
+            "name": "f8",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{	
+            "size": 382,
+            "name": "f9",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 382,
+            "name": "f10",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{	
+            "size": 382,
+            "name": "f11",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 382,
+            "name": "f12",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{	
+            "size": 382,
+            "name": "f13",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 382,
+            "name": "f14",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{	
+            "size": 382,
+            "name": "f15",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 382,
+            "name": "f16",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{	
+            "size": 382,
+            "name": "f17",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 382,
+            "name": "f18",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{	
+            "size": 382,
+            "name": "f19",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 382,
+            "name": "f20",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+       {
+            "size": 382,
+            "name": "f21",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 382,
+            "name": "f22",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{	
+            "size": 382,
+            "name": "f23",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 382,
+            "name": "f24",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{	
+            "size": 382,
+            "name": "f25",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 382,
+            "name": "f26",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{	
+            "size": 382,
+            "name": "f27",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 382,
+            "name": "f28",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{	
+            "size": 382,
+            "name": "f29",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 382,
+            "name": "f210",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{	
+            "size": 382,
+            "name": "f211",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 382,
+            "name": "f212",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{	
+            "size": 382,
+            "name": "f213",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 382,
+            "name": "f214",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{	
+            "size": 382,
+            "name": "f215",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 382,
+            "name": "f216",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{	
+            "size": 382,
+            "name": "f217",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 382,
+            "name": "f218",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{	
+            "size": 382,
+            "name": "f219",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 382,
+            "name": "f220",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 382,
+            "name": "f100",
+            "bias": 1.0,
+            "type": "feedforward_identity"
+        },
+        {
+            "size": 259,
+            "name": "output",
+            "bias": 1.0,
+            "type": "feedforward_identity"
+        },
+        {
+            "size": 259,
+            "name": "postoutput",
+            "type": "sse"
+        }
+    ]
+}

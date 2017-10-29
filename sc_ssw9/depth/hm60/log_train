@@ -1,0 +1,198 @@
+Started in hybrid online/batch training mode.
+Mini-batches (1 sequences each) will be shuffled during training.
+The trained network will be written to 'trained_network.jsn'.
+Validation error will be calculated every 1 epochs.
+Training will be stopped after 100 epochs or if there is no new lowest validation error within 10 epochs.
+Autosave after EVERY EPOCH enabled.
+Utilizing the GPU for computations with 1 sequences in parallel.
+Uniform distribution with layer-wise range
+. Random seed: 3839368179
+
+Using device #3 (Tesla K80)
+Reading network from 'network.jsn'... done.
+
+Loading training set '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc1' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc2' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc3' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc4' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc5' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc6' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc7' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc8' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc9' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc10' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc11train' ...
+using cache file: /tmp/09c9-db76-1cbb-1ae2
+... done.
+Loaded fraction:  100%
+Sequences:        11572
+Sequence lengths: 140..4034
+Total timesteps:  11544584
+
+Loading validation set '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc11val' ...
+using cache file: /tmp/4c34-5cea-b8f7-56ff
+... done.
+Loaded fraction:  100%
+Sequences:        500
+Sequence lengths: 172..3226
+Total timesteps:  490430
+
+Creating the neural network... done.
+Layers:
+(0) input [size: 382]
+(1) feedforward_identity [size: 768, bias: 1.0, weights: 294144]
+(2) skipini [size: 768, bias: 1.0, weights: 590592]
+(3) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(4) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(5) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(6) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(7) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(8) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(9) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(10) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(11) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(12) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(13) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(14) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(15) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(16) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(17) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(18) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(19) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(20) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(21) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(22) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(23) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(24) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(25) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(26) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(27) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(28) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(29) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(30) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(31) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(32) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(33) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(34) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(35) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(36) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(37) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(38) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(39) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(40) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(41) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(42) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(43) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(44) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(45) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(46) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(47) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(48) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(49) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(50) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(51) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(52) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(53) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(54) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(55) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(56) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(57) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(58) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(59) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(60) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(61) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(62) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(63) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(64) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(65) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(66) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(67) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(68) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(69) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(70) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(71) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(72) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(73) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(74) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(75) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(76) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(77) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(78) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(79) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(80) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(81) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(82) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(83) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(84) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(85) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(86) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(87) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(88) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(89) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(90) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(91) feedforward_tanh [size: 768, bias: 1.0, weights: 590592]
+(92) skippara_logistic [size: 768, bias: 1.0, weights: 590592]
+(93) feedforward_identity [size: 768, bias: 1.0, weights: 590592]
+(94) feedforward_identity [size: 259, bias: 1.0, weights: 199171]
+(95) sse [size: 259]
+Total weights: 54827779
+
+Read 54827779 weight mask elements
+
+Creating the optimizer... done.
+Optimizer type: Steepest descent with momentum
+Max training epochs:       100
+Max epochs until new best: 10
+Validation error every:    1
+Test error every:          1
+Learning rate:             1e-05
+Momentum:                  0
+
+Starting training...
+Print error per sequence / per timestep
+ Epoch | Duration |           Training error  |           Validation error|           Test error      |New best 
+-------+----------+---------------------------+---------------------------+---------------------------+---------
+     1 |   2585.5 |    126049.773 /   126.349 |    120031.383 /   122.374 |                           |  yes   
+     2 |   2581.1 |    118258.914 /   118.540 |    113470.148 /   115.684 |                           |  yes   
+     3 |   2580.3 |    113861.500 /   114.132 |    110291.594 /   112.444 |                           |  yes   
+     4 |   2583.5 |    110776.766 /   111.040 |    107923.562 /   110.030 |                           |  yes   
+     5 |   2583.1 |    108743.211 /   109.001 |    106145.078 /   108.216 |                           |  yes   
+     6 |   2583.8 |    107017.016 /   107.271 |    104595.609 /   106.637 |                           |  yes   
+     7 |   2584.4 |    105629.797 /   105.881 |    103479.258 /   105.498 |                           |  yes   
+     8 |   2586.0 |    104528.406 /   104.777 |    102545.266 /   104.546 |                           |  yes   
+     9 |   2585.8 |    103647.070 /   103.893 |    101889.648 /   103.878 |                           |  yes   
+    10 |   2583.3 |    102932.766 /   103.177 |    101158.406 /   103.132 |                           |  yes   
+    11 |   2585.6 |    102356.484 /   102.600 |    100705.266 /   102.670 |                           |  yes   
+    12 |   2585.7 |    101865.039 /   102.107 |    100309.055 /   102.266 |                           |  yes   
+    13 |   2586.0 |    101447.820 /   101.689 |    100025.055 /   101.977 |                           |  yes   
+    14 |   2582.9 |    101081.508 /   101.322 |     99696.805 /   101.642 |                           |  yes   
+    15 |   2573.9 |    100755.719 /   100.995 |     99547.664 /   101.490 |                           |  yes   
+    16 |   2573.2 |    100469.234 /   100.708 |     99284.703 /   101.222 |                           |  yes   
+    17 |   2575.1 |    100211.266 /   100.449 |     99075.102 /   101.008 |                           |  yes   
+    18 |   2574.0 |     99979.562 /   100.217 |     98912.406 /   100.843 |                           |  yes   
+    19 |   2585.3 |     99767.055 /   100.004 |     98796.352 /   100.724 |                           |  yes   
+    20 |   2575.2 |     99568.172 /    99.805 |     98641.570 /   100.566 |                           |  yes   
+    21 |   2581.2 |     99390.406 /    99.626 |     98549.609 /   100.473 |                           |  yes   
+    22 |   2581.2 |     99222.852 /    99.458 |     98417.391 /   100.338 |                           |  yes   
+    23 |   2579.6 |     99064.906 /    99.300 |     98423.938 /   100.345 |                           |  no    
+    24 |   2580.2 |     98915.609 /    99.151 |     98303.562 /   100.222 |                           |  yes   
+    25 |   2581.2 |     98771.625 /    99.006 |     98254.844 /   100.172 |                           |  yes   
+    26 |   2579.6 |     98637.078 /    98.871 |     98202.586 /   100.119 |                           |  yes   
+    27 |   2581.3 |     98508.664 /    98.743 |     98160.617 /   100.076 |                           |  yes   
+    28 |   2583.1 |     98381.492 /    98.615 |     98115.555 /   100.030 |                           |  yes   
+    29 |   2582.1 |     98262.852 /    98.496 |     98097.711 /   100.012 |                           |  yes   
+    30 |   2582.4 |     98149.516 /    98.383 |     97983.914 /    99.896 |                           |  yes   
+    31 |   2583.2 |     98041.117 /    98.274 |     98078.727 /    99.993 |                           |  no    
+    32 |   2583.0 |     97930.883 /    98.163 |     98039.070 /    99.952 |                           |  no    
+    33 |   2583.3 |     97828.969 /    98.061 |     97919.672 /    99.830 |                           |  yes   
+    34 |   2583.2 |     97725.047 /    97.957 |     98020.062 /    99.933 |                           |  no    
+    35 |   2583.1 |     97625.516 /    97.857 |     97943.047 /    99.854 |                           |  no    
+    36 |   2581.3 |     97531.125 /    97.763 |     97900.211 /    99.811 |                           |  yes   
+    37 |   2582.2 |     97435.156 /    97.667 |     97878.617 /    99.789 |                           |  yes   
+    38 |   2581.5 |     97339.586 /    97.571 |     97855.695 /    99.765 |                           |  yes   
+    39 |   2581.4 |     97251.008 /    97.482 |     97862.805 /    99.772 |                           |  no    
+    40 |   2582.3 |     97165.664 /    97.396 |     97926.039 /    99.837 |                           |  no    
+    41 |   2583.7 |     97073.344 /    97.304 |     97866.352 /    99.776 |                           |  no    
+    42 |   2582.4 |     96989.242 /    97.220 |     97881.148 /    99.791 |                           |  no    
+    43 |   2582.5 |     96903.031 /    97.133 |     97909.766 /    99.820 |                           |  no    
+    44 |   2582.7 |     96819.984 /    97.050 |     97858.844 /    99.768 |                           |  no    
+    45 |   2582.3 |     96738.641 /    96.968 |     97963.078 /    99.875 |                           |  no    
+    46 |   2588.9 |     96655.961 /    96.885 |     97979.602 /    99.892 |                           |  no    
+    47 |   2589.7 |     96574.133 /    96.803 |     97905.781 /    99.816 |                           |  no    
+    48 |   2585.9 |     96496.656 /    96.726 |     98081.820 /    99.996 |                           |  no    
+
+No new lowest error since 10 epochs. Training stopped.
+Lowest validation error: 97855.695312
+
+Storing the trained network in 'trained_network.jsn'... done.
+Removing cache file(s) ...

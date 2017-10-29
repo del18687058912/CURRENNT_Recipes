@@ -1,0 +1,108 @@
+Started in hybrid online/batch training mode.
+Mini-batches (1 sequences each) will be shuffled during training.
+Using input noise with a standard deviation of 0.1.
+The trained network will be written to 'trained_network.jsn'.
+WARNING: The output file 'trained_network.jsn' already exists. It will be overwritten!
+Validation error will be calculated every 1 epochs.
+Training will be stopped after 80 epochs or if there is no new lowest validation error within 5 epochs.
+Autosave after EVERY EPOCH enabled.
+Utilizing the GPU for computations with 1 sequences in parallel.
+Normal distribution with mean=0 and sigma=0.1. Random seed: 3751596389
+
+Using device #1 (Quadro K4000)
+Reading network from 'epoch039.autosave'... done.
+
+Loading training set '/home/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc1' '/home/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc2' '/home/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc3' '/home/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc4' '/home/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc5' '/home/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc6' '/home/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc7' '/home/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc8' '/home/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc9' '/home/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc10' '/home/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc11train' ...
+using cache file: /tmp/7aed-e822-c28a-5947
+... done.
+Loaded fraction:  100%
+Sequences:        11572
+Sequence lengths: 140..4034
+Total timesteps:  11544584
+
+Loading validation set '/home/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc11val' ...
+using cache file: /tmp/22e0-b0f6-4aa2-c271
+... done.
+Loaded fraction:  100%
+Sequences:        500
+Sequence lengths: 172..3226
+Total timesteps:  490430
+
+Creating the neural network... done.
+Layers:
+(0) input [size: 382]
+(1) feedforward_logistic [size: 512, bias: 1.0, weights: 196096]
+(2) feedforward_logistic [size: 512, bias: 1.0, weights: 262656]
+(3) blstm [size: 256, bias: 1.0, weights: 657152]
+(4) blstm [size: 256, bias: 1.0, weights: 395008]
+(5) feedforward_identity [size: 259, bias: 1.0, weights: 66563]
+(6) sse [size: 259]
+Total weights: 1577475
+
+
+Creating the optimizer... done.
+Optimizer type: Steepest descent with momentum
+Max training epochs:       80
+Max epochs until new best: 5
+Validation error every:    1
+Test error every:          1
+Learning rate:             4e-06
+Momentum:                  0
+
+Restoring state from 'epoch039.autosave'... done.
+
+Starting training...
+
+ Epoch | Duration |  Training error  | Validation error |    Test error    | New best 
+-------+----------+------------------+------------------+------------------+----------
+     1 |  10388.8 |       115766.477 |       109842.211 |                  |  yes   
+     2 |  14685.7 |       110446.633 |       107501.555 |                  |  yes   
+     3 |  14531.4 |       108629.594 |       106231.406 |                  |  yes   
+     4 |  14684.1 |       107487.211 |       105254.297 |                  |  yes   
+     5 |  14562.3 |       106634.484 |       104555.109 |                  |  yes   
+     6 |  10299.2 |       105959.359 |       103952.406 |                  |  yes   
+     7 |  10647.8 |       105420.352 |       103469.680 |                  |  yes   
+     8 |  23174.4 |       104959.422 |       103041.961 |                  |  yes   
+     9 |  23219.0 |       104573.102 |       102831.625 |                  |  yes   
+    10 |   7219.2 |       104228.578 |       102496.172 |                  |  yes   
+    11 |   7220.1 |       103927.852 |       102200.234 |                  |  yes   
+    12 |   7220.6 |       103657.078 |       102139.562 |                  |  yes   
+    13 |   7218.7 |       103409.953 |       101708.484 |                  |  yes   
+    14 |   7218.8 |       103189.789 |       101551.914 |                  |  yes   
+    15 |   7220.4 |       102982.844 |       101339.312 |                  |  yes   
+    16 |   7222.0 |       102797.859 |       101226.195 |                  |  yes   
+    17 |   7222.2 |       102620.539 |       101048.117 |                  |  yes   
+    18 |   7222.2 |       102458.648 |       100866.266 |                  |  yes   
+    19 |   7220.2 |       102308.781 |       100777.438 |                  |  yes   
+    20 |   7218.0 |       102163.820 |       100792.398 |                  |  no    
+    21 |   7220.2 |       102034.719 |       100736.523 |                  |  yes   
+    22 |   7219.0 |       101907.797 |       100421.820 |                  |  yes   
+    23 |   7219.7 |       101790.430 |       100339.719 |                  |  yes   
+    24 |   7222.2 |       101677.352 |       100228.195 |                  |  yes   
+    25 |   7218.9 |       101569.594 |       100146.273 |                  |  yes   
+    26 |   7219.0 |       101471.234 |       100060.016 |                  |  yes   
+    27 |   7220.4 |       101375.359 |        99968.367 |                  |  yes   
+    28 |   7220.6 |       101283.430 |        99914.438 |                  |  yes   
+    29 |   7220.8 |       101196.953 |        99862.133 |                  |  yes   
+    30 |   7218.1 |       101109.047 |        99871.695 |                  |  no    
+    31 |   7220.5 |       101032.516 |        99882.953 |                  |  no    
+    32 |   7218.5 |       100953.133 |        99692.641 |                  |  yes   
+    33 |   7220.3 |       100881.297 |        99793.859 |                  |  no    
+    34 |   7220.2 |       100802.789 |        99578.695 |                  |  yes   
+    35 |   7220.6 |       100736.875 |        99386.789 |                  |  yes   
+    36 |   7220.4 |       100668.141 |        99360.289 |                  |  yes   
+    37 |   7220.4 |       100606.133 |        99279.602 |                  |  yes   
+    38 |   7220.0 |       100542.055 |        99253.398 |                  |  yes   
+    39 |   7295.6 |       100483.781 |        99169.031 |                  |  yes   
+    40 |   7314.6 |       100422.312 |        99272.031 |                  |  no    
+    41 |   7278.1 |       100364.688 |        99140.461 |                  |  yes   
+    42 |   7217.5 |       100307.359 |        99097.961 |                  |  yes   
+    43 |   7219.1 |       100258.422 |        99097.898 |                  |  yes   
+    44 |   7220.1 |       100200.141 |        99175.953 |                  |  no    
+    45 |   7219.1 |       100147.547 |        99090.125 |                  |  yes   
+    46 |   7218.5 |       100102.594 |        98983.070 |                  |  yes   
+    47 |   7217.8 |       100053.047 |        98843.906 |                  |  yes   
+    48 |   7215.9 |       100005.258 |        98776.477 |                  |  yes   
+    49 |   7217.3 |        99959.297 |        98743.469 |                  |  yes   
+    50 |   7262.1 |        99911.320 |        98733.461 |                  |  yes   
+    51 | 

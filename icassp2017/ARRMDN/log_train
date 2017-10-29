@@ -1,0 +1,91 @@
+Started in hybrid online/batch training mode.
+Mini-batches (1 sequences each) will be shuffled during training.
+The trained network will be written to 'trained_network.jsn'.
+WARNING: The output file 'trained_network.jsn' already exists. It will be overwritten!
+Validation error will be calculated every 1 epochs.
+Training will be stopped after 20 epochs or if there is no new lowest validation error within 5 epochs.
+Autosave after EVERY EPOCH enabled.
+Utilizing the GPU for computations with 1 sequences in parallel.
+Normal distribution with mean=0 and sigma=0.1. Random seed: 23368179
+
+Using device #3 (Tesla K80)
+Reading network from 'epoch009.autosave'... done.
+
+Loading training set '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc1' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc2' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc3' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc4' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc5' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc6' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc7' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc8' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc9' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc10' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc11train' ...
+using cache file: /mnt2/tmp/wang/CACHE_TEMP/1ee1-e896-1f54-9970
+... done.
+Loaded fraction:  100%
+Sequences:        11572
+Sequence lengths: 140..4034
+Total timesteps:  11544584
+
+Loading validation set '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc11val' ...
+using cache file: /mnt2/tmp/wang/CACHE_TEMP/6eb6-02bc-c63d-b7e7
+... done.
+Loaded fraction:  100%
+Sequences:        500
+Sequence lengths: 172..3226
+Total timesteps:  490430
+
+Creating the neural network... 
+MDN mixture: trainable: 1, tieVariance 0, #parameter 360
+MDN sigmoid
+MDN mixture: trainable: 3, tieVariance 0, #parameter 9
+MDN mixture: trainable: 0, tieVariance 0, #parameter 0
+MDN layer parameter number: 888
+
+MDN trainable mixture is used. The number of parameter is 369
+done.
+Layers:
+(0) input [size: 382]
+(1) feedforward_logistic [size: 512, bias: 1.0, weights: 196096]
+(2) feedforward_logistic [size: 512, bias: 1.0, weights: 262656]
+(3) blstm [size: 256, bias: 1.0, weights: 657152]
+(4) blstm [size: 256, bias: 1.0, weights: 395008]
+(5) feedforward_identity [size: 888, bias: 1.0, weights: 228216]
+(6) mdn [size: 259, weights: 369]
+Total weights: 1739497
+
+
+Creating the optimizer... done.
+Optimizer type: Steepest descent with momentum
+Max training epochs:       20
+Max epochs until new best: 5
+Validation error every:    1
+Test error every:          1
+Learning rate:             4e-09
+Momentum:                  0
+
+Restoring state from 'epoch009.autosave'... done.
+
+Re-initialize .autosave using another network is unnecessary
+Starting training...
+Print error per sequence / per timestep
+ Epoch | Duration |           Training error  |           Validation error|           Test error      |New best 
+-------+----------+---------------------------+---------------------------+---------------------------+---------
+     1 |  10411.0 |    272604.125 /   273.251 |    266771.719 /   271.977 |                           |  yes   
+     2 |  10471.3 |    266073.938 /   266.706 |    260692.719 /   265.780 |                           |  yes   
+     3 |  10485.7 |    262062.641 /   262.685 |    258782.125 /   263.832 |                           |  yes   
+     4 |  10468.1 |    259209.297 /   259.825 |    256365.969 /   261.369 |                           |  yes   
+     5 |  10470.5 |    257088.000 /   257.699 |    254534.891 /   259.502 |                           |  yes   
+     6 |  10491.6 |    255367.969 /   255.974 |    251833.547 /   256.748 |                           |  yes   
+     7 |  10486.2 |    254078.234 /   254.682 |    251987.484 /   256.905 |                           |  no    
+     8 |  10486.6 |    253102.172 /   253.703 |    249933.531 /   254.811 |                           |  yes   
+     9 |  10484.7 |    252233.578 /   252.833 |    249837.406 /   254.713 |                           |  yes   
+    10 |  10318.3 |    251502.000 /   252.099 |    249719.328 /   254.592 |                           |  yes   
+    11 |  10322.1 |    250883.625 /   251.479 |    248727.531 /   253.581 |                           |  yes   
+    12 |  10329.0 |    250340.828 /   250.935 |    247231.266 /   252.056 |                           |  yes   
+    13 |  10333.0 |    249879.531 /   250.473 |    247750.672 /   252.585 |                           |  no    
+    14 |  10317.7 |    249372.141 /   249.964 |    246362.906 /   251.170 |                           |  yes   
+    15 |  10322.7 |    249016.297 /   249.608 |    245989.891 /   250.790 |                           |  yes   
+    16 |  10318.7 |    248622.594 /   249.213 |    245617.625 /   250.410 |                           |  yes   
+    17 |  10328.6 |    248283.859 /   248.873 |    245984.594 /   250.785 |                           |  no    
+    18 |  10318.2 |    247978.719 /   248.568 |    245710.375 /   250.505 |                           |  no    
+    19 |  10326.9 |    247647.719 /   248.236 |    245479.047 /   250.269 |                           |  yes   
+    20 |  10322.5 |    247395.000 /   247.983 |    244573.625 /   249.346 |                           |  yes   
+
+Maximum number of training epochs reached. Training stopped.
+Lowest validation error: 244573.625000
+
+Storing the trained network in 'trained_network.jsn'... done.
+Removing cache file(s) ...

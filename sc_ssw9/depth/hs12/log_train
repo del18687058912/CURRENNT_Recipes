@@ -1,0 +1,177 @@
+Started in hybrid online/batch training mode.
+Mini-batches (1 sequences each) will be shuffled during training.
+The trained network will be written to 'trained_network.jsn'.
+WARNING: The output file 'trained_network.jsn' already exists. It will be overwritten!
+Validation error will be calculated every 1 epochs.
+Training will be stopped after 100 epochs or if there is no new lowest validation error within 10 epochs.
+Autosave after EVERY EPOCH enabled.
+Utilizing the GPU for computations with 1 sequences in parallel.
+Normal distribution with mean=0 and sigma=0.1. Random seed: 4145677258
+
+Using device #0 (Tesla K40c)
+Reading network from './network.jsn'... done.
+
+Loading training set '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc1' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc2' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc3' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc4' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc5' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc6' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc7' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc8' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc9' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc10' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc11train' ...
+using cache file: /mnt2/tmp/wang/CACHE_TEMP/8042-df6d-1f46-442c
+... done.
+Loaded fraction:  100%
+Sequences:        11572
+Sequence lengths: 140..4034
+Total timesteps:  11544584
+
+Loading validation set '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc11val' ...
+using cache file: /mnt2/tmp/wang/CACHE_TEMP/3391-f75d-0d08-a61b
+... done.
+Loaded fraction:  100%
+Sequences:        500
+Sequence lengths: 172..3226
+Total timesteps:  490430
+
+Creating the neural network... done.
+Layers:
+(0) input [size: 382]
+(1) feedforward_identity [size: 382, bias: 1.0, weights: 146306]
+(2) skipini [size: 382, bias: 1.0, weights: 146306]
+(3) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(4) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(5) skippara_logistic [size: 382, bias: 1.0, weights: 146306]
+(6) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(7) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(8) skippara_logistic [size: 382, bias: 1.0, weights: 146306]
+(9) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(10) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(11) skippara_logistic [size: 382, bias: 1.0, weights: 146306]
+(12) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(13) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(14) skippara_logistic [size: 382, bias: 1.0, weights: 146306]
+(15) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(16) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(17) skippara_logistic [size: 382, bias: 1.0, weights: 146306]
+(18) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(19) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(20) skippara_logistic [size: 382, bias: 1.0, weights: 146306]
+(21) feedforward_identity [size: 382, bias: 1.0, weights: 146306]
+(22) feedforward_identity [size: 259, bias: 1.0, weights: 99197]
+(23) sse [size: 259]
+Total weights: 3171623
+
+
+Creating the optimizer... done.
+Optimizer type: Steepest descent with momentum
+Max training epochs:       100
+Max epochs until new best: 10
+Validation error every:    1
+Test error every:          1
+Learning rate:             1e-06
+Momentum:                  0
+
+Starting training...
+Print error per sequence / per timestep
+ Epoch | Duration |           Training error  |           Validation error|           Test error      |New best 
+-------+----------+---------------------------+---------------------------+---------------------------+---------
+     1 |    342.0 |    127444.266 /   127.747 |    112804.570 /   115.006 |                           |  yes   
+     2 |    280.1 |    112732.758 /   113.000 |    109462.656 /   111.599 |                           |  yes   
+     3 |    273.2 |    110228.570 /   110.490 |    107673.461 /   109.775 |                           |  yes   
+     4 |    272.8 |    108705.516 /   108.964 |    106475.938 /   108.554 |                           |  yes   
+     5 |    313.5 |    107616.086 /   107.872 |    105584.633 /   107.645 |                           |  yes   
+     6 |    299.2 |    106774.078 /   107.028 |    104906.039 /   106.953 |                           |  yes   
+     7 |    286.5 |    106097.828 /   106.350 |    104354.336 /   106.391 |                           |  yes   
+     8 |    273.8 |    105541.930 /   105.793 |    103844.742 /   105.871 |                           |  yes   
+     9 |    272.6 |    105076.508 /   105.326 |    103458.617 /   105.477 |                           |  yes   
+    10 |    271.4 |    104676.461 /   104.925 |    103113.375 /   105.125 |                           |  yes   
+    11 |    270.5 |    104332.711 /   104.580 |    102829.898 /   104.836 |                           |  yes   
+    12 |    271.4 |    104028.430 /   104.275 |    102583.281 /   104.585 |                           |  yes   
+    13 |    273.2 |    103761.609 /   104.008 |    102356.422 /   104.354 |                           |  yes   
+    14 |    273.6 |    103521.109 /   103.767 |    102162.492 /   104.156 |                           |  yes   
+    15 |    273.9 |    103305.578 /   103.551 |    101962.398 /   103.952 |                           |  yes   
+    16 |    272.6 |    103108.383 /   103.353 |    101821.859 /   103.809 |                           |  yes   
+    17 |    272.7 |    102928.688 /   103.173 |    101651.867 /   103.635 |                           |  yes   
+    18 |    272.9 |    102765.305 /   103.009 |    101513.430 /   103.494 |                           |  yes   
+    19 |    271.9 |    102612.234 /   102.856 |    101446.672 /   103.426 |                           |  yes   
+    20 |    273.2 |    102470.047 /   102.713 |    101271.445 /   103.248 |                           |  yes   
+    21 |    272.8 |    102338.734 /   102.582 |    101175.133 /   103.149 |                           |  yes   
+    22 |    273.5 |    102216.219 /   102.459 |    101068.789 /   103.041 |                           |  yes   
+    23 |    274.9 |    102100.914 /   102.343 |    100982.594 /   102.953 |                           |  yes   
+    24 |    273.7 |    101990.914 /   102.233 |    100893.336 /   102.862 |                           |  yes   
+    25 |    274.7 |    101888.953 /   102.131 |    100870.656 /   102.839 |                           |  yes   
+    26 |    275.8 |    101790.945 /   102.033 |    100764.617 /   102.731 |                           |  yes   
+    27 |    274.4 |    101696.391 /   101.938 |    100744.156 /   102.710 |                           |  yes   
+    28 |    274.3 |    101608.242 /   101.850 |    100591.648 /   102.555 |                           |  yes   
+    29 |    273.0 |    101522.328 /   101.763 |    100556.625 /   102.519 |                           |  yes   
+    30 |    278.9 |    101442.961 /   101.684 |    100465.234 /   102.426 |                           |  yes   
+    31 |    281.4 |    101367.164 /   101.608 |    100482.797 /   102.444 |                           |  no    
+    32 |    284.5 |    101290.852 /   101.531 |    100399.492 /   102.359 |                           |  yes   
+    33 |    277.3 |    101217.680 /   101.458 |    100310.688 /   102.268 |                           |  yes   
+    34 |    278.3 |    101148.977 /   101.389 |    100296.742 /   102.254 |                           |  yes   
+    35 |    276.0 |    101081.477 /   101.322 |    100249.414 /   102.206 |                           |  yes   
+    36 |    275.4 |    101018.094 /   101.258 |    100205.875 /   102.161 |                           |  yes   
+    37 |    277.5 |    100955.906 /   101.196 |    100153.016 /   102.107 |                           |  yes   
+    38 |    278.2 |    100892.672 /   101.132 |    100097.695 /   102.051 |                           |  yes   
+    39 |    279.4 |    100837.164 /   101.077 |    100068.289 /   102.021 |                           |  yes   
+    40 |    279.4 |    100779.523 /   101.019 |    100050.523 /   102.003 |                           |  yes   
+    41 |    278.5 |    100723.781 /   100.963 |    100000.453 /   101.952 |                           |  yes   
+    42 |    274.7 |    100671.195 /   100.910 |    100043.078 /   101.995 |                           |  no    
+    43 |    274.5 |    100617.625 /   100.857 |     99941.430 /   101.892 |                           |  yes   
+    44 |    272.0 |    100567.453 /   100.806 |     99902.406 /   101.852 |                           |  yes   
+    45 |    274.1 |    100517.953 /   100.757 |     99847.594 /   101.796 |                           |  yes   
+    46 |    275.3 |    100470.320 /   100.709 |     99841.562 /   101.790 |                           |  yes   
+    47 |    274.9 |    100420.945 /   100.659 |     99831.898 /   101.780 |                           |  yes   
+    48 |    274.8 |    100375.547 /   100.614 |     99857.281 /   101.806 |                           |  no    
+    49 |    273.3 |    100330.117 /   100.568 |     99831.195 /   101.779 |                           |  yes   
+    50 |    275.3 |    100284.562 /   100.523 |     99783.938 /   101.731 |                           |  yes   
+    51 |    276.0 |    100241.555 /   100.480 |     99722.547 /   101.668 |                           |  yes   
+    52 |    275.9 |    100198.375 /   100.436 |     99751.633 /   101.698 |                           |  no    
+    53 |    273.9 |    100158.039 /   100.396 |     99692.289 /   101.638 |                           |  yes   
+    54 |    272.6 |    100116.719 /   100.354 |     99736.578 /   101.683 |                           |  no    
+    55 |    273.3 |    100076.148 /   100.314 |     99622.430 /   101.566 |                           |  yes   
+    56 |    274.7 |    100035.164 /   100.273 |     99579.758 /   101.523 |                           |  yes   
+    57 |    274.4 |     99997.711 /   100.235 |     99573.219 /   101.516 |                           |  yes   
+    58 |    274.6 |     99961.562 /   100.199 |     99589.719 /   101.533 |                           |  no    
+    59 |    274.5 |     99926.398 /   100.164 |     99605.562 /   101.549 |                           |  no    
+    60 |    274.4 |     99884.469 /   100.122 |     99542.961 /   101.485 |                           |  yes   
+    61 |    271.1 |     99850.031 /   100.087 |     99545.180 /   101.488 |                           |  no    
+    62 |    318.3 |     99815.211 /   100.052 |     99502.906 /   101.445 |                           |  yes   
+    63 |    271.7 |     99779.750 /   100.017 |     99488.086 /   101.429 |                           |  yes   
+    64 |    328.6 |     99744.984 /    99.982 |     99546.156 /   101.489 |                           |  no    
+    65 |    272.6 |     99709.305 /    99.946 |     99439.078 /   101.379 |                           |  yes   
+    66 |    273.4 |     99678.297 /    99.915 |     99453.461 /   101.394 |                           |  no    
+    67 |    272.2 |     99647.125 /    99.884 |     99390.141 /   101.330 |                           |  yes   
+    68 |    271.5 |     99612.453 /    99.849 |     99420.094 /   101.360 |                           |  no    
+    69 |    271.9 |     99580.281 /    99.817 |     99402.594 /   101.342 |                           |  no    
+    70 |    273.7 |     99550.859 /    99.787 |     99472.914 /   101.414 |                           |  no    
+    71 |    273.5 |     99516.242 /    99.753 |     99381.656 /   101.321 |                           |  yes   
+    72 |    272.7 |     99488.508 /    99.725 |     99367.367 /   101.306 |                           |  yes   
+    73 |    275.3 |     99456.859 /    99.693 |     99368.961 /   101.308 |                           |  no    
+    74 |    274.1 |     99430.070 /    99.666 |     99336.211 /   101.275 |                           |  yes   
+    75 |    275.5 |     99396.727 /    99.633 |     99331.070 /   101.269 |                           |  yes   
+    76 |    275.8 |     99367.930 /    99.604 |     99332.664 /   101.271 |                           |  no    
+    77 |    293.5 |     99340.867 /    99.577 |     99337.828 /   101.276 |                           |  no    
+    78 |    312.2 |     99312.523 /    99.548 |     99297.148 /   101.235 |                           |  yes   
+    79 |    318.7 |     99284.898 /    99.521 |     99330.617 /   101.269 |                           |  no    
+    80 |    322.2 |     99256.172 /    99.492 |     99300.477 /   101.238 |                           |  no    
+    81 |    316.7 |     99227.789 /    99.463 |     99280.477 /   101.218 |                           |  yes   
+    82 |    317.7 |     99199.117 /    99.435 |     99282.039 /   101.219 |                           |  no    
+    83 |    313.8 |     99175.156 /    99.411 |     99235.883 /   101.172 |                           |  yes   
+    84 |    317.4 |     99147.336 /    99.383 |     99235.430 /   101.172 |                           |  yes   
+    85 |    316.0 |     99121.586 /    99.357 |     99255.984 /   101.193 |                           |  no    
+    86 |    318.3 |     99095.375 /    99.331 |     99247.422 /   101.184 |                           |  no    
+    87 |    317.6 |     99071.070 /    99.306 |     99226.555 /   101.163 |                           |  yes   
+    88 |    315.8 |     99045.930 /    99.281 |     99243.547 /   101.180 |                           |  no    
+    89 |    315.6 |     99020.602 /    99.256 |     99228.023 /   101.164 |                           |  no    
+    90 |    313.8 |     98994.789 /    99.230 |     99188.617 /   101.124 |                           |  yes   
+    91 |    314.1 |     98970.547 /    99.206 |     99182.664 /   101.118 |                           |  yes   
+    92 |    314.7 |     98946.242 /    99.181 |     99242.375 /   101.179 |                           |  no    
+    93 |    303.7 |     98920.945 /    99.156 |     99294.070 /   101.232 |                           |  no    
+    94 |    293.3 |     98897.289 /    99.132 |     99143.422 /   101.078 |                           |  yes   
+    95 |    282.9 |     98873.438 /    99.108 |     99197.414 /   101.133 |                           |  no    
+    96 |    279.3 |     98848.609 /    99.083 |     99214.289 /   101.150 |                           |  no    
+    97 |    278.7 |     98828.180 /    99.063 |     99227.594 /   101.164 |                           |  no    
+    98 |    271.9 |     98806.047 /    99.041 |     99159.211 /   101.094 |                           |  no    
+    99 |    271.7 |     98780.727 /    99.015 |     99188.992 /   101.125 |                           |  no    
+   100 |    271.8 |     98759.031 /    98.994 |     99131.195 /   101.066 |                           |  yes   
+
+Maximum number of training epochs reached. Training stopped.
+Lowest validation error: 99131.195312
+
+Storing the trained network in 'trained_network.jsn'... done.
+Removing cache file(s) ...

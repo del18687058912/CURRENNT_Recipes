@@ -1,0 +1,12 @@
+
+This repository contains the recipes for interspeech2017
+
+Note:
+1. By default, config_syn.cfg in each directory will generate the F0 
+   by using the one-best generation method.
+
+2. To use soft generation method, please modify config_syn.cfg according to
+    ./config_syn_soft.py
+
+3. To use random sampling, please modify config_syn.cfg according to 
+    ./config_syn_random.py

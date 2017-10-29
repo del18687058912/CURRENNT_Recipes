@@ -1,0 +1,110 @@
+Configuration Infor:
+	Training Mode: Started in hybrid online/batch
+		Writting network  to 'trained_network.jsn'.
+	Validation every 1 epochs.
+
+	Training will be stopped after 40 epochs or after no new lowest validation error for 6 epochs.
+	Autosave after EVERY EPOCH enabled.
+	Utilizing the GPU on 4 sequences in parallel.
+
+	Initialization method:
+		Normal dist. with mean, std:00.1
+		Random seed: 1811626773
+
+Using device #3 (Tesla K80)
+Reading network from 'epoch027.autosave'... done.
+
+Loading training set '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_f0p/data.nc1' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_f0p/data.nc2' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_f0p/data.nc3' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_f0p/data.nc4' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_f0p/data.nc5' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_f0p/data.nc6' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_f0p/data.nc7' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_f0p/data.nc8' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_f0p/data.nc9' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_f0p/data.nc10' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_f0p/data.nc11train' ...
+using cache file: /mnt2/tmp/wang/CACHE_TEMP/c0f5-ada4-aaab-f24d
+... done.
+Loaded fraction:  100%
+Sequences:        11572
+Sequence lengths: 140..4034
+Total timesteps:  11544584
+
+Loading validation set '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_f0p/data.nc11val' ...
+using cache file: /mnt2/tmp/wang/CACHE_TEMP/6a60-be26-2aed-feb5
+... done.
+Loaded fraction:  100%
+Sequences:        500
+Sequence lengths: 172..3226
+Total timesteps:  490430
+
+Creating the neural network...
+Layer (0)
+Layer (1)Trainable layer: re-read weight
+Layer (2)Trainable layer: re-read weight
+Layer (3)Trainable layer: re-read weight
+Layer (4)Trainable layer: re-read weight
+Layer (5)Trainable layer: re-read weight
+Layer (6)
+Network construction done.
+
+Network summary:
+(0) input [size: 382]
+(1) feedforward_logistic [size: 512, bias: 1.0, weights: 196096]
+(2) feedforward_logistic [size: 512, bias: 1.0, weights: 262656]
+(3) blstm [size: 256, bias: 1.0, weights: 657152]
+(4) blstm [size: 50, bias: 1.0, weights: 56550]
+(5) feedforward_identity [size: 4, bias: 1.0, weights: 204]
+(6) sse [size: 4]
+Total weights: 1172658
+
+
+Creating the optimizer... 
+ Optimization Techinique: SGD + AdaGrad (with LR 0.005)
+done.
+Optimizer type: Steepest descent with momentum
+Max training epochs:       40
+Max epochs until new best: 6
+Validation error every:    1
+Test error every:          1
+Learning rate:             4e-05
+Momentum:                  0
+
+Restoring state from 'epoch027.autosave'... done.
+
+Starting training...
+Print error per sequence / per timestep
+ Epoch | Duration |           Training error  |           Validation error|           Test error      |New best 
+-------+----------+---------------------------+---------------------------+---------------------------+---------
+     1 |   2655.3 |      1222.529 /     1.225 |      2917.916 /     2.975 |                           |  yes SGD
+     2 |   2650.2 |      1092.028 /     1.095 |      1432.394 /     1.460 |                           |  yes SGD
+     3 |   2667.0 |      1007.642 /     1.010 |      1282.166 /     1.307 |                           |  yes SGD
+     4 |   2651.5 |       974.624 /     0.977 |      1149.211 /     1.172 |                           |  yes SGD
+     5 |   2657.5 |       952.475 /     0.955 |      1155.006 /     1.178 |                           |  no  SGD
+     6 |   2649.6 |       935.290 /     0.938 |      1210.025 /     1.234 |                           |  no  SGD
+     7 |   2652.9 |       920.979 /     0.923 |      1188.333 /     1.212 |                           |  no  SGD
+     8 |   2663.5 |       908.414 /     0.911 |      1292.672 /     1.318 |                           |  no  SGD
+     9 |   2674.0 |       898.006 /     0.900 |      1155.284 /     1.178 |                           |  no  SGD
+    10 |   2656.6 |       887.180 /     0.889 |      1146.507 /     1.169 |                           |  yes SGD
+    11 |   2606.2 |       877.548 /     0.880 |      1136.736 /     1.159 |                           |  yes SGD
+    12 |   2614.1 |       868.536 /     0.871 |      1110.596 /     1.132 |                           |  yes SGD
+    13 |   2606.3 |       859.929 /     0.862 |      1050.580 /     1.071 |                           |  yes SGD
+    14 |   2614.3 |       851.603 /     0.854 |       993.479 /     1.013 |                           |  yes SGD
+    15 |   2624.6 |       843.591 /     0.846 |      1127.485 /     1.149 |                           |  no  SGD
+    16 |   2609.8 |       835.834 /     0.838 |       974.432 /     0.993 |                           |  yes SGD
+    17 |   2622.4 |       828.136 /     0.830 |       988.066 /     1.007 |                           |  no  SGD
+    18 |   2614.3 |       820.746 /     0.823 |       996.197 /     1.016 |                           |  no  SGD
+    19 |   2604.5 |       813.940 /     0.816 |      1189.740 /     1.213 |                           |  no  SGD
+    20 |   2619.9 |       807.035 /     0.809 |      1003.024 /     1.023 |                           |  no  SGD
+    21 |   2622.4 |       800.054 /     0.802 |      1067.985 /     1.089 |                           |  no  SGD
+    22 |   2622.5 |       793.580 /     0.795 |      1150.309 /     1.173 |                           |  no  To ADAGRAD
+    23 |   2622.7 |       814.629 /     0.817 |       933.489 /     0.952 |                           |  yes ADAGRAD
+    24 |   2616.4 |       809.219 /     0.811 |       932.123 /     0.950 |                           |  yes ADAGRAD
+    25 |   2622.8 |       806.154 /     0.808 |       931.202 /     0.949 |                           |  yes ADAGRAD
+    26 |   2605.4 |       803.603 /     0.806 |       930.505 /     0.949 |                           |  yes ADAGRAD
+    27 |   2621.6 |       801.295 /     0.803 |       929.915 /     0.948 |                           |  yes ADAGRAD
+    28 |   2600.5 |       807.823 /     0.810 |       924.428 /     0.942 |                           |  yes ADAGRAD
+    29 |   2597.6 |       803.923 /     0.806 |       924.598 /     0.943 |                           |  no  ADAGRAD
+    30 |   2595.9 |       802.891 /     0.805 |       924.931 /     0.943 |                           |  no  ADAGRAD
+    31 |   2594.2 |       802.407 /     0.804 |       925.138 /     0.943 |                           |  no  ADAGRAD
+    32 |   2596.6 |       802.102 /     0.804 |       925.264 /     0.943 |                           |  no  ADAGRAD
+    33 |   2598.4 |       801.881 /     0.804 |       925.346 /     0.943 |                           |  no  ADAGRAD
+    34 |   2597.7 |       801.711 /     0.804 |       925.411 /     0.943 |                           |  no  Finished
+
+No new lowest error since 6 epochs. Training stopped.
+Lowest validation error: 924.427917
+
+Storing the trained network in 'trained_network.jsn'... done.
+Removing cache file(s) ...

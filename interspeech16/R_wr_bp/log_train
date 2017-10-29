@@ -1,0 +1,107 @@
+Started in hybrid online/batch training mode.
+Mini-batches (1 sequences each) will be shuffled during training.
+The trained network will be written to 'trained_network.jsn'.
+Validation error will be calculated every 1 epochs.
+Training will be stopped after 40 epochs or if there is no new lowest validation error within 5 epochs.
+Autosave after EVERY EPOCH enabled.
+Utilizing the GPU for computations with 1 sequences in parallel.
+Normal distribution with mean=0 and sigma=0.1. Random seed: 3992266057
+
+Using device #1 (Quadro K4000)
+Reading network from '/home/smg/wang/PROJ/WE/DNNAM/MODEL/nancy/nancy_f0w_ft/MODEL2001/network.jsn'... done.
+
+Loading training set '/mnt/tmp/wang/data_f0w_ft/data.nc1' '/mnt/tmp/wang/data_f0w_ft/data.nc2' '/mnt/tmp/wang/data_f0w_ft/data.nc3' '/mnt/tmp/wang/data_f0w_ft/data.nc4' '/mnt/tmp/wang/data_f0w_ft/data.nc5' '/mnt/tmp/wang/data_f0w_ft/data.nc6' '/mnt/tmp/wang/data_f0w_ft/data.nc7' '/mnt/tmp/wang/data_f0w_ft/data.nc8' '/mnt/tmp/wang/data_f0w_ft/data.nc9' '/mnt/tmp/wang/data_f0w_ft/data.nc10' '/mnt/tmp/wang/data_f0w_ft/data.nc11train' ...
+using cache file: /tmp/b3e2-7d36-7cb0-cb01
+... done.
+Loaded fraction:  100%
+Sequences:        11572
+Sequence lengths: 140..4034
+Total timesteps:  11544584
+
+Loading validation set '/mnt/tmp/wang/data_f0w_ft/data.nc11val' ...
+using cache file: /tmp/c8f1-abe5-1976-5593
+... done.
+Loaded fraction:  100%
+Sequences:        500
+Sequence lengths: 172..3226
+Total timesteps:  490430
+
+Creating the neural network... Read 82391 vectors
+done.
+Layers:
+(0) input [size: 372]
+(1) feedforward_logistic [size: 512, bias: 1.0, weights: 190976]
+(2) feedforward_logistic [size: 512, bias: 1.0, weights: 262656]
+(3) blstm [size: 256, bias: 1.0, weights: 657152]
+(4) blstm [size: 50, bias: 1.0, weights: 56550]
+(5) feedforward_identity [size: 4, bias: 1.0, weights: 204]
+(6) sse [size: 4]
+Total weights: 1167538
+
+
+Creating the optimizer... done.
+Optimizer type: Steepest descent with momentum
+Max training epochs:       40
+Max epochs until new best: 5
+Validation error every:    1
+Test error every:          1
+Learning rate:             -4e-05
+Momentum:                  0
+Model Parameter:           /home/smg/wang/PROJ/WE/DNNAM/MODEL/nancy/nancy_f0w/MODEL2001/epoch030.autosave
+
+Parameter for WE:
+WE learning_rate:          0.001
+WE Bank:                   /home/smg/wang/PROJ/WE/WORDE/model/rnnlm/word_projections-80.bin.nancy.norm
+WE Dim:                    80
+WE Start index:            292
+
+Starting training...
+
+ Epoch | Duration |  Training error  | Validation error |    Test error    | New best 
+-------+----------+------------------+------------------+------------------+----------
+     1 |   5963.2 |          780.549 |          928.880 |                  |  yes   
+     2 |   5721.8 |          778.253 |          928.553 |                  |  yes   
+     3 |   5752.8 |          776.750 |          928.377 |                  |  yes   
+     4 |   5372.2 |          775.490 |          928.255 |                  |  yes   
+     5 |   5608.7 |          774.381 |          928.188 |                  |  yes   
+     6 |   5376.1 |          773.370 |          928.114 |                  |  yes   
+     7 |   5367.6 |          772.436 |          928.006 |                  |  yes   
+     8 |   5367.4 |          771.563 |          927.951 |                  |  yes   
+     9 |   5777.5 |          770.732 |          927.890 |                  |  yes   
+    10 |   5543.9 |          769.954 |          927.855 |                  |  yes   
+    11 |   5369.8 |          769.189 |          927.861 |                  |  no    
+    12 |   5365.9 |          768.476 |          927.788 |                  |  yes   
+    13 |   5367.8 |          767.784 |          927.761 |                  |  yes   
+    14 |   5367.0 |          767.111 |          927.712 |                  |  yes   
+    15 |   5441.7 |          766.469 |          927.743 |                  |  no    
+    16 |   5589.9 |          765.850 |          927.708 |                  |  yes   
+    17 |   5494.8 |          765.237 |          927.589 |                  |  yes   
+    18 |   5520.0 |          764.651 |          927.514 |                  |  yes   
+    19 |   5596.8 |          764.078 |          927.543 |                  |  no    
+    20 |   5377.5 |          763.531 |          927.552 |                  |  no    
+    21 |   5364.1 |          762.989 |          927.589 |                  |  no    
+    22 |   5367.7 |          762.452 |          927.456 |                  |  yes   
+    23 |   5533.1 |          761.920 |          927.485 |                  |  no    
+    24 |   5602.7 |          761.423 |          927.390 |                  |  yes   
+    25 |   5489.0 |          760.913 |          927.424 |                  |  no    
+    26 |   5490.7 |          760.445 |          927.349 |                  |  yes   
+    27 |   5621.3 |          759.943 |          927.313 |                  |  yes   
+    28 |   5531.3 |          759.485 |          927.283 |                  |  yes   
+    29 |   5493.1 |          759.021 |          927.370 |                  |  no    
+    30 |   5367.7 |          758.570 |          927.327 |                  |  no    
+    31 |   5366.8 |          758.118 |          927.241 |                  |  yes   
+    32 |   5498.5 |          757.688 |          927.225 |                  |  yes   
+    33 |   5486.5 |          757.249 |          927.240 |                  |  no    
+    34 |   5611.6 |          756.834 |          927.255 |                  |  no    
+    35 |   5494.0 |          756.409 |          927.162 |                  |  yes   
+    36 |   5501.7 |          756.003 |          927.117 |                  |  yes   
+    37 |   5369.4 |          755.604 |          927.207 |                  |  no    
+    38 |   5367.1 |          755.199 |          927.164 |                  |  no    
+    39 |   5366.9 |          754.809 |          927.130 |                  |  no    
+    40 |   5366.0 |          754.428 |          927.048 |                  |  yes   
+
+Maximum number of training epochs reached. Training stopped.
+Lowest validation error: 927.047607
+
+Storing the trained network in 'trained_network.jsn'... done.
+Removing cache file(s) ...

@@ -1,0 +1,92 @@
+{
+    "layers": [
+        {
+            "size": 382,
+            "name": "input",
+            "type": "input"
+        },
+	{
+            "size": 382,
+            "name": "t1",
+            "bias": 1.0,
+            "type": "feedforward_identity"
+        },
+	{
+	    "size": 382,
+            "name": "s1",
+            "bias": 1.0,
+            "type": "skipadd"
+	},
+        {
+            "size": 382,
+            "name": "f1",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 382,
+            "name": "f2",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{
+	    "size": 382,
+            "name": "s2",
+            "bias": 1.0,
+            "type": "skippara_logistic"
+	},
+	{	
+            "size": 382,
+            "name": "f3",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 382,
+            "name": "f4",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{
+	    "size": 382,
+            "name": "s3",
+            "bias": 1.0,
+            "type": "skippara_logistic"
+	},
+	{	
+            "size": 382,
+            "name": "f5",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 382,
+            "name": "f6",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{
+	    "size": 382,
+            "name": "s4",
+            "bias": 1.0,
+            "type": "skippara_logistic"
+	},
+        {
+            "size": 382,
+            "name": "f100",
+            "bias": 1.0,
+            "type": "feedforward_identity"
+        },
+        {
+            "size": 259,
+            "name": "output",
+            "bias": 1.0,
+            "type": "feedforward_identity"
+        },
+        {
+            "size": 259,
+            "name": "postoutput",
+            "type": "sse"
+        }
+    ]
+}

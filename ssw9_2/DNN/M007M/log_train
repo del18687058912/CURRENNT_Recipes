@@ -1,0 +1,126 @@
+Started in hybrid online/batch training mode.
+Mini-batches (1 sequences each) will be shuffled during training.
+Using input noise with a standard deviation of 0.1.
+The trained network will be written to 'trained_network.jsn'.
+Validation error will be calculated every 1 epochs.
+Training will be stopped after 66 epochs or if there is no new lowest validation error within 10 epochs.
+Autosave after EVERY EPOCH enabled.
+Utilizing the GPU for computations with 1 sequences in parallel.
+Normal distribution with mean=0 and sigma=0.1. Random seed: 1338239796
+
+Using device #0 (Tesla K40c)
+Reading network from '/home/smg/wang/PROJ/DL/RNNJP/MODEL/M007M/MODEL1001/network.jsn'... done.
+
+Loading training set '/home/smg/wang/DATA/speech/M007A/nc/data.nc1' '/home/smg/wang/DATA/speech/M007A/nc/data.nc10' '/home/smg/wang/DATA/speech/M007A/nc/data.nc11' '/home/smg/wang/DATA/speech/M007A/nc/data.nc12' '/home/smg/wang/DATA/speech/M007A/nc/data.nc13' '/home/smg/wang/DATA/speech/M007A/nc/data.nc14' '/home/smg/wang/DATA/speech/M007A/nc/data.nc15' '/home/smg/wang/DATA/speech/M007A/nc/data.nc16' '/home/smg/wang/DATA/speech/M007A/nc/data.nc17' '/home/smg/wang/DATA/speech/M007A/nc/data.nc18' '/home/smg/wang/DATA/speech/M007A/nc/data.nc19' '/home/smg/wang/DATA/speech/M007A/nc/data.nc2' '/home/smg/wang/DATA/speech/M007A/nc/data.nc20' '/home/smg/wang/DATA/speech/M007A/nc/data.nc21' '/home/smg/wang/DATA/speech/M007A/nc/data.nc22' '/home/smg/wang/DATA/speech/M007A/nc/data.nc3' '/home/smg/wang/DATA/speech/M007A/nc/data.nc4' '/home/smg/wang/DATA/speech/M007A/nc/data.nc5' '/home/smg/wang/DATA/speech/M007A/nc/data.nc6' '/home/smg/wang/DATA/speech/M007A/nc/data.nc7' '/home/smg/wang/DATA/speech/M007A/nc/data.nc8' '/home/smg/wang/DATA/speech/M007A/nc/data.nc9' ...
+using cache file: /mnt2/tmp/wang/CACHE_TEMP/36c2-1bef-e066-5320
+... done.
+Loaded fraction:  100%
+Sequences:        19800
+Sequence lengths: 221..6849
+Total timesteps:  26261879
+
+Loading validation set '/home/smg/wang/DATA/speech/M007A/nc/data.nc65' '/home/smg/wang/DATA/speech/M007A/nc/data.nc66' '/home/smg/wang/DATA/speech/M007A/nc/data.nc67' '/home/smg/wang/DATA/speech/M007A/nc/data.nc68' ...
+using cache file: /mnt2/tmp/wang/CACHE_TEMP/36cf-d816-eb79-b1d6
+... done.
+Loaded fraction:  100%
+Sequences:        2315
+Sequence lengths: 348..6920
+Total timesteps:  3034983
+
+Creating the neural network... done.
+Layers:
+(0) input [size: 389]
+(1) feedforward_logistic [size: 1024, bias: 1.0, weights: 399360]
+(2) feedforward_logistic [size: 512, bias: 1.0, weights: 524800]
+(3) feedforward_logistic [size: 512, bias: 1.0, weights: 262656]
+(4) feedforward_logistic [size: 512, bias: 1.0, weights: 262656]
+(5) feedforward_identity [size: 259, bias: 1.0, weights: 132867]
+(6) sse [size: 259]
+Total weights: 1582339
+
+
+Creating the optimizer... done.
+Optimizer type: Steepest descent with momentum
+Max training epochs:       66
+Max epochs until new best: 10
+Validation error every:    1
+Test error every:          1
+Learning rate:             4e-06
+Momentum:                  0.1
+
+Starting training...
+
+ Epoch | Duration |  Training error  | Validation error |    Test error    | New best 
+-------+----------+------------------+------------------+------------------+----------
+     1 |   1010.9 |       160666.062 |       154977.422 |                  |  yes   
+     2 |    947.3 |       155465.625 |       152454.250 |                  |  yes   
+     3 |    932.7 |       153585.203 |       151019.906 |                  |  yes   
+     4 |    919.4 |       152397.641 |       149920.891 |                  |  yes   
+     5 |    904.0 |       151583.797 |       149328.859 |                  |  yes   
+     6 |    912.1 |       150976.047 |       148715.219 |                  |  yes   
+     7 |    908.7 |       150495.516 |       148573.672 |                  |  yes   
+     8 |    900.7 |       150110.125 |       148154.328 |                  |  yes   
+     9 |    910.2 |       149783.016 |       147993.141 |                  |  yes   
+    10 |    907.6 |       149503.000 |       147521.922 |                  |  yes   
+    11 |    906.9 |       149266.422 |       147247.031 |                  |  yes   
+    12 |    908.1 |       149058.219 |       146933.344 |                  |  yes   
+    13 |    903.7 |       148867.281 |       146783.062 |                  |  yes   
+    14 |    903.8 |       148694.812 |       146627.906 |                  |  yes   
+    15 |    911.0 |       148540.594 |       146576.328 |                  |  yes   
+    16 |    902.3 |       148404.859 |       146496.297 |                  |  yes   
+    17 |    903.5 |       148278.469 |       146409.484 |                  |  yes   
+    18 |    897.4 |       148160.734 |       146191.422 |                  |  yes   
+    19 |    904.3 |       148053.922 |       146028.969 |                  |  yes   
+    20 |    898.5 |       147954.688 |       145964.547 |                  |  yes   
+    21 |    897.7 |       147864.016 |       145905.562 |                  |  yes   
+    22 |    895.9 |       147769.062 |       145816.188 |                  |  yes   
+    23 |    898.5 |       147694.891 |       145737.672 |                  |  yes   
+    24 |    899.8 |       147616.828 |       145668.969 |                  |  yes   
+    25 |    902.3 |       147548.734 |       145664.500 |                  |  yes   
+    26 |    892.1 |       147478.062 |       145530.594 |                  |  yes   
+    27 |    899.8 |       147412.125 |       145518.328 |                  |  yes   
+    28 |    897.0 |       147349.359 |       145376.578 |                  |  yes   
+    29 |    896.7 |       147296.344 |       145474.734 |                  |  no    
+    30 |    892.7 |       147240.000 |       145334.359 |                  |  yes   
+    31 |    893.8 |       147184.328 |       145320.547 |                  |  yes   
+    32 |    898.3 |       147141.422 |       145287.891 |                  |  yes   
+    33 |    902.6 |       147086.656 |       145382.047 |                  |  no    
+    34 |    898.3 |       147043.109 |       145270.547 |                  |  yes   
+    35 |    894.8 |       147000.328 |       145210.828 |                  |  yes   
+    36 |    894.0 |       146956.641 |       145097.766 |                  |  yes   
+    37 |    889.7 |       146917.578 |       145216.578 |                  |  no    
+    38 |    890.7 |       146879.156 |       145006.875 |                  |  yes   
+    39 |    889.6 |       146839.375 |       144996.094 |                  |  yes   
+    40 |    893.3 |       146804.875 |       144931.875 |                  |  yes   
+    41 |    887.5 |       146768.094 |       145004.000 |                  |  no    
+    42 |    891.7 |       146732.984 |       144951.266 |                  |  no    
+    43 |    892.3 |       146704.969 |       144926.875 |                  |  yes   
+    44 |    893.3 |       146665.734 |       144877.125 |                  |  yes   
+    45 |    892.6 |       146642.812 |       144819.641 |                  |  yes   
+    46 |    892.4 |       146605.922 |       144867.281 |                  |  no    
+    47 |   2724.6 |       146576.453 |       144831.344 |                  |  no    
+    48 |   2713.5 |       146549.922 |       144738.453 |                  |  yes   
+    49 |   2148.6 |       146520.250 |       144789.203 |                  |  no    
+    50 |   2133.5 |       146495.969 |       144748.797 |                  |  no    
+    51 |   2120.9 |       146465.297 |       144791.422 |                  |  no    
+    52 |   2098.4 |       146443.469 |       144660.062 |                  |  yes   
+    53 |   2111.6 |       146417.391 |       144700.875 |                  |  no    
+    54 |   2091.5 |       146389.688 |       144623.984 |                  |  yes   
+    55 |   2103.2 |       146368.188 |       144594.188 |                  |  yes   
+    56 |   2101.7 |       146348.453 |       144546.375 |                  |  yes   
+    57 |   2084.5 |       146322.672 |       144582.953 |                  |  no    
+    58 |   2087.3 |       146299.719 |       144604.938 |                  |  no    
+    59 |   2091.2 |       146280.797 |       144560.125 |                  |  no    
+    60 |   2091.1 |       146258.766 |       144551.688 |                  |  no    
+    61 |   2125.3 |       146236.891 |       144558.078 |                  |  no    
+    62 |   2080.0 |       146219.312 |       144551.703 |                  |  no    
+    63 |   2078.1 |       146198.719 |       144515.453 |                  |  yes   
+    64 |   2083.8 |       146185.109 |       144514.594 |                  |  yes   
+    65 |   2088.8 |       146159.469 |       144529.422 |                  |  no    
+    66 |   2075.1 |       146143.141 |       144464.938 |                  |  yes   
+
+Maximum number of training epochs reached. Training stopped.
+Lowest validation error: 144464.937500
+
+Storing the trained network in 'trained_network.jsn'... done.
+Removing cache file(s) ...

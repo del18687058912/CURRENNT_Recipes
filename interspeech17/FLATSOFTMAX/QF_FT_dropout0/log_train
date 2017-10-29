@@ -1,0 +1,144 @@
+Configuration Infor:
+	Training Mode: Started in hybrid online/batch
+		Writting network  to 'trained_network.jsn'.
+		WARNING: overwriting 'trained_network.jsn'
+	Validation every 1 epochs.
+
+	Training will be stopped after 80 epochs or after no new lowest validation error for 6 epochs.
+	Autosave after EVERY EPOCH enabled.
+	Utilizing the GPU on 1 sequences in parallel.
+
+	Initialization method:
+		Uniform dist. with layer-wise range
+
+		Random seed: 1811626773
+
+Using device #1 (Tesla K40c)
+Reading network from 'epoch049.autosave'... done.
+
+Loading training set '/work/smg/wang/PROJ/F0MODEL/DATA/nancy_F04/data.nc1_tmp' '/work/smg/wang/PROJ/F0MODEL/DATA/nancy_F04/data.nc2_tmp' '/work/smg/wang/PROJ/F0MODEL/DATA/nancy_F04/data.nc3_tmp' '/work/smg/wang/PROJ/F0MODEL/DATA/nancy_F04/data.nc4_tmp' '/work/smg/wang/PROJ/F0MODEL/DATA/nancy_F04/data.nc5_tmp' '/work/smg/wang/PROJ/F0MODEL/DATA/nancy_F04/data.nc6_tmp' '/work/smg/wang/PROJ/F0MODEL/DATA/nancy_F04/data.nc7_tmp' '/work/smg/wang/PROJ/F0MODEL/DATA/nancy_F04/data.nc8_tmp' '/work/smg/wang/PROJ/F0MODEL/DATA/nancy_F04/data.nc9_tmp' '/work/smg/wang/PROJ/F0MODEL/DATA/nancy_F04/data.nc10_tmp' '/work/smg/wang/PROJ/F0MODEL/DATA/nancy_F04/data.nc11train_tmp' ...
+using cache file: /tmp/xwtemp/44c4-308b-8b06-dcdd
+... done.
+Loaded fraction:  100%
+Sequences:        11572
+Sequence lengths: 140..4034
+Total timesteps:  11544584
+
+Loading validation set '/work/smg/wang/PROJ/F0MODEL/DATA/nancy_F04/data.nc11val_tmp' ...
+using cache file: /tmp/xwtemp/ed7b-f283-ce29-1ae1
+... done.
+Loaded fraction:  100%
+Sequences:        500
+Sequence lengths: 172..3226
+Total timesteps:  490430
+
+Creating the neural network...
+Layer (0)
+Layer (1)Trainable layer: re-read weight
+Layer (2)Trainable layer: re-read weight
+Layer (3)Trainable layer: re-read weight
+Layer (4)Trainable layer: initialize weight
+Layer (5)Trainable layer: re-read weight
+Layer (6)Trainable layer: re-read weight
+Layer (7)
+	MDN softmax
+	MDN layer distribution parameter number: 128
+
+Creating the feedback link:
+	From mdn [0-128]
+
+Network construction done.
+
+Network summary:
+(0) input [size: 382]
+(1) feedforward_tanh [size: 512, bias: 1.0, weights: 196096]
+(2) feedforward_tanh [size: 512, bias: 1.0, weights: 262656]
+(3) blstm [size: 256, bias: 1.0, weights: 657152]
+(4) feedback [size: 384, bias: 1.0, weights: 0]
+(5) lstm [size: 128, bias: 1.0, weights: 263040]
+(6) feedforward_identity [size: 128, bias: 1.0, weights: 16512]
+(7) mdn [size: 1]
+Total weights: 1395456
+
+
+Creating the optimizer... 
+ Optimization Techinique: SGD + AdaGrad (with LR 0.001)
+done.
+Optimizer type: Steepest descent with momentum
+Max training epochs:       80
+Max epochs until new best: 6
+Validation error every:    1
+Test error every:          1
+Learning rate:             4e-05
+Momentum:                  0
+
+Restoring state from 'epoch049.autosave'... done.
+
+Starting training...
+Print error per sequence / per timestep
+ Epoch | Duration |           Training error  |           Validation error|           Test error      |New best 
+-------+----------+---------------------------+---------------------------+---------------------------+---------
+     1 |   3383.4 |      1675.045 /     1.679 |      1065.437 /     1.086 |                           |  yes SGD
+     2 |   3408.1 |       944.251 /     0.946 |       987.677 /     1.007 |                           |  yes SGD
+     3 |   3417.8 |       842.846 /     0.845 |       823.804 /     0.840 |                           |  yes SGD
+     4 |   3400.2 |       795.877 /     0.798 |       788.175 /     0.804 |                           |  yes SGD
+     5 |   3397.6 |       766.964 /     0.769 |       766.471 /     0.781 |                           |  yes SGD
+     6 |   3398.5 |       746.283 /     0.748 |       748.226 /     0.763 |                           |  yes SGD
+     7 |   3398.6 |       730.573 /     0.732 |       734.182 /     0.749 |                           |  yes SGD
+     8 |   3396.3 |       718.031 /     0.720 |       723.535 /     0.738 |                           |  yes SGD
+     9 |   3396.5 |       707.566 /     0.709 |       714.055 /     0.728 |                           |  yes SGD
+    10 |   3396.3 |       698.717 /     0.700 |       705.402 /     0.719 |                           |  yes SGD
+    11 |   3396.0 |       691.086 /     0.693 |       699.257 /     0.713 |                           |  yes SGD
+    12 |   3396.0 |       684.470 /     0.686 |       693.094 /     0.707 |                           |  yes SGD
+    13 |   3396.4 |       678.679 /     0.680 |       688.148 /     0.702 |                           |  yes SGD
+    14 |   3396.5 |       673.474 /     0.675 |       683.565 /     0.697 |                           |  yes SGD
+    15 |   3396.6 |       668.799 /     0.670 |       679.915 /     0.693 |                           |  yes SGD
+    16 |   3396.3 |       664.567 /     0.666 |       676.670 /     0.690 |                           |  yes SGD
+    17 |   3396.8 |       660.683 /     0.662 |       673.701 /     0.687 |                           |  yes SGD
+    18 |   3397.0 |       657.094 /     0.659 |       671.036 /     0.684 |                           |  yes SGD
+    19 |   3397.4 |       653.754 /     0.655 |       668.627 /     0.682 |                           |  yes SGD
+    20 |   3413.4 |       650.610 /     0.652 |       666.671 /     0.680 |                           |  yes SGD
+    21 |   3409.8 |       647.658 /     0.649 |       664.811 /     0.678 |                           |  yes SGD
+    22 |   3399.5 |       644.879 /     0.646 |       663.061 /     0.676 |                           |  yes SGD
+    23 |   3399.4 |       642.238 /     0.644 |       661.472 /     0.674 |                           |  yes SGD
+    24 |   3399.5 |       639.799 /     0.641 |       660.432 /     0.673 |                           |  yes SGD
+    25 |   3399.8 |       637.433 /     0.639 |       658.633 /     0.671 |                           |  yes SGD
+    26 |   3399.0 |       635.093 /     0.637 |       657.260 /     0.670 |                           |  yes SGD
+    27 |   3399.1 |       632.856 /     0.634 |       656.144 /     0.669 |                           |  yes SGD
+    28 |   3399.4 |       630.752 /     0.632 |       655.106 /     0.668 |                           |  yes SGD
+    29 |   3398.7 |       628.735 /     0.630 |       654.155 /     0.667 |                           |  yes SGD
+    30 |   3399.7 |       626.783 /     0.628 |       653.137 /     0.666 |                           |  yes SGD
+    31 |   3399.0 |       624.959 /     0.626 |       652.553 /     0.665 |                           |  yes SGD
+    32 |   3398.9 |       623.124 /     0.625 |       651.785 /     0.665 |                           |  yes SGD
+    33 |   3399.0 |       621.318 /     0.623 |       651.071 /     0.664 |                           |  yes SGD
+    34 |   3399.3 |       619.571 /     0.621 |       650.467 /     0.663 |                           |  yes SGD
+    35 |   3399.5 |       617.882 /     0.619 |       649.941 /     0.663 |                           |  yes SGD
+    36 |   3405.4 |       616.261 /     0.618 |       649.056 /     0.662 |                           |  yes SGD
+    37 |   3401.5 |       614.646 /     0.616 |       649.107 /     0.662 |                           |  no  SGD
+    38 |   3401.8 |       613.097 /     0.615 |       648.280 /     0.661 |                           |  yes SGD
+    39 |   3406.7 |       611.596 /     0.613 |       648.475 /     0.661 |                           |  no  SGD
+    40 |   3402.9 |       610.120 /     0.612 |       647.639 /     0.660 |                           |  yes Finished
+    41 |   3718.5 |       608.688 /     0.610 |       647.359 /     0.660 |                           |  yes SGD
+    42 |   3367.4 |       607.300 /     0.609 |       647.740 /     0.660 |                           |  no  SGD
+    43 |   3364.7 |       605.919 /     0.607 |       647.713 /     0.660 |                           |  no  SGD
+    44 |   3363.4 |       604.582 /     0.606 |       647.683 /     0.660 |                           |  no  SGD
+    45 |   3364.4 |       603.302 /     0.605 |       647.757 /     0.660 |                           |  no  SGD
+    46 |   3364.5 |       602.015 /     0.603 |       647.233 /     0.660 |                           |  yes SGD
+    47 |   3364.1 |       600.805 /     0.602 |       648.674 /     0.661 |                           |  no  SGD
+    48 |   3364.6 |       599.559 /     0.601 |       647.179 /     0.660 |                           |  yes SGD
+    49 |   3365.2 |       598.347 /     0.600 |       647.794 /     0.660 |                           |  no  SGD
+    50 |   3367.0 |       597.173 /     0.599 |       648.198 /     0.661 |                           |  no  SGD
+    51 |   3400.3 |       595.975 /     0.597 |       647.680 /     0.660 |                           |  no  SGD
+    52 |   3382.9 |       594.859 /     0.596 |       648.593 /     0.661 |                           |  no  SGD
+    53 |   3383.0 |       593.789 /     0.595 |       648.152 /     0.661 |                           |  no  SGD
+    54 |   3383.6 |       592.845 /     0.594 |       649.635 /     0.662 |                           |  no  To ADAGRAD
+    55 |   3412.2 |       593.992 /     0.595 |       634.966 /     0.647 |                           |  yes ADAGRAD
+    56 |   3401.8 |       592.581 /     0.594 |       634.663 /     0.647 |                           |  yes ADAGRAD
+    57 |   3381.0 |       592.044 /     0.593 |       634.593 /     0.647 |                           |  yes ADAGRAD
+    58 |   3382.7 |       591.696 /     0.593 |       634.590 /     0.647 |                           |  yes ADAGRAD
+    59 |   3384.8 |       591.429 /     0.593 |       634.612 /     0.647 |                           |  no  ADAGRAD
+    60 |   3384.0 |       591.209 /     0.593 |       634.647 /     0.647 |                           |  no  ADAGRAD
+    61 |   3383.5 |       591.014 /     0.592 |       634.690 /     0.647 |                           |  no  ADAGRAD
+    62 |   3382.6 |       590.841 /     0.592 |       634.737 /     0.647 |                           |  no  ADAGRAD
+    63 |   3383.0 |       590.686 /     0.592 |       634.784 /     0.647 |                           |  no  ADAGRAD
+    64 |   3382.1 |       590.538 /     0.592 |       634.834 /     0.647 |                           |  no  Finished

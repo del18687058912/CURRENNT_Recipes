@@ -1,0 +1,91 @@
+Started in hybrid online/batch training mode.
+Mini-batches (10 sequences each) will be shuffled during training.
+Using input noise with a standard deviation of 0.1.
+The trained network will be written to 'trained_network.jsn'.
+Validation error will be calculated every 1 epochs.
+Training will be stopped after 80 epochs or if there is no new lowest validation error within 10 epochs.
+Autosave after EVERY EPOCH enabled.
+Utilizing the GPU for computations with 10 sequences in parallel.
+Normal distribution with mean=0 and sigma=0.1. Random seed: 1918920977
+
+Using device #0 (Tesla K20c)
+Reading network from '/home/smg/wang/PROJ/DL/RNNJP/MODEL/M007A/MODEL2001/network.jsn'... done.
+
+Loading training set '/mnt/tmp/wang/data_M007A/data.nc1' '/mnt/tmp/wang/data_M007A/data.nc10' '/mnt/tmp/wang/data_M007A/data.nc11' '/mnt/tmp/wang/data_M007A/data.nc12' '/mnt/tmp/wang/data_M007A/data.nc13' '/mnt/tmp/wang/data_M007A/data.nc14' '/mnt/tmp/wang/data_M007A/data.nc15' '/mnt/tmp/wang/data_M007A/data.nc16' '/mnt/tmp/wang/data_M007A/data.nc17' '/mnt/tmp/wang/data_M007A/data.nc18' '/mnt/tmp/wang/data_M007A/data.nc19' '/mnt/tmp/wang/data_M007A/data.nc2' '/mnt/tmp/wang/data_M007A/data.nc20' '/mnt/tmp/wang/data_M007A/data.nc21' '/mnt/tmp/wang/data_M007A/data.nc22' '/mnt/tmp/wang/data_M007A/data.nc23' '/mnt/tmp/wang/data_M007A/data.nc24' '/mnt/tmp/wang/data_M007A/data.nc25' '/mnt/tmp/wang/data_M007A/data.nc26' '/mnt/tmp/wang/data_M007A/data.nc27' '/mnt/tmp/wang/data_M007A/data.nc28' '/mnt/tmp/wang/data_M007A/data.nc29' '/mnt/tmp/wang/data_M007A/data.nc3' '/mnt/tmp/wang/data_M007A/data.nc30' '/mnt/tmp/wang/data_M007A/data.nc31' '/mnt/tmp/wang/data_M007A/data.nc32' '/mnt/tmp/wang/data_M007A/data.nc33' '/mnt/tmp/wang/data_M007A/data.nc34' '/mnt/tmp/wang/data_M007A/data.nc35' '/mnt/tmp/wang/data_M007A/data.nc36' '/mnt/tmp/wang/data_M007A/data.nc37' '/mnt/tmp/wang/data_M007A/data.nc38' '/mnt/tmp/wang/data_M007A/data.nc39' '/mnt/tmp/wang/data_M007A/data.nc4' '/mnt/tmp/wang/data_M007A/data.nc40' '/mnt/tmp/wang/data_M007A/data.nc41' '/mnt/tmp/wang/data_M007A/data.nc42' '/mnt/tmp/wang/data_M007A/data.nc43' '/mnt/tmp/wang/data_M007A/data.nc44' '/mnt/tmp/wang/data_M007A/data.nc45' '/mnt/tmp/wang/data_M007A/data.nc46' '/mnt/tmp/wang/data_M007A/data.nc47' '/mnt/tmp/wang/data_M007A/data.nc48' '/mnt/tmp/wang/data_M007A/data.nc49' '/mnt/tmp/wang/data_M007A/data.nc5' '/mnt/tmp/wang/data_M007A/data.nc50' '/mnt/tmp/wang/data_M007A/data.nc51' '/mnt/tmp/wang/data_M007A/data.nc52' '/mnt/tmp/wang/data_M007A/data.nc53' '/mnt/tmp/wang/data_M007A/data.nc54' '/mnt/tmp/wang/data_M007A/data.nc55' '/mnt/tmp/wang/data_M007A/data.nc56' '/mnt/tmp/wang/data_M007A/data.nc57' '/mnt/tmp/wang/data_M007A/data.nc58' '/mnt/tmp/wang/data_M007A/data.nc59' '/mnt/tmp/wang/data_M007A/data.nc6' '/mnt/tmp/wang/data_M007A/data.nc60' '/mnt/tmp/wang/data_M007A/data.nc61' '/mnt/tmp/wang/data_M007A/data.nc62' '/mnt/tmp/wang/data_M007A/data.nc63' '/mnt/tmp/wang/data_M007A/data.nc64' '/mnt/tmp/wang/data_M007A/data.nc7' '/mnt/tmp/wang/data_M007A/data.nc8' '/mnt/tmp/wang/data_M007A/data.nc9' ...
+using cache file: /mnt/tmp/wang/CACHE_TEMP/65bf-105d-1af7-e200
+... done.
+Loaded fraction:  100%
+Sequences:        62034
+Sequence lengths: 221..2400
+Total timesteps:  76446543
+
+Loading validation set '/mnt/tmp/wang/data_M007A/data.nc65' '/mnt/tmp/wang/data_M007A/data.nc66' '/mnt/tmp/wang/data_M007A/data.nc67' '/mnt/tmp/wang/data_M007A/data.nc68' ...
+using cache file: /mnt/tmp/wang/CACHE_TEMP/6703-3214-c748-bb75
+... done.
+Loaded fraction:  100%
+Sequences:        2315
+Sequence lengths: 348..6920
+Total timesteps:  3034983
+
+Creating the neural network... done.
+Layers:
+(0) input [size: 389]
+(1) feedforward_logistic [size: 512, bias: 1.0, weights: 199680]
+(2) feedforward_logistic [size: 512, bias: 1.0, weights: 262656]
+(3) blstm [size: 256, bias: 1.0, weights: 657152]
+(4) blstm [size: 256, bias: 1.0, weights: 395008]
+(5) feedforward_identity [size: 259, bias: 1.0, weights: 66563]
+(6) sse [size: 259]
+Total weights: 1581059
+
+
+Creating the optimizer... done.
+Optimizer type: Steepest descent with momentum
+Max training epochs:       80
+Max epochs until new best: 10
+Validation error every:    1
+Test error every:          1
+Learning rate:             4e-06
+Momentum:                  0.1
+
+Starting training...
+
+ Epoch | Duration |  Training error  | Validation error |    Test error    | New best 
+-------+----------+------------------+------------------+------------------+----------
+     1 |  12781.7 |       142309.031 |       147378.906 |                  |  yes   
+     2 |  12908.6 |       137769.484 |       145817.047 |                  |  yes   
+     3 |  13825.1 |       136674.078 |       145246.781 |                  |  yes   
+     4 |  15677.1 |       136043.703 |       144503.688 |                  |  yes   
+     5 |  15769.0 |       135629.828 |       144143.031 |                  |  yes   
+     6 |  15808.2 |       135322.781 |       143836.125 |                  |  yes   
+     7 |  16359.9 |       135078.109 |       143611.266 |                  |  yes   
+     8 |  16996.0 |       134880.172 |       143456.562 |                  |  yes   
+     9 |  17361.0 |       134713.578 |       143268.000 |                  |  yes   
+    10 |  17685.3 |       134566.203 |       143179.969 |                  |  yes   
+    11 |  17807.8 |       134441.750 |       143016.312 |                  |  yes   
+    12 |  17840.0 |       134318.578 |       142907.797 |                  |  yes   
+    13 |  17884.4 |       134220.000 |       142858.141 |                  |  yes   
+    14 |  17893.1 |       134135.688 |       142755.328 |                  |  yes   
+    15 |  17881.3 |       134045.984 |       142712.172 |                  |  yes   
+    16 |  17894.8 |       133967.766 |       142703.172 |                  |  yes   
+    17 |  17889.5 |       133897.594 |       142511.938 |                  |  yes   
+    18 |  17887.1 |       133830.219 |       142403.656 |                  |  yes   
+    19 |  17888.9 |       133762.094 |       142434.812 |                  |  no    
+    20 |  17903.3 |       133707.031 |       142305.125 |                  |  yes   
+    21 |  19594.3 |       133646.641 |       142390.109 |                  |  no    
+    22 |  18254.7 |       133590.312 |       142225.672 |                  |  yes   
+    23 |  17891.8 |       133542.109 |       142206.297 |                  |  yes   
+    24 |  17890.7 |       133494.531 |       142214.562 |                  |  no    
+    25 |  17903.4 |       133447.844 |       142080.422 |                  |  yes   
+    26 |  17895.2 |       133405.453 |       141972.766 |                  |  yes   
+    27 |  17846.9 |       133366.078 |       142031.516 |                  |  no    
+    28 |  17848.0 |       133327.156 |       141991.969 |                  |  no    
+    29 |  17953.7 |       133292.562 |       141945.141 |                  |  yes   
+    30 |  20213.3 |       133254.406 |       141861.656 |                  |  yes   
+    31 |  24821.6 |       133219.359 |       141923.625 |                  |  no    
+    32 |  17912.9 |       133186.891 |       141979.078 |                  |  no    
+    33 |  17980.5 |       133159.156 |       141894.172 |                  |  no    
+    34 |  21612.4 |       133126.359 |       141781.484 |                  |  yes   
+    35 |  26262.0 |       133097.375 |       141764.141 |                  |  yes   
+    36 |  22874.2 |       133069.766 |       141715.281 |                  |  yes   
+    37 | 

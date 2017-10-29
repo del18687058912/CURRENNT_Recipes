@@ -1,0 +1,248 @@
+Configuration Infor:
+	Training Mode: Started in hybrid online/batch
+		Mini-batches (parallel 1 sequences each) will be shuffled during training.
+		Writting network  to 'trained_network.jsn'.
+	Validation every 1 epochs.
+
+	Training will be stopped after 100 epochs or after no new lowest validation error for 10 epochs.
+	Autosave after EVERY EPOCH enabled.
+	Utilizing the GPU on 1 sequences in parallel.
+
+	Initialization method:
+		Uniform dist. with layer-wise range
+
+		Random seed: 3839368179
+
+Using device #1 (Tesla K80)
+Reading network from './network.jsn'... done.
+
+Loading training set '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc1' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc2' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc3' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc4' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc5' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc6' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc7' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc8' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc9' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc10' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc11train' ...
+using cache file: /tmp/xwtemp/6066-391a-681c-5954
+... done.
+Loaded fraction:  100%
+Sequences:        11572
+Sequence lengths: 140..4034
+Total timesteps:  11544584
+
+Loading validation set '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc11val' ...
+using cache file: /tmp/xwtemp/c779-0789-252a-a04c
+... done.
+Loaded fraction:  100%
+Sequences:        500
+Sequence lengths: 172..3226
+Total timesteps:  490430
+
+Creating the neural network...
+Layer (0)
+Layer (1)Trainable layer: initialize weight
+Layer (2)Trainable layer: initialize weight
+Layer (3)Trainable layer: initialize weight
+Layer (4)Trainable layer: initialize weight
+Layer (5)Trainable layer: initialize weight
+Layer (6)Trainable layer: initialize weight
+Layer (7)Trainable layer: initialize weight
+Layer (8)Trainable layer: initialize weight
+Layer (9)Trainable layer: initialize weight
+Layer (10)Trainable layer: initialize weight
+Layer (11)Trainable layer: initialize weight
+Layer (12)Trainable layer: initialize weight
+Layer (13)Trainable layer: initialize weight
+Layer (14)Trainable layer: initialize weight
+Layer (15)Trainable layer: initialize weight
+Layer (16)Trainable layer: initialize weight
+Layer (17)Trainable layer: initialize weight
+Layer (18)Trainable layer: initialize weight
+Layer (19)Trainable layer: initialize weight
+Layer (20)Trainable layer: initialize weight
+Layer (21)Trainable layer: initialize weight
+Layer (22)Trainable layer: initialize weight
+Layer (23)Trainable layer: initialize weight
+Layer (24)Trainable layer: initialize weight
+Layer (25)Trainable layer: initialize weight
+Layer (26)Trainable layer: initialize weight
+Layer (27)Trainable layer: initialize weight
+Layer (28)
+Network construction done.
+
+Network summary:
+(0) input [size: 382]
+(1) feedforward_logistic [size: 512, bias: 1.0, weights: 196096]
+(2) feedforward_logistic [size: 512, bias: 1.0, weights: 262656]
+(3) blstm [size: 256, bias: 1.0, weights: 657152]
+(4) blstm [size: 256, bias: 1.0, weights: 395008]
+(5) skipini [size: 256, bias: 1.0, weights: 0]
+(6) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(7) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(8) skippara_logistic [size: 256, bias: 1.0, weights: 65792]
+(9) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(10) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(11) skippara_logistic [size: 256, bias: 1.0, weights: 65792]
+(12) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(13) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(14) skippara_logistic [size: 256, bias: 1.0, weights: 65792]
+(15) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(16) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(17) skippara_logistic [size: 256, bias: 1.0, weights: 65792]
+(18) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(19) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(20) skippara_logistic [size: 256, bias: 1.0, weights: 65792]
+(21) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(22) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(23) skippara_logistic [size: 256, bias: 1.0, weights: 65792]
+(24) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(25) feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(26) skippara_logistic [size: 256, bias: 1.0, weights: 65792]
+(27) feedforward_identity [size: 259, bias: 1.0, weights: 66563]
+(28) sse [size: 259]
+Total weights: 2959107
+
+
+Creating the optimizer... 
+Optimization: plain SGD 
+done.
+Optimizer type: Steepest descent with momentum
+Max training epochs:       100
+Max epochs until new best: 10
+Validation error every:    1
+Test error every:          1
+Learning rate:             4e-06
+Momentum:                  0
+Model Parameter:           /work/smg/wang/PROJ/WE/DNNAM/MODEL/nancy/nancy_all/MODEL2001/train1/trained_network.jsn
+
+Read NN parameter from /work/smg/wang/PROJ/WE/DNNAM/MODEL/nancy/nancy_all/MODEL2001/train1/trained_network.jsn
+
+	(1) read weight for layer forward_1
+	(2) read weight for layer forward_2
+	(3) read weight for layer blstm_level_1
+	(4) read weight for layer blstm_level_2
+	(5) not read wight for layer s1
+	(6) not read wight for layer f1
+	(7) not read wight for layer f2
+	(8) not read wight for layer s2
+	(9) not read wight for layer f3
+	(10) not read wight for layer f4
+	(11) not read wight for layer s3
+	(12) not read wight for layer f5
+	(13) not read wight for layer f6
+	(14) not read wight for layer s4
+	(15) not read wight for layer f7
+	(16) not read wight for layer f8
+	(17) not read wight for layer s5
+	(18) not read wight for layer f9
+	(19) not read wight for layer f10
+	(20) not read wight for layer s6
+	(21) not read wight for layer f11
+	(22) not read wight for layer f12
+	(23) not read wight for layer s7
+	(24) not read wight for layer f13
+	(25) not read wight for layer f14
+	(26) not read wight for layer s8
+	(27) not read wight for layer output	done
+
+Starting training...
+Print error per sequence / per timestep
+ Epoch | Duration |           Training error  |           Validation error|           Test error      |New best 
+-------+----------+---------------------------+---------------------------+---------------------------+---------
+     1 |   5246.9 |    104192.320 /   104.440 |     99526.688 /   101.469 |                           |  yes SGD
+     2 |   4545.9 |     98853.336 /    99.088 |     98116.320 /   100.031 |                           |  yes SGD
+     3 |   4534.2 |     97795.992 /    98.028 |     97585.938 /    99.490 |                           |  yes SGD
+     4 |   4560.0 |     97303.641 /    97.535 |     97314.320 /    99.213 |                           |  yes SGD
+     5 |   4537.1 |     97018.016 /    97.248 |     97137.305 /    99.033 |                           |  yes SGD
+     6 |   4530.9 |     96828.719 /    97.059 |     97034.617 /    98.928 |                           |  yes SGD
+     7 |   4531.9 |     96694.852 /    96.924 |     96966.969 /    98.859 |                           |  yes SGD
+     8 |   4542.2 |     96593.492 /    96.823 |     96917.617 /    98.809 |                           |  yes SGD
+     9 |   4771.9 |     96514.133 /    96.743 |     96827.633 /    98.717 |                           |  yes SGD
+    10 |   4578.7 |     96448.148 /    96.677 |     96804.555 /    98.694 |                           |  yes SGD
+    11 |   4835.2 |     96389.383 /    96.618 |     96800.547 /    98.689 |                           |  yes SGD
+    12 |   4684.8 |     96339.195 /    96.568 |     96747.125 /    98.635 |                           |  yes SGD
+    13 |   4652.8 |     96294.891 /    96.524 |     96724.375 /    98.612 |                           |  yes SGD
+    14 |   4666.0 |     96254.547 /    96.483 |     96710.039 /    98.597 |                           |  yes SGD
+    15 |   4650.9 |     96216.102 /    96.445 |     96682.516 /    98.569 |                           |  yes SGD
+    16 |   4699.6 |     96181.008 /    96.409 |     96666.750 /    98.553 |                           |  yes SGD
+    17 |   4768.4 |     96150.086 /    96.378 |     96639.086 /    98.525 |                           |  yes SGD
+    18 |   4563.4 |     96118.102 /    96.346 |     96661.195 /    98.547 |                           |  no  SGD
+    19 |   4877.3 |     96087.312 /    96.316 |     96653.820 /    98.540 |                           |  no  SGD
+    20 |   4632.0 |     96059.359 /    96.287 |     96644.203 /    98.530 |                           |  no  SGD
+    21 |   4617.5 |     96031.367 /    96.259 |     96604.328 /    98.489 |                           |  yes SGD
+    22 |   4622.2 |     96003.602 /    96.232 |     96604.531 /    98.490 |                           |  no  SGD
+    23 |   4616.8 |     95976.922 /    96.205 |     96603.219 /    98.488 |                           |  yes SGD
+    24 |   4621.9 |     95952.570 /    96.180 |     96592.523 /    98.477 |                           |  yes SGD
+    25 |   4627.6 |     95929.445 /    96.157 |     96586.273 /    98.471 |                           |  yes SGD
+    26 |   4628.4 |     95903.766 /    96.132 |     96571.305 /    98.456 |                           |  yes SGD
+    27 |   4592.2 |     95880.805 /    96.109 |     96569.141 /    98.454 |                           |  yes SGD
+    28 |   4496.4 |     95857.367 /    96.085 |     96590.359 /    98.475 |                           |  no  SGD
+    29 |   4498.4 |     95834.156 /    96.062 |     96569.219 /    98.454 |                           |  no  SGD
+    30 |   4501.0 |     95811.195 /    96.039 |     96569.828 /    98.454 |                           |  no  SGD
+    31 |   4492.2 |     95788.875 /    96.016 |     96590.398 /    98.475 |                           |  no  SGD
+    32 |   4491.9 |     95767.906 /    95.995 |     96553.906 /    98.438 |                           |  yes SGD
+    33 |   4482.3 |     95745.453 /    95.973 |     96536.922 /    98.421 |                           |  yes SGD
+    34 |   4710.7 |     95725.164 /    95.952 |     96528.195 /    98.412 |                           |  yes SGD
+    35 |   4615.4 |     95703.773 /    95.931 |     96517.297 /    98.401 |                           |  yes SGD
+    36 |   4617.7 |     95684.164 /    95.911 |     96512.992 /    98.396 |                           |  yes SGD
+    37 |   4617.3 |     95664.000 /    95.891 |     96506.836 /    98.390 |                           |  yes SGD
+    38 |   4627.0 |     95642.562 /    95.870 |     96501.711 /    98.385 |                           |  yes SGD
+    39 |   4623.5 |     95622.977 /    95.850 |     96492.164 /    98.375 |                           |  yes SGD
+    40 |   4614.0 |     95605.102 /    95.832 |     96507.984 /    98.391 |                           |  no  SGD
+    41 |   4606.7 |     95585.156 /    95.812 |     96497.133 /    98.380 |                           |  no  SGD
+    42 |   4619.4 |     95565.984 /    95.793 |     96467.352 /    98.350 |                           |  yes SGD
+    43 |   4610.0 |     95547.766 /    95.775 |     96498.281 /    98.381 |                           |  no  SGD
+    44 |   4613.9 |     95527.359 /    95.754 |     96472.258 /    98.355 |                           |  no  SGD
+    45 |   4614.6 |     95509.938 /    95.737 |     96494.438 /    98.377 |                           |  no  SGD
+    46 |   4625.4 |     95492.609 /    95.719 |     96452.281 /    98.334 |                           |  yes SGD
+    47 |   4606.6 |     95472.836 /    95.700 |     96488.805 /    98.372 |                           |  no  SGD
+    48 |   4607.5 |     95455.125 /    95.682 |     96469.680 /    98.352 |                           |  no  SGD
+    49 |   4630.6 |     95437.359 /    95.664 |     96474.305 /    98.357 |                           |  no  SGD
+    50 |   4620.3 |     95422.562 /    95.649 |     96457.516 /    98.340 |                           |  no  SGD
+    51 |   4602.2 |     95402.211 /    95.629 |     96478.891 /    98.362 |                           |  no  SGD
+    52 |   4613.3 |     95384.586 /    95.611 |     96473.141 /    98.356 |                           |  no  SGD
+    53 |   4615.1 |     95368.961 /    95.595 |     96466.383 /    98.349 |                           |  no  SGD
+    54 |   4618.4 |     95351.609 /    95.578 |     96444.320 /    98.326 |                           |  yes SGD
+    55 |   4619.3 |     95335.164 /    95.562 |     96445.172 /    98.327 |                           |  no  SGD
+    56 |   4643.5 |     95317.242 /    95.544 |     96438.812 /    98.321 |                           |  yes SGD
+    57 |   4640.6 |     95302.055 /    95.528 |     96432.375 /    98.314 |                           |  yes SGD
+    58 |   4811.2 |     95283.695 /    95.510 |     96487.984 /    98.371 |                           |  no  SGD
+    59 |   4586.1 |     95268.312 /    95.495 |     96425.008 /    98.307 |                           |  yes SGD
+    60 |   4622.1 |     95254.250 /    95.480 |     96437.094 /    98.319 |                           |  no  SGD
+    61 |   4639.6 |     95237.188 /    95.463 |     96432.258 /    98.314 |                           |  no  SGD
+    62 |   4652.4 |     95220.211 /    95.446 |     96405.664 /    98.287 |                           |  yes SGD
+    63 |   4644.8 |     95206.078 /    95.432 |     96419.062 /    98.301 |                           |  no  SGD
+    64 |   4632.7 |     95190.570 /    95.417 |     96440.266 /    98.322 |                           |  no  SGD
+    65 |   4609.0 |     95175.422 /    95.401 |     96468.336 /    98.351 |                           |  no  SGD
+    66 |   4490.6 |     95161.516 /    95.388 |     96487.695 /    98.371 |                           |  no  SGD
+    67 |   4508.9 |     95145.508 /    95.371 |     96473.539 /    98.356 |                           |  no  SGD
+    68 |   4568.9 |     95130.359 /    95.356 |     96401.055 /    98.282 |                           |  yes SGD
+    69 |   4471.5 |     95115.273 /    95.341 |     96439.086 /    98.321 |                           |  no  SGD
+    70 |   4467.0 |     95097.461 /    95.323 |     96452.586 /    98.335 |                           |  no  SGD
+    71 |   4466.4 |     95084.398 /    95.310 |     96465.930 /    98.348 |                           |  no  SGD
+    72 |   4473.3 |     95068.891 /    95.295 |     96410.070 /    98.291 |                           |  no  SGD
+    73 |   4470.4 |     95055.859 /    95.282 |     96452.453 /    98.335 |                           |  no  SGD
+    74 |   4466.4 |     95040.781 /    95.266 |     96476.609 /    98.359 |                           |  no  SGD
+    75 |   4475.6 |     95026.398 /    95.252 |     96428.125 /    98.310 |                           |  no  SGD
+    76 |   4468.6 |     95010.781 /    95.236 |     96397.047 /    98.278 |                           |  yes SGD
+    77 |   4472.3 |     94997.039 /    95.223 |     96488.375 /    98.371 |                           |  no  SGD
+    78 |   4467.9 |     94983.102 /    95.209 |     96401.406 /    98.283 |                           |  no  SGD
+    79 |   4464.2 |     94967.328 /    95.193 |     96415.852 /    98.297 |                           |  no  SGD
+    80 |   4466.4 |     94953.227 /    95.179 |     96425.945 /    98.308 |                           |  no  SGD
+    81 |   4473.3 |     94941.359 /    95.167 |     96398.422 /    98.279 |                           |  no  SGD
+    82 |   4484.4 |     94927.016 /    95.152 |     96430.062 /    98.312 |                           |  no  SGD
+    83 |   4470.0 |     94911.578 /    95.137 |     96422.938 /    98.304 |                           |  no  SGD
+    84 |   4480.4 |     94898.594 /    95.124 |     96408.156 /    98.289 |                           |  no  SGD
+    85 |   4487.6 |     94885.836 /    95.111 |     96387.789 /    98.269 |                           |  yes SGD
+    86 |   4479.9 |     94873.031 /    95.098 |     96411.180 /    98.292 |                           |  no  SGD
+    87 |   4580.2 |     94857.141 /    95.082 |     96368.836 /    98.249 |                           |  yes SGD
+    88 |   4488.2 |     94842.711 /    95.068 |     96439.375 /    98.321 |                           |  no  SGD
+    89 |   5388.2 |     94830.781 /    95.056 |     96426.906 /    98.309 |                           |  no  SGD
+    90 |   4615.9 |     94816.633 /    95.042 |     96441.180 /    98.323 |                           |  no  SGD
+    91 |   4725.2 |     94804.594 /    95.030 |     96441.508 /    98.323 |                           |  no  SGD
+    92 |   4490.3 |     94788.484 /    95.014 |     96406.484 /    98.288 |                           |  no  SGD
+    93 |   4473.6 |     94778.531 /    95.004 |     96416.234 /    98.298 |                           |  no  SGD
+    94 |   4478.9 |     94764.344 /    94.989 |     96411.906 /    98.293 |                           |  no  SGD
+    95 |   4655.9 |     94751.367 /    94.976 |     96411.852 /    98.293 |                           |  no  SGD
+    96 |   4473.6 |     94739.070 /    94.964 |     96442.898 /    98.325 |                           |  no  SGD
+    97 |   5194.6 |     94724.922 /    94.950 |     96415.359 /    98.297 |                           |  no  Finished
+
+No new lowest error since 10 epochs. Training stopped.
+Lowest validation error: 96368.835938
+
+Storing the trained network in 'trained_network.jsn'... done.
+Removing cache file(s) ...

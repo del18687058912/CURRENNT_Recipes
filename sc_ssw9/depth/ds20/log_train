@@ -1,0 +1,121 @@
+Started in hybrid online/batch training mode.
+Mini-batches (1 sequences each) will be shuffled during training.
+Using input noise with a standard deviation of 0.1.
+The trained network will be written to 'trained_network.jsn'.
+Validation error will be calculated every 1 epochs.
+Training will be stopped after 40 epochs or if there is no new lowest validation error within 5 epochs.
+Autosave after EVERY EPOCH enabled.
+Utilizing the GPU for computations with 1 sequences in parallel.
+Uniform distribution with layer-wise range
+. Random seed: 3043298784
+
+Using device #0 (Tesla K40c)
+Reading network from './network.jsn'... done.
+
+Loading training set '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc1' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc2' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc3' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc4' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc5' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc6' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc7' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc8' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc9' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc10' '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc11train' ...
+using cache file: /tmp/4737-8655-d161-b47e
+... done.
+Loaded fraction:  100%
+Sequences:        11572
+Sequence lengths: 140..4034
+Total timesteps:  11544584
+
+Loading validation set '/work/smg/wang/PROJ/WE/DNNAM/DATA/nancy/nancy_all/data.nc11val' ...
+using cache file: /tmp/fe69-344a-8655-3593
+... done.
+Loaded fraction:  100%
+Sequences:        500
+Sequence lengths: 172..3226
+Total timesteps:  490430
+
+Creating the neural network... done.
+Layers:
+(0) input [size: 382]
+(1) feedforward_identity [size: 382, bias: 1.0, weights: 146306]
+(2) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(3) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(4) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(5) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(6) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(7) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(8) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(9) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(10) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(11) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(12) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(13) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(14) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(15) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(16) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(17) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(18) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(19) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(20) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(21) feedforward_tanh [size: 382, bias: 1.0, weights: 146306]
+(22) feedforward_identity [size: 382, bias: 1.0, weights: 146306]
+(23) feedforward_identity [size: 259, bias: 1.0, weights: 99197]
+(24) sse [size: 259]
+Total weights: 3317929
+
+
+Creating the optimizer... done.
+Optimizer type: Steepest descent with momentum
+Max training epochs:       40
+Max epochs until new best: 5
+Validation error every:    1
+Test error every:          1
+Learning rate:             1e-05
+Momentum:                  0
+
+Starting training...
+Print error per sequence / per timestep
+ Epoch | Duration |           Training error  |           Validation error|           Test error      |New best 
+-------+----------+---------------------------+---------------------------+---------------------------+---------
+     1 | NaN detected. Tune the learning rate please.
+Adjust the learning rate to 1.000000e-06Reinitialize the weight
+     1 |    293.8 |    112585.336 /   112.853 |    107200.758 /   109.293 |                           |  yes   
+     2 |    282.4 |    108023.281 /   108.280 |    104900.484 /   106.947 |                           |  yes   
+     3 |    282.4 |    106373.102 /   106.626 |    103807.227 /   105.833 |                           |  yes   
+     4 |    281.8 |    105381.648 /   105.632 |    102902.531 /   104.911 |                           |  yes   
+     5 |    281.7 |    104684.562 /   104.933 |    102346.383 /   104.344 |                           |  yes   
+     6 |    282.2 |    104161.961 /   104.409 |    101909.703 /   103.898 |                           |  yes   
+     7 |    281.7 |    103749.000 /   103.995 |    101629.578 /   103.613 |                           |  yes   
+     8 |    281.5 |    103408.633 /   103.654 |    101328.773 /   103.306 |                           |  yes   
+     9 |    281.8 |    103120.367 /   103.365 |    100986.766 /   102.957 |                           |  yes   
+    10 |    281.2 |    102875.992 /   103.120 |    100801.734 /   102.769 |                           |  yes   
+    11 |    281.4 |    102661.641 /   102.905 |    100649.633 /   102.614 |                           |  yes   
+    12 |    281.3 |    102467.250 /   102.711 |    100469.078 /   102.430 |                           |  yes   
+    13 |    281.3 |    102298.781 /   102.542 |    100431.711 /   102.391 |                           |  yes   
+    14 |    281.6 |    102141.508 /   102.384 |    100152.289 /   102.107 |                           |  yes   
+    15 |    281.5 |    102002.297 /   102.245 |    100020.008 /   101.972 |                           |  yes   
+    16 |    281.5 |    101870.250 /   102.112 |     99981.312 /   101.932 |                           |  yes   
+    17 |    281.6 |    101752.125 /   101.994 |     99866.734 /   101.815 |                           |  yes   
+    18 |    281.6 |    101642.594 /   101.884 |     99815.141 /   101.763 |                           |  yes   
+    19 |    281.7 |    101535.523 /   101.777 |     99673.719 /   101.619 |                           |  yes   
+    20 |    281.4 |    101440.078 /   101.681 |     99569.414 /   101.512 |                           |  yes   
+    21 |    281.4 |    101343.711 /   101.584 |     99674.414 /   101.619 |                           |  no    
+    22 |    281.6 |    101256.055 /   101.497 |     99552.602 /   101.495 |                           |  yes   
+    23 |    281.7 |    101175.617 /   101.416 |     99367.414 /   101.306 |                           |  yes   
+    24 |    281.3 |    101097.336 /   101.337 |     99412.547 /   101.352 |                           |  no    
+    25 |    281.7 |    101020.617 /   101.261 |     99281.453 /   101.219 |                           |  yes   
+    26 |    281.2 |    100953.727 /   101.193 |     99208.156 /   101.144 |                           |  yes   
+    27 |    281.3 |    100880.789 /   101.120 |     99220.344 /   101.156 |                           |  no    
+    28 |    281.3 |    100819.789 /   101.059 |     99157.508 /   101.092 |                           |  yes   
+    29 |    281.3 |    100754.492 /   100.994 |     99228.586 /   101.165 |                           |  no    
+    30 |    281.7 |    100695.859 /   100.935 |     99068.797 /   101.002 |                           |  yes   
+    31 |    281.5 |    100638.094 /   100.877 |     99017.000 /   100.949 |                           |  yes   
+    32 |    281.6 |    100583.773 /   100.823 |     98960.062 /   100.891 |                           |  yes   
+    33 |    281.4 |    100526.898 /   100.766 |     98973.453 /   100.905 |                           |  no    
+    34 |    281.1 |    100475.508 /   100.714 |     98961.438 /   100.893 |                           |  no    
+    35 |    281.6 |    100429.031 /   100.668 |     98879.922 /   100.809 |                           |  yes   
+    36 |    281.6 |    100378.289 /   100.617 |     99000.203 /   100.932 |                           |  no    
+    37 |    281.7 |    100333.492 /   100.572 |     98861.906 /   100.791 |                           |  yes   
+    38 |    281.7 |    100288.133 /   100.526 |     98741.609 /   100.668 |                           |  yes   
+    39 |    281.7 |    100244.703 /   100.483 |     98795.828 /   100.724 |                           |  no    
+    40 |    281.5 |    100201.250 /   100.439 |     98800.742 /   100.729 |                           |  no    
+
+Maximum number of training epochs reached. Training stopped.
+Lowest validation error: 98741.609375
+
+Storing the trained network in 'trained_network.jsn'... done.
+Removing cache file(s) ...

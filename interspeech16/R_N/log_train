@@ -1,0 +1,98 @@
+Started in hybrid online/batch training mode.
+Mini-batches (1 sequences each) will be shuffled during training.
+Using input noise with a standard deviation of 0.1.
+The trained network will be written to 'trained_network.jsn'.
+Validation error will be calculated every 1 epochs.
+Training will be stopped after 40 epochs or if there is no new lowest validation error within 5 epochs.
+Autosave after EVERY EPOCH enabled.
+Utilizing the GPU for computations with 1 sequences in parallel.
+Normal distribution with mean=0 and sigma=0.1. Random seed: 1115958295
+
+Using device #2 (Tesla K80)
+Reading network from 'epoch015.autosave'... done.
+
+Loading training set '/mnt2/tmp/wang/data_f0n/data.nc1' '/mnt2/tmp/wang/data_f0n/data.nc2' '/mnt2/tmp/wang/data_f0n/data.nc3' '/mnt2/tmp/wang/data_f0n/data.nc4' '/mnt2/tmp/wang/data_f0n/data.nc5' '/mnt2/tmp/wang/data_f0n/data.nc6' '/mnt2/tmp/wang/data_f0n/data.nc7' '/mnt2/tmp/wang/data_f0n/data.nc8' '/mnt2/tmp/wang/data_f0n/data.nc9' '/mnt2/tmp/wang/data_f0n/data.nc10' '/mnt2/tmp/wang/data_f0n/data.nc11train' ...
+using cache file: /tmp/800a-393b-d988-15dd
+... done.
+Loaded fraction:  100%
+Sequences:        11572
+Sequence lengths: 140..4034
+Total timesteps:  11544584
+
+Loading validation set '/mnt2/tmp/wang/data_f0n/data.nc11val' ...
+using cache file: /tmp/5912-6e2d-4277-4988
+... done.
+Loaded fraction:  100%
+Sequences:        500
+Sequence lengths: 172..3226
+Total timesteps:  490430
+
+Creating the neural network... done.
+Layers:
+(0) input [size: 292]
+(1) feedforward_logistic [size: 512, bias: 1.0, weights: 150016]
+(2) feedforward_logistic [size: 512, bias: 1.0, weights: 262656]
+(3) blstm [size: 256, bias: 1.0, weights: 657152]
+(4) blstm [size: 50, bias: 1.0, weights: 56550]
+(5) feedforward_identity [size: 4, bias: 1.0, weights: 204]
+(6) sse [size: 4]
+Total weights: 1126578
+
+
+Creating the optimizer... done.
+Optimizer type: Steepest descent with momentum
+Max training epochs:       40
+Max epochs until new best: 5
+Validation error every:    1
+Test error every:          1
+Learning rate:             4e-05
+Momentum:                  0
+
+Restoring state from 'epoch015.autosave'... done.
+
+Starting training...
+
+ Epoch | Duration |  Training error  | Validation error |    Test error    | New best 
+-------+----------+------------------+------------------+------------------+----------
+     1 |  24536.9 |         1263.094 |         1190.628 |                  |  yes   
+     2 |  24486.7 |         1089.578 |         1079.139 |                  |  yes   
+     3 |  10725.1 |         1036.827 |         1046.904 |                  |  yes   
+     4 |  10467.4 |         1007.048 |         1023.246 |                  |  yes   
+     5 |  10577.1 |          985.834 |         1025.191 |                  |  no    
+     6 |  10607.2 |          968.664 |         1010.503 |                  |  yes   
+     7 |  10589.9 |          954.874 |         1001.985 |                  |  yes   
+     8 |  10595.6 |          943.024 |          989.275 |                  |  yes   
+     9 |  10591.6 |          932.543 |          991.018 |                  |  no    
+    10 |  10588.0 |          923.135 |          981.674 |                  |  yes   
+    11 |  10596.3 |          914.738 |          976.064 |                  |  yes   
+    12 |  10583.5 |          906.942 |          980.523 |                  |  no    
+    13 |  10588.6 |          899.299 |          966.337 |                  |  yes   
+    14 |  40948.4 |          892.494 |          961.334 |                  |  yes   
+    15 |  34482.9 |          885.994 |          976.751 |                  |  no    
+    16 |   9165.2 |          880.278 |          953.994 |                  |  yes   
+    17 |   8681.1 |          874.029 |          957.439 |                  |  no    
+    18 |   8662.9 |          867.938 |          956.545 |                  |  no    
+    19 |   8635.1 |          862.554 |          957.366 |                  |  no    
+    20 |   8600.8 |          857.189 |          957.394 |                  |  no    
+    21 |   8597.6 |          852.335 |          947.647 |                  |  yes   
+    22 |   8587.6 |          847.114 |          947.176 |                  |  yes   
+    23 |   8590.9 |          841.371 |          954.034 |                  |  no    
+    24 |   8634.9 |          836.984 |          952.427 |                  |  no    
+    25 |   8635.3 |          832.328 |          942.530 |                  |  yes   
+    26 |   8627.1 |          827.312 |          942.005 |                  |  yes   
+    27 |   8598.3 |          822.404 |          941.182 |                  |  yes   
+    28 |   8627.0 |          818.020 |          947.114 |                  |  no    
+    29 |   8611.1 |          813.928 |          943.412 |                  |  no    
+    30 |   8615.7 |          809.235 |          948.879 |                  |  no    
+    31 |   8617.0 |          805.155 |          937.529 |                  |  yes   
+    32 |   8618.5 |          800.704 |          940.741 |                  |  no    
+    33 |   8668.2 |          796.667 |          939.076 |                  |  no    
+    34 |   8600.2 |          792.611 |          945.961 |                  |  no    
+    35 |   8579.5 |          788.726 |          955.310 |                  |  no    
+    36 |   8621.9 |          784.508 |          940.113 |                  |  no    
+
+No new lowest error since 5 epochs. Training stopped.
+Lowest validation error: 937.529114
+
+Storing the trained network in 'trained_network.jsn'... done.
+Removing cache file(s) ...

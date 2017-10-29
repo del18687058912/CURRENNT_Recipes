@@ -1,0 +1,126 @@
+Configuration Infor:
+	Training Mode: Started in hybrid online/batch
+		Sequences shuffled within and across mini-batches.
+
+		Writting network  to 'trained_network.jsn'.
+	Validation every 1 epochs.
+
+	Training will be stopped after 80 epochs or after no new lowest validation error for 6 epochs.
+	Autosave after EVERY EPOCH enabled.
+	Utilizing the GPU on 1 sequences in parallel.
+
+	Initialization method:
+		Uniform dist. with layer-wise range
+
+		Random seed: 1811626773
+
+Using device #3 (Tesla K80)
+Reading network from './network.jsn'... done.
+
+Loading training set '/work/smg/wang/PROJ/F0MODEL/DATA/nancy_F04/data.nc1_tmp' '/work/smg/wang/PROJ/F0MODEL/DATA/nancy_F04/data.nc2_tmp' '/work/smg/wang/PROJ/F0MODEL/DATA/nancy_F04/data.nc3_tmp' '/work/smg/wang/PROJ/F0MODEL/DATA/nancy_F04/data.nc4_tmp' '/work/smg/wang/PROJ/F0MODEL/DATA/nancy_F04/data.nc5_tmp' '/work/smg/wang/PROJ/F0MODEL/DATA/nancy_F04/data.nc6_tmp' '/work/smg/wang/PROJ/F0MODEL/DATA/nancy_F04/data.nc7_tmp' '/work/smg/wang/PROJ/F0MODEL/DATA/nancy_F04/data.nc8_tmp' '/work/smg/wang/PROJ/F0MODEL/DATA/nancy_F04/data.nc9_tmp' '/work/smg/wang/PROJ/F0MODEL/DATA/nancy_F04/data.nc10_tmp' '/work/smg/wang/PROJ/F0MODEL/DATA/nancy_F04/data.nc11train_tmp' ...
+using cache file: /tmp/xwtemp/c0d9-b333-6d1c-b334
+... done.
+Loaded fraction:  100%
+Sequences:        11572
+Sequence lengths: 140..4034
+Total timesteps:  11544584
+
+Loading validation set '/work/smg/wang/PROJ/F0MODEL/DATA/nancy_F04/data.nc11val_tmp' ...
+using cache file: /tmp/xwtemp/c2c6-ad4a-d1ab-1792
+... done.
+Loaded fraction:  100%
+Sequences:        500
+Sequence lengths: 172..3226
+Total timesteps:  490430
+
+Creating the neural network...
+Layer (0) input 
+Layer (1) feedforward_tanh Trainable layer: initialize weight
+Layer (2) feedforward_tanh Trainable layer: initialize weight
+Layer (3) blstm Trainable layer: initialize weight
+Layer (4) feedback Trainable layer: initialize weight
+Layer (5) lstm Trainable layer: initialize weight
+Layer (6) feedforward_identity Trainable layer: initialize weight
+Layer (7) mdn 
+	MDN softmax (uvSig [1], uvT [0.500000], quanMerge [])
+	MDN layer distribution parameter number: 128
+
+Creating the feedback link:
+	From mdn [0-128]	Look Back []
+
+Network construction done.
+
+Network summary:
+(0) input [size: 382]
+(1) feedforward_tanh [size: 512, bias: 1.0, weights: 196096]
+(2) feedforward_tanh [size: 512, bias: 1.0, weights: 262656]
+(3) blstm [size: 256, bias: 1.0, weights: 657152]
+(4) feedback [size: 384, bias: 1.0, weights: 0]
+(5) lstm [size: 128, bias: 1.0, weights: 263040]
+(6) feedforward_identity [size: 128, bias: 1.0, weights: 16512]
+(7) mdn [size: 1]
+Total weights: 1395456
+
+
+Creating the optimizer... done.
+Optimizer type: Steepest descent with momentum
+Max training epochs:       80
+Max epochs until new best: 6
+Validation error every:    1
+Test error every:          1
+Learning rate:             8e-05
+Momentum:                  0
+
+Starting training...
+Print error per sequence / per timestep
+ Epoch | Duration |           Training error  |           Validation error|           Test error      |New best 
+-------+----------+---------------------------+---------------------------+---------------------------+---------
+     1 |   3370.7 |      2390.189 /     2.396 |      2207.137 /     2.250 |                           |  yes SGD
+     2 |   3361.9 |      1938.208 /     1.943 |      1650.571 /     1.683 |                           |  yes SGD
+     3 |   3368.7 |      1552.573 /     1.556 |      1468.644 /     1.497 |                           |  yes SGD
+     4 |   3373.7 |      1426.274 /     1.430 |      1379.962 /     1.407 |                           |  yes SGD
+     5 |   3374.3 |      1363.561 /     1.367 |      1339.685 /     1.366 |                           |  yes SGD
+     6 |   3370.8 |      1324.409 /     1.328 |      1300.928 /     1.326 |                           |  yes SGD
+     7 |   3359.6 |      1295.384 /     1.298 |      1282.442 /     1.307 |                           |  yes SGD
+     8 |   3361.4 |      1273.311 /     1.276 |      1270.719 /     1.296 |                           |  yes SGD
+     9 |   3366.0 |      1253.880 /     1.257 |      1249.109 /     1.273 |                           |  yes SGD
+    10 |   3375.2 |      1239.675 /     1.243 |      1256.751 /     1.281 |                           |  no  SGD
+    11 |   3353.6 |      1225.239 /     1.228 |      1236.082 /     1.260 |                           |  yes SGD
+    12 |   3361.7 |      1213.003 /     1.216 |      1239.535 /     1.264 |                           |  no  SGD
+    13 |   3362.3 |      1201.649 /     1.205 |      1222.503 /     1.246 |                           |  yes SGD
+    14 |   3363.3 |      1192.787 /     1.196 |      1226.102 /     1.250 |                           |  no  SGD
+    15 |   3357.2 |      1183.465 /     1.186 |      1217.560 /     1.241 |                           |  yes SGD
+    16 |   3363.0 |      1174.983 /     1.178 |      1208.908 /     1.232 |                           |  yes SGD
+    17 |   3381.5 |      1166.683 /     1.169 |      1205.734 /     1.229 |                           |  yes SGD
+    18 |   3363.3 |      1160.316 /     1.163 |      1209.006 /     1.233 |                           |  no  SGD
+    19 |   3391.7 |      1152.867 /     1.156 |      1196.755 /     1.220 |                           |  yes SGD
+    20 |   3448.3 |      1146.475 /     1.149 |      1209.118 /     1.233 |                           |  no  SGD
+    21 |   3349.6 |      1140.865 /     1.144 |      1193.069 /     1.216 |                           |  yes SGD
+    22 |   3387.6 |      1135.375 /     1.138 |      1195.765 /     1.219 |                           |  no  SGD
+    23 |   3348.4 |      1129.869 /     1.133 |      1201.437 /     1.225 |                           |  no  SGD
+    24 |   3350.0 |      1125.076 /     1.128 |      1188.428 /     1.212 |                           |  yes SGD
+    25 |   3346.8 |      1118.805 /     1.121 |      1191.422 /     1.215 |                           |  no  SGD
+    26 |   3350.1 |      1113.441 /     1.116 |      1193.870 /     1.217 |                           |  no  SGD
+    27 |   3345.6 |      1108.890 /     1.112 |      1188.035 /     1.211 |                           |  yes SGD
+    28 |   3346.5 |      1104.383 /     1.107 |      1206.457 /     1.230 |                           |  no  SGD
+    29 |   3348.3 |      1099.547 /     1.102 |      1206.516 /     1.230 |                           |  no  SGD
+    30 |   3346.8 |      1096.084 /     1.099 |      1209.727 /     1.233 |                           |  no  SGD
+    31 |   3344.1 |      1089.957 /     1.093 |      1199.231 /     1.223 |                           |  no  SGD
+    32 |   3347.0 |      1085.998 /     1.089 |      1198.116 /     1.221 |                           |  no  SGD
+    33 |   3347.1 |      1082.124 /     1.085 |      1196.932 /     1.220 |                           |  no  SGD (decay LR)
+    34 |   3348.0 |      1072.045 /     1.075 |      1191.972 /     1.215 |                           |  no  SGD
+    35 |   3348.5 |      1064.511 /     1.067 |      1197.220 /     1.221 |                           |  no  SGD
+    36 |   3346.5 |      1061.794 /     1.064 |      1194.296 /     1.218 |                           |  no  SGD
+    37 |   3347.2 |      1059.572 /     1.062 |      1203.776 /     1.227 |                           |  no  SGD
+    38 |   3343.1 |      1057.073 /     1.060 |      1205.726 /     1.229 |                           |  no  SGD (decay LR)
+    39 |   3344.1 |      1076.589 /     1.079 |      1188.266 /     1.211 |                           |  no  SGD
+    40 |   3343.8 |      1071.717 /     1.074 |      1187.421 /     1.211 |                           |  yes SGD
+    41 |   3343.1 |      1068.967 /     1.072 |      1193.452 /     1.217 |                           |  no  SGD
+    42 |   3345.9 |      1066.858 /     1.069 |      1190.766 /     1.214 |                           |  no  SGD
+    43 |   3348.3 |      1066.010 /     1.069 |      1190.214 /     1.213 |                           |  no  SGD
+    44 |   3348.3 |      1065.641 /     1.068 |      1187.613 /     1.211 |                           |  no  SGD
+    45 |   3346.5 |      1065.246 /     1.068 |      1193.404 /     1.217 |                           |  no  SGD
+    46 |   3343.2 |      1064.073 /     1.067 |      1190.827 /     1.214 |                           |  no  SGD (decay LR)
+    47 |   3347.3 |      1069.286 /     1.072 |      1184.334 /     1.207 |                           |  yes SGD
+    48 |   3346.7 |      1068.991 /     1.072 |      1189.083 /     1.212 |                           |  no  SGD
+    49 | 

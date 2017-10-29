@@ -1,0 +1,44 @@
+{
+    "layers": [
+        {
+            "size": 382,
+            "name": "input",
+            "type": "input"
+        },
+        {
+            "size": 1024,
+            "name": "blstm_level_2",
+            "bias": 1.0,
+            "type": "feedforward_logistic"
+        },
+        {
+            "size": 512,
+            "name": "blstm_level_3",
+            "bias": 1.0,
+            "type": "feedforward_logistic"
+        },
+        {
+            "size": 512,
+            "name": "blstm_level_4",
+            "bias": 1.0,
+            "type": "feedforward_logistic"
+        },
+        {
+            "size": 512,
+            "name": "blstm_level_5",
+            "bias": 1.0,
+            "type": "feedforward_logistic"
+        },
+        {
+            "size": 259,
+            "name": "output",
+            "bias": 1.0,
+            "type": "feedforward_identity"
+        },
+        {
+            "size": 259,
+            "name": "postoutput",
+            "type": "sse"
+        }
+    ]
+}

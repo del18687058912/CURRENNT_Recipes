@@ -1,0 +1,218 @@
+{
+    "layers": [
+        {
+            "size": 382,
+            "name": "input",
+            "type": "input"
+        },
+	{
+            "size": 768,
+            "name": "t1",
+            "bias": 1.0,
+            "type": "feedforward_identity"
+        },
+	{
+	    "size": 768,
+            "name": "s1",
+            "bias": 1.0,
+            "type": "skipadd"
+	},
+        {
+            "size": 768,
+            "name": "f1",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 768,
+            "name": "f2",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{
+	    "size": 768,
+            "name": "s2",
+            "bias": 1.0,
+            "type": "skippara_logistic"
+	},
+	{	
+            "size": 768,
+            "name": "f3",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 768,
+            "name": "f4",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{
+	    "size": 768,
+            "name": "s3",
+            "bias": 1.0,
+            "type": "skippara_logistic"
+	},
+	{	
+            "size": 768,
+            "name": "f5",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 768,
+            "name": "f6",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{
+	    "size": 768,
+            "name": "s4",
+            "bias": 1.0,
+            "type": "skippara_logistic"
+	},
+	{	
+            "size": 768,
+            "name": "f7",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 768,
+            "name": "f8",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+	{
+	    "size": 768,
+            "name": "s5",
+            "bias": 1.0,
+            "type": "skippara_logistic"
+	},
+        {
+            "size": 768,
+            "name": "f9",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 768,
+            "name": "f10",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 768,
+            "name": "s6",
+            "bias": 1.0,
+            "type": "skippara_logistic"
+        },
+        {
+            "size": 768,
+            "name": "f11",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 768,
+            "name": "f12",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 768,
+            "name": "s7",
+            "bias": 1.0,
+            "type": "skippara_logistic"
+        },
+        {
+            "size": 768,
+            "name": "f13",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 768,
+            "name": "f14",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 768,
+            "name": "s8",
+            "bias": 1.0,
+            "type": "skippara_logistic"
+        },
+        {
+            "size": 768,
+            "name": "f15",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 768,
+            "name": "f16",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 768,
+            "name": "s9",
+            "bias": 1.0,
+            "type": "skippara_logistic"
+        },
+        {
+            "size": 768,
+            "name": "f17",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 768,
+            "name": "f18",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 768,
+            "name": "s10",
+            "bias": 1.0,
+            "type": "skippara_logistic"
+        },
+        {
+            "size": 768,
+            "name": "f19",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 768,
+            "name": "f20",
+            "bias": 1.0,
+            "type": "feedforward_tanh"
+        },
+        {
+            "size": 768,
+            "name": "s11",
+            "bias": 1.0,
+            "type": "skippara_logistic"
+        },
+        {
+            "size": 768,
+            "name": "f100",
+            "bias": 1.0,
+            "type": "feedforward_identity"
+        },
+        {
+            "size": 259,
+            "name": "output",
+            "bias": 1.0,
+            "type": "feedforward_identity"
+        },
+        {
+            "size": 259,
+            "name": "postoutput",
+            "type": "sse"
+        }
+    ]
+}
