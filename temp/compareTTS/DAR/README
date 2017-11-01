@@ -1,0 +1,36 @@
+1. Please be familar with CURRENNT_SCRIPTS/MODEL_QUANF0
+2. The three scripts can be used for generation
+   config_syn_onebest: using the one-best generation method
+   config_syn_soft:    using the soft generation method
+   config_syn_random:  using the random sampling for generation
+
+   Please modify @sysdir, $currennt, @testdatadir in each script before using them
+
+3. Special note:
+   What's the different commnds used by the scripts above to control CURRENNT?
+   Line 118 in config_syn_onebest.pm: 
+   	--ScheduleSampOpt 2 --ScheduleSampPara 50
+	This is same configuration as train. It tells CURRENNT to feed back the probability 
+	vector to the next frame and dropout at 0.5 rate
+
+	--mdnSoftmaxGenMethod 0
+	This command is not in config_syn_onebest.pm, because it is the default configuration. 
+	It asks CURRENNT to genreated one-best at each frame
+	
+
+   Line 118 in config_syn_soft.pm:  
+        --ScheduleSampOpt 2 --ScheduleSampPara 50
+	
+   	--mdnSoftmaxGenMethod 1.
+	This argument asks CURRENNT to use soft-generation at each frame
+
+   Line 118-121 in config_syn_random.pm:
+   	--ScheduleSampOpt 4 --ScheduleSampPara -00
+	This argument asks CURRENNT to always feedback the one-hot vector rathan than 
+	probability vector to the next frame, without dropout
+	
+	--mdnSoftmaxGenMethod 2 --random_seed $randomSeed
+	This argument asks CURRENNT to draw random samlples at each frame. The random_seed can be provided.
+
+   The above arguments can also be written in config_syn.cfg
+   mdnSoftmax

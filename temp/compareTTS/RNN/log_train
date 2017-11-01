@@ -1,0 +1,152 @@
+Configuration Infor:
+	Training Mode: Started in hybrid online/batch
+		Sequences shuffled within and across mini-batches.
+
+		Writting network  to 'trained_network.jsn'.
+	Validation every 1 epochs.
+
+	Training will be stopped after 100 epochs or after no new lowest validation error for 10 epochs.
+	Autosave after EVERY EPOCH enabled.
+	Utilizing the GPU on 15 sequences in parallel.
+
+	Initialization method:
+		Uniform dist. with layer-wise range
+
+		Random seed: 3839368179
+
+Using device #0 (Tesla P100-PCIE-16GB)
+Reading network from 'epoch047.autosave'... done.
+
+Loading training set '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc1' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc2' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc3' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc4' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc5' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc6' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc7' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc8' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc9' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc10' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc11' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc12' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc13' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc14' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc15' ...
+using cache file: /tmp/xwtemp/8076-c624-00ce-a112
+... done.
+Loaded fraction:  100%
+Sequences:        29016
+Sequence lengths: 219..3920
+Total timesteps:  35264368
+
+Loading validation set '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_VAL/data.nc1' ...
+using cache file: /tmp/xwtemp/3138-5e1e-ce63-8604
+... done.
+Loaded fraction:  100%
+Sequences:        500
+Sequence lengths: 451..3101
+Total timesteps:  617803
+
+Creating the neural network...
+Layer (0) input 
+Layer (1) feedforward_tanh Trainable layer: re-read weight
+Layer (2) feedforward_tanh Trainable layer: re-read weight
+Layer (3) blstm Trainable layer: re-read weight
+Layer (4) blstm Trainable layer: re-read weight
+Layer (5) feedforward_identity Trainable layer: re-read weight
+Layer (6) sse 
+Network construction done.
+
+Network summary:
+(0) input [size: 389]
+(1) feedforward_tanh [size: 512, bias: 1.0, weights: 199680]
+(2) feedforward_tanh [size: 512, bias: 1.0, weights: 262656]
+(3) blstm [size: 256, bias: 1.0, weights: 657152]
+(4) blstm [size: 256, bias: 1.0, weights: 395008]
+(5) feedforward_identity [size: 259, bias: 1.0, weights: 66563]
+(6) sse [size: 259]
+Total weights: 1581059
+
+
+Creating the optimizer... 
+ Optimization Techinique: SGD + AdaGrad (with LR 0.001)
+done.
+Optimizer type: Steepest descent with momentum
+Max training epochs:       100
+Max epochs until new best: 10
+Validation error every:    1
+Test error every:          1
+Learning rate:             8e-06
+Momentum:                  0
+
+Restoring state from 'epoch047.autosave'... done.
+
+Starting training...
+Print error per sequence / per timestep
+ Epoch | Duration |           Training error  |           Validation error|           Test error      |New best 
+-------+----------+---------------------------+---------------------------+---------------------------+---------
+     1 |   5864.8 |    121759.773 /   100.186 |    121385.078 /    98.239 |                           |  yes SGD
+     2 |   7725.5 |    116926.297 /    96.209 |    119866.227 /    97.010 |                           |  yes SGD
+     3 |   2253.2 |    115864.383 /    95.335 |    119051.711 /    96.351 |                           |  yes SGD
+     4 |   6494.9 |    115217.688 /    94.803 |    118609.102 /    95.993 |                           |  yes SGD
+     5 |  10787.4 |    114833.695 /    94.487 |    118314.242 /    95.754 |                           |  yes SGD
+     6 |   5858.6 |    114510.789 /    94.221 |    118062.719 /    95.550 |                           |  yes SGD
+     7 |   6696.7 |    114281.516 /    94.032 |    117664.820 /    95.228 |                           |  yes SGD
+     8 |   6300.8 |    114095.008 /    93.879 |    117653.602 /    95.219 |                           |  yes SGD
+     9 |   6589.2 |    113966.070 /    93.773 |    117489.062 /    95.086 |                           |  yes SGD
+    10 |   6580.6 |    113829.305 /    93.660 |    117494.891 /    95.091 |                           |  no  SGD
+    11 |   6591.1 |    113769.195 /    93.611 |    117410.414 /    95.023 |                           |  yes SGD
+    12 |   6592.3 |    113680.648 /    93.538 |    117414.297 /    95.026 |                           |  no  SGD
+    13 |   6645.3 |    113586.266 /    93.460 |    117021.156 /    94.708 |                           |  yes SGD
+    14 |   6591.4 |    113506.906 /    93.395 |    117185.953 /    94.841 |                           |  no  SGD
+    15 |   6593.0 |    113444.594 /    93.344 |    117216.414 /    94.866 |                           |  no  SGD
+    16 |   6591.2 |    113363.547 /    93.277 |    116960.062 /    94.658 |                           |  yes SGD
+    17 |   6601.0 |    113324.914 /    93.245 |    116928.727 /    94.633 |                           |  yes SGD
+    18 |   6604.2 |    113310.180 /    93.233 |    116960.414 /    94.658 |                           |  no  SGD
+    19 |   6575.2 |    113326.227 /    93.246 |    117017.273 /    94.704 |                           |  no  SGD
+    20 |   6578.9 |    113297.883 /    93.223 |    116984.266 /    94.678 |                           |  no  SGD
+    21 |   6574.2 |    113258.859 /    93.191 |    116971.453 /    94.667 |                           |  no  SGD
+    22 |   6576.8 |    113169.953 /    93.118 |    116881.430 /    94.594 |                           |  yes SGD
+    23 |   6574.8 |    113169.352 /    93.117 |    116887.836 /    94.600 |                           |  no  SGD
+    24 |   6576.9 |    113167.352 /    93.116 |    116919.375 /    94.625 |                           |  no  SGD
+    25 |   6578.9 |    113118.172 /    93.075 |    116816.508 /    94.542 |                           |  yes SGD
+    26 |   6577.1 |    113080.234 /    93.044 |    116940.812 /    94.642 |                           |  no  SGD
+    27 |   6599.4 |    113056.953 /    93.025 |    116979.523 /    94.674 |                           |  no  SGD
+    28 |   6601.5 |    112971.953 /    92.955 |    116839.812 /    94.561 |                           |  no  SGD
+    29 |   6593.3 |    112926.164 /    92.917 |    116706.773 /    94.453 |                           |  yes SGD
+    30 |   6583.1 |    112931.367 /    92.921 |    116548.016 /    94.325 |                           |  yes SGD
+    31 |   6590.0 |    112919.664 /    92.912 |    116745.367 /    94.484 |                           |  no  SGD
+    32 |   6591.8 |    112888.297 /    92.886 |    116659.453 /    94.415 |                           |  no  SGD
+    33 |   6589.8 |    112928.914 /    92.919 |    116686.609 /    94.437 |                           |  no  SGD
+    34 |   6588.2 |    112863.805 /    92.866 |    117018.383 /    94.705 |                           |  no  SGD
+    35 |   6576.3 |    112862.578 /    92.865 |    116671.289 /    94.424 |                           |  no  SGD
+    36 |   6598.5 |    112860.680 /    92.863 |    116724.945 /    94.468 |                           |  no  SGD
+    37 |   6582.2 |    112825.344 /    92.834 |    116526.211 /    94.307 |                           |  yes SGD
+    38 |   6596.5 |    112775.383 /    92.793 |    116783.227 /    94.515 |                           |  no  SGD
+    39 |   6596.6 |    112772.039 /    92.790 |    116787.336 /    94.518 |                           |  no  SGD
+    40 |   6574.5 |    112785.258 /    92.801 |    116691.578 /    94.441 |                           |  no  SGD
+    41 |   6587.0 |    112718.805 /    92.747 |    116519.781 /    94.302 |                           |  yes SGD
+    42 |   6596.8 |    112683.203 /    92.717 |    116598.055 /    94.365 |                           |  no  SGD
+    43 |   6592.8 |    112684.633 /    92.718 |    116736.039 /    94.477 |                           |  no  SGD
+    44 |   6589.5 |    112690.070 /    92.723 |    116471.906 /    94.263 |                           |  yes SGD
+    45 |   6611.5 |    112703.961 /    92.734 |    116638.023 /    94.397 |                           |  no  SGD
+    46 |   6588.6 |    112641.484 /    92.683 |    116585.234 /    94.355 |                           |  no  SGD
+    47 |   6592.7 |    112628.984 /    92.673 |    116434.945 /    94.233 |                           |  yes SGD
+    48 |   2724.0 |    113831.508 /    93.662 |    116774.594 /    94.508 |                           |  no  SGD
+    49 |   6325.9 |    113121.977 /    93.078 |    116708.281 /    94.454 |                           |  no  SGD
+    50 |   3068.7 |    113020.055 /    92.994 |    116680.086 /    94.431 |                           |  no  SGD
+    51 |   3500.7 |    112931.227 /    92.921 |    116798.406 /    94.527 |                           |  no  SGD
+    52 |   2785.2 |    112830.273 /    92.838 |    116352.250 /    94.166 |                           |  yes SGD
+    53 |   2975.6 |    112733.781 /    92.759 |    116473.336 /    94.264 |                           |  no  SGD
+    54 |   3541.3 |    112683.250 /    92.717 |    116685.031 /    94.435 |                           |  no  SGD
+    55 |   2760.2 |    112626.945 /    92.671 |    116458.344 /    94.252 |                           |  no  SGD
+    56 |   3554.4 |    112622.750 /    92.668 |    116384.766 /    94.192 |                           |  no  SGD
+    57 |   4327.1 |    112623.445 /    92.668 |    116498.047 /    94.284 |                           |  no  SGD
+    58 |   3165.2 |    112600.852 /    92.650 |    116507.125 /    94.291 |                           |  no  SGD
+    59 |   2643.1 |    112611.414 /    92.658 |    116522.016 /    94.304 |                           |  no  SGD
+    60 |   2267.5 |    112590.117 /    92.641 |    116501.680 /    94.287 |                           |  no  SGD
+    61 |   2260.3 |    112509.953 /    92.575 |    116482.602 /    94.272 |                           |  no  SGD
+    62 |   2265.9 |    112488.062 /    92.557 |    116465.500 /    94.258 |                           |  no  To ADAGRAD
+    63 |   2267.4 |    111842.516 /    92.026 |    116100.719 /    93.963 |                           |  yes ADAGRAD
+    64 |   2395.6 |    111735.109 /    91.937 |    116062.047 /    93.931 |                           |  yes ADAGRAD
+    65 |   3173.4 |    111693.531 /    91.903 |    116040.797 /    93.914 |                           |  yes ADAGRAD
+    66 |   4395.3 |    111667.141 /    91.881 |    116028.164 /    93.904 |                           |  yes ADAGRAD
+    67 |   4174.5 |    111647.508 /    91.865 |    116017.492 /    93.895 |                           |  yes ADAGRAD
+    68 |   4414.5 |    111631.875 /    91.852 |    116005.578 /    93.886 |                           |  yes ADAGRAD
+    69 |   4325.8 |    111618.492 /    91.841 |    115996.227 /    93.878 |                           |  yes ADAGRAD
+    70 |   4020.4 |    111607.164 /    91.832 |    115995.219 /    93.877 |                           |  yes ADAGRAD
+    71 |   2235.6 |    111597.656 /    91.824 |    115988.148 /    93.871 |                           |  yes ADAGRAD
+    72 |   2382.8 |    111588.641 /    91.817 |    115985.211 /    93.869 |                           |  yes ADAGRAD
+    73 |   3323.1 |    111580.867 /    91.810 |    115980.117 /    93.865 |                           |  yes ADAGRAD
+    74 |   2248.3 |    111574.336 /    91.805 |    115974.422 /    93.860 |                           |  yes ADAGRAD
+    75 |   2496.6 |    111567.688 /    91.799 |    115964.492 /    93.852 |                           |  yes ADAGRAD
+    76 |   2755.8 |    111560.773 /    91.794 |    115968.578 /    93.856 |                           |  no  ADAGRAD
+    77 |   4221.3 |    111556.062 /    91.790 |    115969.750 /    93.857 |                           |  no  ADAGRAD
+    78 |   8197.5 |    111551.055 /    91.786 |    115966.883 /    93.854 |                           |  no  ADAGRAD
+    79 | 

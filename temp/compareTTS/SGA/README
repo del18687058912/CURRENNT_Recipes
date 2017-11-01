@@ -1,0 +1,7 @@
+Notes:
+
+1. Please first train the SAR model, then RGA
+2. Please read the CURRENNT_SCRIPTS/EXAMPLE/MODEL_GAN and check the configuration for network.jsn
+2. If you are familar with CURRENNT_SCRIPTS/CONFIGPOOLS/config_GAN.pm, please modify and use it as the script for generation.
+   Or, use the one enclosed ./config_gen.pm, please modify @sysdir, $currennt, @testdatadir
+4. Pay special attention to tapLayer in config_gen.pm, because the output layer of the generator is in the middle of the network.jsn

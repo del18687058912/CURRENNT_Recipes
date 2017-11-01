@@ -1,0 +1,5 @@
+
+Please be familar with the CURRENNT_SCRIPTS/MODEL_WAVENET before using these recipes
+Note:
+1. To train the WAVENET, I first use Adam (0.0003) and train it for several epochs
+2. After than I trained the network using Adam (0.0001). 

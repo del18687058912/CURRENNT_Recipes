@@ -1,0 +1,93 @@
+Configuration Infor:
+	Training Mode: Started in hybrid online/batch
+		Mini-batches (parallel 15 sequences each) will be shuffled during training.
+		Writting network  to 'trained_network.jsn'.
+	Validation every 1 epochs.
+
+	Training epoch number maximum: 5
+
+	Training epoch number no lowest validation error: 5
+	Autosave after EVERY EPOCH enabled.
+	Utilizing the GPU on 15 sequences in parallel.
+
+	Initialization method:
+		Normal dist. with mean, std:00.1
+		Random seed: 3839368179
+
+Using device #0 (Tesla P100-PCIE-16GB)
+Reading network from './network.jsn'... done.
+
+Loading training set '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc1' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc2' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc3' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc4' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc5' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc6' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc7' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc8' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc9' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc10' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc11' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc12' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc13' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc14' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc15' ...
+using cache file: /tmp/xwtemp/d7c7-53fd-25a6-5d79
+... done.
+Loaded fraction:  100%
+Sequences:        29016
+Sequence lengths: 219..3920
+Total timesteps:  35264368
+
+Loading validation set '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_VAL/data.nc1' ...
+using cache file: /tmp/xwtemp/2603-9eca-c5f4-56c8
+... done.
+Loaded fraction:  100%
+Sequences:        500
+Sequence lengths: 451..3101
+Total timesteps:  617803
+
+Creating the neural network...
+Layer (0) [ input ]  input 
+Layer (1) [ forward_1 ]  feedforward_tanh Trainable layer: initialize weight
+Layer (2) [ forward_2 ]  feedforward_tanh Trainable layer: initialize weight
+Layer (3) [ blstm_level_1 ]  blstm Trainable layer: initialize weight
+Layer (4) [ blstm_level_2 ]  blstm Trainable layer: initialize weight
+Layer (5) [ output ]  feedforward_identity Trainable layer: initialize weight
+Layer (6) [ postoutput ]  mdn 
+	MDN mixture: trainable:  0, tieVariance 0, #parameter 0
+	MDN mixture: trainable:  1, tieVariance 0, #parameter 	358     , AR order and direction: 1 0
+	MDN mixture: trainable:  1, tieVariance 0, #parameter 	6       , AR order and direction: 1 0
+	MDN sigmoid (conVal [0])
+	MDN mixture: trainable:  0, tieVariance 0, #parameter 0
+	MDN layer distribution parameter number: 521
+
+	ARRMDN para initialized as Gaussian noise (var: 0.010000)
+	MDN trainable mixture is used.	The number of trainable parameter is 364
+
+Network construction done.
+
+Network summary:
+     Name		Type
+(0) input		input [size: 389]
+(1) forward_1		feedforward_tanh [size: 512, bias: 1.0, weights: 199680]
+(2) forward_2		feedforward_tanh [size: 512, bias: 1.0, weights: 262656]
+(3) blstm_level_1		blstm [size: 256, bias: 1.0, weights: 657152]
+(4) blstm_level_2		blstm [size: 256, bias: 1.0, weights: 395008]
+(5) output		feedforward_identity [size: 521, bias: 1.0, weights: 133897]
+(6) postoutput		mdn [size: 259, weights: 364]
+Total weights: 1648757
+
+
+Re-initialize the layer before MDN 	using global zero mean and uni variance
+Creating the optimizer... 
+Optimization: plain SGD 
+Max training epochs:       5
+Max epochs until new best: 5
+Validation error every:    1
+Test error every:          1
+Learning rate:             1e-09
+Momentum:                  0
+Model Parameter:           ../../RMDN/002/trained_network.jsn
+
+Read NN parameter from ../../RMDN/002/trained_network.jsn
+
+	(1) read weight for layer forward_1
+	(2) read weight for layer forward_2
+	(3) read weight for layer blstm_level_1
+	(4) read weight for layer blstm_level_2
+	(5) read weight for layer output	done
+
+Starting training...
+Print error per sequence / per timestep / secondary error (optional)
+ Epoch | Duration |           Training error         |           Validation error       |           Test error             |New best 
+-------+----------+----------------------------------+----------------------------------+----------------------------------+---------
+     1 |   1395.0 |  379497.469 /   312.256/    0.000|  387813.438 /   313.865/    0.000|                                  |  yes SGD
+     2 |   1474.4 |  378909.500 /   311.772/    0.000|  387313.312 /   313.460/    0.000|                                  |  yes SGD
+     3 | 

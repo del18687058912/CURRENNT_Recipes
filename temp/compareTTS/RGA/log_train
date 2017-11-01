@@ -1,0 +1,239 @@
+Configuration Infor:
+	Training Mode: Started in hybrid online/batch
+		Sequences shuffled within and across mini-batches.
+
+		Writting network  to 'trained_network.jsn'.
+	Validation every 1 epochs.
+
+	Training epoch number maximum: 20
+
+	Training epoch number no lowest validation error: 50
+	Autosave after EVERY EPOCH enabled.
+	Utilizing the GPU on 1 sequences in parallel.
+
+	Initialization method:
+		Uniform dist. with layer-wise range
+
+		Random seed: 3839368179
+
+Using device #1 (Tesla K40c)
+Reading network from './network.jsn'... done.
+
+Loading training set '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc1' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc2' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc3' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc4' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc5' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc6' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc7' ...done.
+Loaded fraction:  100%
+Sequences:        14000
+Sequence lengths: 219..3920
+Total timesteps:  17003163
+
+Loading validation set '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_VAL/data.nc1' ...done.
+Loaded fraction:  100%
+Sequences:        500
+Sequence lengths: 451..3101
+Total timesteps:  617803
+
+Creating the neural network...
+Layer (0) [ input ]  input 
+Layer (1) [ forward_1 ]  feedforward_tanh Trainable layer: initialize weight
+Layer (2) [ forward_2 ]  feedforward_tanh Trainable layer: initialize weight
+Layer (3) [ blstm_level_1 ]  blstm Trainable layer: initialize weight
+Layer (4) [ blstm_level_2 ]  blstm Trainable layer: initialize weight
+Layer (5) [ output ]  feedforward_identity Trainable layer: initialize weight
+Layer (6) [ skipInit ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): output,
+
+Layer (7) [ addnoise ]  operator Trainable layer: initialize weight	Operator layer: 
+	inject noise: dim 100, u[-1.000000, 1.000000]
+	repeat the same noise across frames
+
+Layer (8) [ res_gen_1 ]  feedforward_tanh Trainable layer: initialize weight
+Layer (9) [ res_gen_2 ]  cnn Trainable layer: initialize weight
+	# CNN weights: 196864 
+	# CNN filter width 256*1, total width 768 
+	# Filter tap interval (1 default) 64*2_64*4_64*32_64*128 
+	# 1-D convolution
+
+Layer (10) [ res_gen_3 ]  feedforward_tanh Trainable layer: initialize weight
+Layer (11) [ res_gen_skipinit1 ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): res_gen_3,
+
+Layer (12) [ res_gen_skipadd1 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): skipInit, res_gen_skipinit1,
+
+Layer (13) [ res_gen_4 ]  cnn Trainable layer: initialize weight
+	# CNN weights: 199168 
+	# CNN filter width 256*1, total width 768 
+	# Filter tap interval (1 default) 64*2_64*4_64*32_64*128 
+	# 1-D convolution
+
+Layer (14) [ res_gen_5 ]  feedforward_tanh Trainable layer: initialize weight
+Layer (15) [ res_gen_skipinit2 ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): res_gen_5,
+
+Layer (16) [ res_gen_skipadd2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): skipInit, res_gen_skipinit2,
+
+Layer (17) [ res_gen_6 ]  cnn Trainable layer: initialize weight
+	# CNN weights: 199168 
+	# CNN filter width 256*1, total width 768 
+	# Filter tap interval (1 default) 64*2_64*4_64*32_64*128 
+	# 1-D convolution
+
+Layer (18) [ res_gen_7 ]  cnn Trainable layer: initialize weight
+	# CNN weights: 163968 
+	# CNN filter width 128*2, total width 640 
+	# Filter tap interval (1 default) 64*2_64*4 
+	# 1-D convolution
+
+Layer (19) [ res_gen_8 ]  feedforward_tanh Trainable layer: initialize weight
+Layer (20) [ res_gen_out ]  feedforward_identity Trainable layer: initialize weight
+Layer (21) [ res_gen_skipinit3 ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): res_gen_out,
+
+Layer (22) [ skipAdd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): skipInit, res_gen_skipinit3,
+
+Layer (23) [ middle ]  middleoutput 
+	GAN configure: ganRatio 0.80, ganMag 10.00
+
+Layer (24) [ ope ]  operator Trainable layer: initialize weight	Operator layer: 
+	input/output configuration: 5*0_5*0.001_5*0.01_5*0.05_40*1_199*0
+
+Layer (25) [ forward_6 ]  feedforward_tanh Trainable layer: initialize weight
+Layer (26) [ cnn1 ]  cnn Trainable layer: initialize weight
+	# CNN weights: 393472 
+	# CNN filter width 256*1, total width 768 
+	# Filter tap interval (1 default) 64*2_64*4_64*32_64*128 
+	# 1-D convolution
+
+Layer (27) [ forward_8 ]  feedforward_tanh Trainable layer: initialize weight
+Layer (28) [ cnn2 ]  cnn Trainable layer: initialize weight
+	# CNN weights: 196864 
+	# CNN filter width 256*1, total width 768 
+	# Filter tap interval (1 default) 64*2_64*4_64*32_64*128 
+	# 1-D convolution
+
+Layer (29) [ forward_9 ]  feedforward_tanh Trainable layer: initialize weight
+Layer (30) [ cnn3 ]  cnn Trainable layer: initialize weight
+	# CNN weights: 49216 
+	# CNN filter width 64*1, total width 192 
+	# Filter tap interval (1 default) 32*2_32*16 
+	# 1-D convolution
+
+Layer (31) [ forward_10 ]  feedforward_identity Trainable layer: initialize weight
+Layer (32) [ postoutput ]  mdn 
+	MDN sigmoid
+	MDN layer distribution parameter number: 1
+
+Network construction done.
+
+Network summary:
+     Name		Type
+(0) input		input [size: 389]
+(1) forward_1		feedforward_tanh [size: 512, bias: 1.0, weights: 199680]
+(2) forward_2		feedforward_tanh [size: 512, bias: 1.0, weights: 262656]
+(3) blstm_level_1		blstm [size: 256, bias: 1.0, weights: 657152]
+(4) blstm_level_2		blstm [size: 256, bias: 1.0, weights: 395008]
+(5) output		feedforward_identity [size: 259, bias: 1.0, weights: 66563]
+(6) skipInit		skipini [size: 259, bias: 1.0, weights: 0]
+(7) addnoise		operator [size: 359, bias: 1.0, weights: 0]
+(8) res_gen_1		feedforward_tanh [size: 256, bias: 1.0, weights: 92160]
+(9) res_gen_2		cnn [size: 256, bias: 1.0, weights: 196864]
+(10) res_gen_3		feedforward_tanh [size: 259, bias: 1.0, weights: 66563]
+(11) res_gen_skipinit1		skipini [size: 259, bias: 1.0, weights: 0]
+(12) res_gen_skipadd1		skipadd [size: 259, bias: 1.0, weights: 0]
+(13) res_gen_4		cnn [size: 256, bias: 1.0, weights: 199168]
+(14) res_gen_5		feedforward_tanh [size: 259, bias: 1.0, weights: 66563]
+(15) res_gen_skipinit2		skipini [size: 259, bias: 1.0, weights: 0]
+(16) res_gen_skipadd2		skipadd [size: 259, bias: 1.0, weights: 0]
+(17) res_gen_6		cnn [size: 256, bias: 1.0, weights: 199168]
+(18) res_gen_7		cnn [size: 128, bias: 1.0, weights: 163968]
+(19) res_gen_8		feedforward_tanh [size: 259, bias: 1.0, weights: 33411]
+(20) res_gen_out		feedforward_identity [size: 259, bias: 1.0, weights: 67340]
+(21) res_gen_skipinit3		skipini [size: 259, bias: 1.0, weights: 0]
+(22) skipAdd		skipadd [size: 259, bias: 1.0, weights: 0]
+(23) middle		middleoutput [size: 259]
+(24) ope		operator [size: 259, bias: 1.0, weights: 0]
+(25) forward_6		feedforward_tanh [size: 512, bias: 1.0, weights: 133120]
+(26) cnn1		cnn [size: 256, bias: 1.0, weights: 393472]
+(27) forward_8		feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(28) cnn2		cnn [size: 256, bias: 1.0, weights: 196864]
+(29) forward_9		feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(30) cnn3		cnn [size: 64, bias: 1.0, weights: 49216]
+(31) forward_10		feedforward_identity [size: 1, bias: 1.0, weights: 65]
+(32) postoutput		mdn [size: 1]
+Total weights: 3570585
+
+MDN initialization 	using global zero mean and uni variance
+Creating the optimizer... 
+ Optimization Techinique: AdaGrad
+Max training epochs:       20
+Max epochs until new best: 50
+Validation error every:    1
+Test error every:          1
+Learning rate:             0.005
+Momentum:                  0
+Model Parameter:           /work/smg/wang/PROJ/WE/DNNAM/MODEL/F009/RNN/001/trained_network.jsn
+
+Read NN parameter from /work/smg/wang/PROJ/WE/DNNAM/MODEL/F009/RNN/001/trained_network.jsn
+
+	(1) read weight for layer forward_1
+	(2) read weight for layer forward_2
+	(3) read weight for layer blstm_level_1
+	(4) read weight for layer blstm_level_2
+	(5) read weight for layer output
+	(6) not read weight for layer skipInit
+	(7) not read weight for layer addnoise
+	(8) not read weight for layer res_gen_1
+	(9) not read weight for layer res_gen_2
+	(10) not read weight for layer res_gen_3
+	(11) not read weight for layer res_gen_skipinit1
+	(12) not read weight for layer res_gen_skipadd1
+	(13) not read weight for layer res_gen_4
+	(14) not read weight for layer res_gen_5
+	(15) not read weight for layer res_gen_skipinit2
+	(16) not read weight for layer res_gen_skipadd2
+	(17) not read weight for layer res_gen_6
+	(18) not read weight for layer res_gen_7
+	(19) not read weight for layer res_gen_8
+	(20) not read weight for layer res_gen_out
+	(21) not read weight for layer res_gen_skipinit3
+	(22) not read weight for layer skipAdd
+	(24) not read weight for layer ope
+	(25) not read weight for layer forward_6
+	(26) not read weight for layer cnn1
+	(27) not read weight for layer forward_8
+	(28) not read weight for layer cnn2
+	(29) not read weight for layer forward_9
+	(30) not read weight for layer cnn3
+	(31) not read weight for layer forward_10	done
+
+Starting training...
+Print error per sequence / per timestep / secondary error (optional)
+ Epoch | Duration |           Training error         |           Validation error       |           Test error             |New best 
+-------+----------+----------------------------------+----------------------------------+----------------------------------+---------
+     1 |   6837.1 |  119997.289 /    98.803/    0.562|  133266.625 /   107.855/    0.416|                                  |  yes ADAGRAD
+     2 |   6780.1 |  127120.453 /   104.668/    0.414|  130996.562 /   106.018/    0.411|                                  |  yes ADAGRAD
+     3 |   6778.5 |  126897.859 /   104.485/    0.457|  131009.164 /   106.028/    0.437|                                  |  no  ADAGRAD
+     4 |   6777.7 |  126709.125 /   104.329/    0.445|  130699.141 /   105.777/    0.377|                                  |  yes ADAGRAD
+     5 |   6777.4 |  125893.062 /   103.657/    0.489|  130788.531 /   105.850/    0.420|                                  |  no  ADAGRAD
+     6 |   6777.1 |  126055.938 /   103.791/    0.498|  130947.609 /   105.978/    0.421|                                  |  no  ADAGRAD
+     7 |   6787.4 |  125796.508 /   103.578/    0.542|  131808.688 /   106.675/    0.484|                                  |  no  ADAGRAD
+     8 |   6780.3 |  126030.930 /   103.771/    0.546|  130283.953 /   105.441/    0.542|                                  |  yes ADAGRAD
+     9 |   6806.6 |  125898.078 /   103.661/    0.541|  131183.500 /   106.169/    0.567|                                  |  no  ADAGRAD
+    10 |   6786.8 |  126278.570 /   103.975/    0.519|  131138.062 /   106.133/    0.550|                                  |  no  ADAGRAD
+    11 |   6797.8 |  125992.078 /   103.739/    0.555|  130970.070 /   105.997/    0.555|                                  |  no  ADAGRAD
+    12 |   6783.8 |  126001.945 /   103.747/    0.564|  131206.516 /   106.188/    0.598|                                  |  no  ADAGRAD
+    13 |   6793.2 |  126037.664 /   103.776/    0.570|  130757.984 /   105.825/    0.553|                                  |  no  ADAGRAD
+    14 |   6784.5 |  126195.258 /   103.906/    0.569|  130957.477 /   105.986/    0.563|                                  |  no  ADAGRAD
+    15 |   6828.0 |  126070.344 /   103.803/    0.575|  132569.422 /   107.291/    0.535|                                  |  no  ADAGRAD
+    16 |   6808.4 |  126098.930 /   103.827/    0.580|  131218.172 /   106.197/    0.573|                                  |  no  ADAGRAD
+    17 |   6795.9 |  126090.289 /   103.820/    0.586|  131287.391 /   106.253/    0.548|                                  |  no  ADAGRAD
+    18 |   6793.6 |  125991.055 /   103.738/    0.583|  131839.844 /   106.701/    0.570|                                  |  no  ADAGRAD
+    19 |   6807.5 |  126144.523 /   103.864/    0.585|  131244.375 /   106.219/    0.563|                                  |  no  ADAGRAD
+    20 |   6779.6 |  125996.195 /   103.742/    0.585|  131175.953 /   106.163/    0.575|                                  |  no  Finished
+
+Maximum number of training epochs reached. Training stopped.
+Lowest validation error: 130283.953125
+
+Storing the trained network in 'trained_network.jsn'... done.
+Removing cache file(s) ...

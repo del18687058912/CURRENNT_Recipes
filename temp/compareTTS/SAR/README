@@ -1,0 +1,7 @@
+Notes:
+
+1. Please first train the RNN model, then RMDN, and finally SAR. This is same procedure as that in CURRENNT_scripts/EXAMPLE/MODEL_ARRMDN
+2. If you are familar with CURRENNT_SCRIPTS/CONFIGPOOLS/config_ARRMDN_3.pm, please modify and use it as the script for generation
+3. Or, use the one enclosed ./config_gen.pm
+   Please modify @sysdir, $currennt, @testdatadir
+4. The same script can be used to generate features from RMDN   

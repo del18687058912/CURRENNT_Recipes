@@ -1,0 +1,1667 @@
+Configuration Infor:
+	Training Mode: Started in hybrid online/batch
+		Sequences shuffled within and across mini-batches.
+
+		Writting network  to 'trained_network.jsn'.
+	Validation every 1 epochs.
+
+	Training epoch number maximum: 100
+
+	Training epoch number no lowest validation error: 100
+	Autosave after EVERY EPOCH enabled.
+	Utilizing the GPU on 1 sequences in parallel.
+
+	Initialization method:
+		Uniform dist. with layer-wise range
+
+		Random seed: 1811626773
+
+Using device #0 (Tesla P100-PCIE-16GB)
+Reading network from 'epoch022.autosave'... done.
+
+Loading training set '/work/smg/wang/PROJ/NNWAV/WAVNET/DATA/F009/WAV16K10BIT/DATA_TRAIN/data.nc1' '/work/smg/wang/PROJ/NNWAV/WAVNET/DATA/F009/WAV16K10BIT/DATA_TRAIN/data.nc2' '/work/smg/wang/PROJ/NNWAV/WAVNET/DATA/F009/WAV16K10BIT/DATA_TRAIN/data.nc3' ...
+using cache file: /tmp/xwtemp/7d61-44a7-2b6c-66db
+... done.
+Loaded fraction:  100%
+Sequences:        87471
+Sequence lengths: 5014..14998
+Total timesteps:  874514832
+
+Loading validation set '/work/smg/wang/PROJ/NNWAV/WAVNET/DATA/F009/WAV16K10BIT/DATA_VAL/data.nc1' ...
+using cache file: /tmp/xwtemp/770f-3663-d71d-2604
+... done.
+Loaded fraction:  100%
+Sequences:        4936
+Sequence lengths: 5046..14998
+Total timesteps:  49402968
+
+Creating the neural network...
+Layer (0) [ input ]  input 
+Layer (1) [ exInputL1 ]  externalloader 
+	Layer resolution 80 Trainable layer: initialize weight
+	Read MV from /work/smg/wang/DATA/speech/F009A/wav/acous5msQF0/data_mgcf0.mv.bin
+Layer (2) [ exInputSkip ]  skipini 
+	Layer resolution 80 Trainable layer: initialize weight
+	Receive input from layer(s): exInputL1,
+
+Layer (3) [ exInputL2 ]  blstm 
+	Layer resolution 80 
+	Trainable layer: re-read weight
+Layer (4) [ exInputL3 ]  cnn 
+	Layer resolution 80 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 11580 (weights in Network summary may be inaccurate)
+	CNN winwidth:    60*1
+	CNN winDilution: 60*1
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (5) [ exInputAdd ]  skipcat 
+	Layer resolution 80 Trainable layer: initialize weight
+	Receive input from layer(s): exInputL3 [0 60], exInputSkip [60 61],
+
+Layer (6) [ feedbackBottom ]  feedback Trainable layer: initialize weight
+Layer (7) [ causalEmbedding ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (8) [ causalSkip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): causalEmbedding,
+
+Layer (9) [ diluteB1L1cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*1
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (10) [ diluteB1L1wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (11) [ diluteB1L1out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (12) [ diluteB1L1skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): causalSkip, diluteB1L1out,
+
+Layer (13) [ diluteB1L1temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L1skipadd,
+
+Layer (14) [ diluteB1L1skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (15) [ diluteB1L1skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L1skipouttrans,
+
+Layer (16) [ diluteB1L1temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L1temp,
+
+Layer (17) [ diluteB1L2cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*2
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (18) [ diluteB1L2wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (19) [ diluteB1L2out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (20) [ diluteB1L2skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L1temp2, diluteB1L2out,
+
+Layer (21) [ diluteB1L2temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L2skipadd,
+
+Layer (22) [ diluteB1L2skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (23) [ diluteB1L2skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L2skipouttrans,
+
+Layer (24) [ diluteB1L2temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L2temp,
+
+Layer (25) [ diluteB1L3cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*4
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (26) [ diluteB1L3wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (27) [ diluteB1L3out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (28) [ diluteB1L3skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L2temp2, diluteB1L3out,
+
+Layer (29) [ diluteB1L3temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L3skipadd,
+
+Layer (30) [ diluteB1L3skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (31) [ diluteB1L3skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L3skipouttrans,
+
+Layer (32) [ diluteB1L3temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L3temp,
+
+Layer (33) [ diluteB1L4cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*8
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (34) [ diluteB1L4wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (35) [ diluteB1L4out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (36) [ diluteB1L4skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L3temp2, diluteB1L4out,
+
+Layer (37) [ diluteB1L4temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L4skipadd,
+
+Layer (38) [ diluteB1L4skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (39) [ diluteB1L4skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L4skipouttrans,
+
+Layer (40) [ diluteB1L4temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L4temp,
+
+Layer (41) [ diluteB1L5cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*16
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (42) [ diluteB1L5wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (43) [ diluteB1L5out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (44) [ diluteB1L5skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L4temp2, diluteB1L5out,
+
+Layer (45) [ diluteB1L5temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L5skipadd,
+
+Layer (46) [ diluteB1L5skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (47) [ diluteB1L5skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L5skipouttrans,
+
+Layer (48) [ diluteB1L5temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L5temp,
+
+Layer (49) [ diluteB1L6cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*32
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (50) [ diluteB1L6wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (51) [ diluteB1L6out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (52) [ diluteB1L6skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L5temp2, diluteB1L6out,
+
+Layer (53) [ diluteB1L6temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L6skipadd,
+
+Layer (54) [ diluteB1L6skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (55) [ diluteB1L6skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L6skipouttrans,
+
+Layer (56) [ diluteB1L6temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L6temp,
+
+Layer (57) [ diluteB1L7cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*64
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (58) [ diluteB1L7wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (59) [ diluteB1L7out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (60) [ diluteB1L7skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L6temp2, diluteB1L7out,
+
+Layer (61) [ diluteB1L7temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L7skipadd,
+
+Layer (62) [ diluteB1L7skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (63) [ diluteB1L7skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L7skipouttrans,
+
+Layer (64) [ diluteB1L7temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L7temp,
+
+Layer (65) [ diluteB1L8cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*128
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (66) [ diluteB1L8wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (67) [ diluteB1L8out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (68) [ diluteB1L8skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L7temp2, diluteB1L8out,
+
+Layer (69) [ diluteB1L8temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L8skipadd,
+
+Layer (70) [ diluteB1L8skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (71) [ diluteB1L8skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L8skipouttrans,
+
+Layer (72) [ diluteB1L8temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L8temp,
+
+Layer (73) [ diluteB1L9cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*256
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (74) [ diluteB1L9wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (75) [ diluteB1L9out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (76) [ diluteB1L9skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L8temp2, diluteB1L9out,
+
+Layer (77) [ diluteB1L9temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L9skipadd,
+
+Layer (78) [ diluteB1L9skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (79) [ diluteB1L9skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L9skipouttrans,
+
+Layer (80) [ diluteB1L9temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L9temp,
+
+Layer (81) [ diluteB1L10cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*256
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (82) [ diluteB1L10wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (83) [ diluteB1L10out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (84) [ diluteB1L10skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L9temp2, diluteB1L10out,
+
+Layer (85) [ diluteB1L10temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L10skipadd,
+
+Layer (86) [ diluteB1L10skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (87) [ diluteB1L10skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L10skipouttrans,
+
+Layer (88) [ diluteB1L10temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L10temp,
+
+Layer (89) [ diluteB2L1cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*1
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (90) [ diluteB2L1wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (91) [ diluteB2L1out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (92) [ diluteB2L1skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L10temp2, diluteB2L1out,
+
+Layer (93) [ diluteB2L1temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L1skipadd,
+
+Layer (94) [ diluteB2L1skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (95) [ diluteB2L1skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L1skipouttrans,
+
+Layer (96) [ diluteB2L1temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L1temp,
+
+Layer (97) [ diluteB2L2cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*2
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (98) [ diluteB2L2wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (99) [ diluteB2L2out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (100) [ diluteB2L2skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L1temp2, diluteB2L2out,
+
+Layer (101) [ diluteB2L2temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L2skipadd,
+
+Layer (102) [ diluteB2L2skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (103) [ diluteB2L2skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L2skipouttrans,
+
+Layer (104) [ diluteB2L2temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L2temp,
+
+Layer (105) [ diluteB2L3cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*4
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (106) [ diluteB2L3wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (107) [ diluteB2L3out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (108) [ diluteB2L3skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L2temp2, diluteB2L3out,
+
+Layer (109) [ diluteB2L3temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L3skipadd,
+
+Layer (110) [ diluteB2L3skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (111) [ diluteB2L3skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L3skipouttrans,
+
+Layer (112) [ diluteB2L3temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L3temp,
+
+Layer (113) [ diluteB2L4cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*8
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (114) [ diluteB2L4wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (115) [ diluteB2L4out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (116) [ diluteB2L4skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L3temp2, diluteB2L4out,
+
+Layer (117) [ diluteB2L4temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L4skipadd,
+
+Layer (118) [ diluteB2L4skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (119) [ diluteB2L4skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L4skipouttrans,
+
+Layer (120) [ diluteB2L4temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L4temp,
+
+Layer (121) [ diluteB2L5cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*16
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (122) [ diluteB2L5wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (123) [ diluteB2L5out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (124) [ diluteB2L5skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L4temp2, diluteB2L5out,
+
+Layer (125) [ diluteB2L5temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L5skipadd,
+
+Layer (126) [ diluteB2L5skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (127) [ diluteB2L5skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L5skipouttrans,
+
+Layer (128) [ diluteB2L5temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L5temp,
+
+Layer (129) [ diluteB2L6cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*32
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (130) [ diluteB2L6wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (131) [ diluteB2L6out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (132) [ diluteB2L6skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L5temp2, diluteB2L6out,
+
+Layer (133) [ diluteB2L6temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L6skipadd,
+
+Layer (134) [ diluteB2L6skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (135) [ diluteB2L6skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L6skipouttrans,
+
+Layer (136) [ diluteB2L6temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L6temp,
+
+Layer (137) [ diluteB2L7cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*64
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (138) [ diluteB2L7wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (139) [ diluteB2L7out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (140) [ diluteB2L7skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L6temp2, diluteB2L7out,
+
+Layer (141) [ diluteB2L7temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L7skipadd,
+
+Layer (142) [ diluteB2L7skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (143) [ diluteB2L7skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L7skipouttrans,
+
+Layer (144) [ diluteB2L7temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L7temp,
+
+Layer (145) [ diluteB2L8cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*128
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (146) [ diluteB2L8wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (147) [ diluteB2L8out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (148) [ diluteB2L8skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L7temp2, diluteB2L8out,
+
+Layer (149) [ diluteB2L8temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L8skipadd,
+
+Layer (150) [ diluteB2L8skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (151) [ diluteB2L8skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L8skipouttrans,
+
+Layer (152) [ diluteB2L8temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L8temp,
+
+Layer (153) [ diluteB2L9cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*256
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (154) [ diluteB2L9wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (155) [ diluteB2L9out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (156) [ diluteB2L9skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L8temp2, diluteB2L9out,
+
+Layer (157) [ diluteB2L9temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L9skipadd,
+
+Layer (158) [ diluteB2L9skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (159) [ diluteB2L9skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L9skipouttrans,
+
+Layer (160) [ diluteB2L9temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L9temp,
+
+Layer (161) [ diluteB2L10cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*256
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (162) [ diluteB2L10wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (163) [ diluteB2L10out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (164) [ diluteB2L10skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L9temp2, diluteB2L10out,
+
+Layer (165) [ diluteB2L10temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L10skipadd,
+
+Layer (166) [ diluteB2L10skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (167) [ diluteB2L10skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L10skipouttrans,
+
+Layer (168) [ diluteB2L10temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L10temp,
+
+Layer (169) [ diluteB3L1cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*1
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (170) [ diluteB3L1wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (171) [ diluteB3L1out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (172) [ diluteB3L1skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB2L10temp2, diluteB3L1out,
+
+Layer (173) [ diluteB3L1temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L1skipadd,
+
+Layer (174) [ diluteB3L1skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (175) [ diluteB3L1skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L1skipouttrans,
+
+Layer (176) [ diluteB3L1temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L1temp,
+
+Layer (177) [ diluteB3L2cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*2
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (178) [ diluteB3L2wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (179) [ diluteB3L2out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (180) [ diluteB3L2skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L1temp2, diluteB3L2out,
+
+Layer (181) [ diluteB3L2temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L2skipadd,
+
+Layer (182) [ diluteB3L2skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (183) [ diluteB3L2skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L2skipouttrans,
+
+Layer (184) [ diluteB3L2temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L2temp,
+
+Layer (185) [ diluteB3L3cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*4
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (186) [ diluteB3L3wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (187) [ diluteB3L3out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (188) [ diluteB3L3skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L2temp2, diluteB3L3out,
+
+Layer (189) [ diluteB3L3temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L3skipadd,
+
+Layer (190) [ diluteB3L3skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (191) [ diluteB3L3skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L3skipouttrans,
+
+Layer (192) [ diluteB3L3temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L3temp,
+
+Layer (193) [ diluteB3L4cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*8
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (194) [ diluteB3L4wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (195) [ diluteB3L4out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (196) [ diluteB3L4skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L3temp2, diluteB3L4out,
+
+Layer (197) [ diluteB3L4temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L4skipadd,
+
+Layer (198) [ diluteB3L4skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (199) [ diluteB3L4skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L4skipouttrans,
+
+Layer (200) [ diluteB3L4temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L4temp,
+
+Layer (201) [ diluteB3L5cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*16
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (202) [ diluteB3L5wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (203) [ diluteB3L5out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (204) [ diluteB3L5skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L4temp2, diluteB3L5out,
+
+Layer (205) [ diluteB3L5temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L5skipadd,
+
+Layer (206) [ diluteB3L5skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (207) [ diluteB3L5skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L5skipouttrans,
+
+Layer (208) [ diluteB3L5temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L5temp,
+
+Layer (209) [ diluteB3L6cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*32
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (210) [ diluteB3L6wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (211) [ diluteB3L6out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (212) [ diluteB3L6skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L5temp2, diluteB3L6out,
+
+Layer (213) [ diluteB3L6temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L6skipadd,
+
+Layer (214) [ diluteB3L6skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (215) [ diluteB3L6skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L6skipouttrans,
+
+Layer (216) [ diluteB3L6temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L6temp,
+
+Layer (217) [ diluteB3L7cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*64
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (218) [ diluteB3L7wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (219) [ diluteB3L7out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (220) [ diluteB3L7skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L6temp2, diluteB3L7out,
+
+Layer (221) [ diluteB3L7temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L7skipadd,
+
+Layer (222) [ diluteB3L7skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (223) [ diluteB3L7skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L7skipouttrans,
+
+Layer (224) [ diluteB3L7temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L7temp,
+
+Layer (225) [ diluteB3L8cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*128
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (226) [ diluteB3L8wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (227) [ diluteB3L8out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (228) [ diluteB3L8skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L7temp2, diluteB3L8out,
+
+Layer (229) [ diluteB3L8temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L8skipadd,
+
+Layer (230) [ diluteB3L8skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (231) [ diluteB3L8skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L8skipouttrans,
+
+Layer (232) [ diluteB3L8temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L8temp,
+
+Layer (233) [ diluteB3L9cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*256
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (234) [ diluteB3L9wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (235) [ diluteB3L9out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (236) [ diluteB3L9skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L8temp2, diluteB3L9out,
+
+Layer (237) [ diluteB3L9temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L9skipadd,
+
+Layer (238) [ diluteB3L9skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (239) [ diluteB3L9skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L9skipouttrans,
+
+Layer (240) [ diluteB3L9temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L9temp,
+
+Layer (241) [ diluteB3L10cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*256
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (242) [ diluteB3L10wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (243) [ diluteB3L10out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (244) [ diluteB3L10skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L9temp2, diluteB3L10out,
+
+Layer (245) [ diluteB3L10temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L10skipadd,
+
+Layer (246) [ diluteB3L10skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (247) [ diluteB3L10skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L10skipouttrans,
+
+Layer (248) [ diluteB3L10temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L10temp,
+
+Layer (249) [ diluteB4L1cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*1
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (250) [ diluteB4L1wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (251) [ diluteB4L1out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (252) [ diluteB4L1skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB3L10temp2, diluteB4L1out,
+
+Layer (253) [ diluteB4L1temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L1skipadd,
+
+Layer (254) [ diluteB4L1skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (255) [ diluteB4L1skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L1skipouttrans,
+
+Layer (256) [ diluteB4L1temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L1temp,
+
+Layer (257) [ diluteB4L2cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*2
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (258) [ diluteB4L2wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (259) [ diluteB4L2out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (260) [ diluteB4L2skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L1temp2, diluteB4L2out,
+
+Layer (261) [ diluteB4L2temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L2skipadd,
+
+Layer (262) [ diluteB4L2skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (263) [ diluteB4L2skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L2skipouttrans,
+
+Layer (264) [ diluteB4L2temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L2temp,
+
+Layer (265) [ diluteB4L3cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*4
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (266) [ diluteB4L3wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (267) [ diluteB4L3out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (268) [ diluteB4L3skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L2temp2, diluteB4L3out,
+
+Layer (269) [ diluteB4L3temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L3skipadd,
+
+Layer (270) [ diluteB4L3skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (271) [ diluteB4L3skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L3skipouttrans,
+
+Layer (272) [ diluteB4L3temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L3temp,
+
+Layer (273) [ diluteB4L4cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*8
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (274) [ diluteB4L4wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (275) [ diluteB4L4out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (276) [ diluteB4L4skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L3temp2, diluteB4L4out,
+
+Layer (277) [ diluteB4L4temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L4skipadd,
+
+Layer (278) [ diluteB4L4skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (279) [ diluteB4L4skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L4skipouttrans,
+
+Layer (280) [ diluteB4L4temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L4temp,
+
+Layer (281) [ diluteB4L5cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*16
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (282) [ diluteB4L5wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (283) [ diluteB4L5out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (284) [ diluteB4L5skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L4temp2, diluteB4L5out,
+
+Layer (285) [ diluteB4L5temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L5skipadd,
+
+Layer (286) [ diluteB4L5skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (287) [ diluteB4L5skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L5skipouttrans,
+
+Layer (288) [ diluteB4L5temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L5temp,
+
+Layer (289) [ diluteB4L6cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*32
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (290) [ diluteB4L6wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (291) [ diluteB4L6out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (292) [ diluteB4L6skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L5temp2, diluteB4L6out,
+
+Layer (293) [ diluteB4L6temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L6skipadd,
+
+Layer (294) [ diluteB4L6skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (295) [ diluteB4L6skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L6skipouttrans,
+
+Layer (296) [ diluteB4L6temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L6temp,
+
+Layer (297) [ diluteB4L7cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*64
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (298) [ diluteB4L7wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (299) [ diluteB4L7out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (300) [ diluteB4L7skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L6temp2, diluteB4L7out,
+
+Layer (301) [ diluteB4L7temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L7skipadd,
+
+Layer (302) [ diluteB4L7skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (303) [ diluteB4L7skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L7skipouttrans,
+
+Layer (304) [ diluteB4L7temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L7temp,
+
+Layer (305) [ diluteB4L8cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*128
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (306) [ diluteB4L8wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (307) [ diluteB4L8out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (308) [ diluteB4L8skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L7temp2, diluteB4L8out,
+
+Layer (309) [ diluteB4L8temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L8skipadd,
+
+Layer (310) [ diluteB4L8skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (311) [ diluteB4L8skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L8skipouttrans,
+
+Layer (312) [ diluteB4L8temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L8temp,
+
+Layer (313) [ diluteB4L9cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*256
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (314) [ diluteB4L9wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (315) [ diluteB4L9out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (316) [ diluteB4L9skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L8temp2, diluteB4L9out,
+
+Layer (317) [ diluteB4L9temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L9skipadd,
+
+Layer (318) [ diluteB4L9skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (319) [ diluteB4L9skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L9skipouttrans,
+
+Layer (320) [ diluteB4L9temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L9temp,
+
+Layer (321) [ diluteB4L10cnn ]  cnn 
+	Trainable layer: re-read weight
+	CNN 1-D convolution
+	CNN trainable weights: 16512 (weights in Network summary may be inaccurate)
+	CNN uses causal filter
+	CNN winwidth:    128*1
+	CNN winDilution: 128*256
+	CNN winHeight:   
+	CNN winStride:   
+
+Layer (322) [ diluteB4L10wavc ]  wavnetc 
+	Trainable layer: re-read weight
+	WavNet core operation: context [61] dim
+
+Layer (323) [ diluteB4L10out ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (324) [ diluteB4L10skipadd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L9temp2, diluteB4L10out,
+
+Layer (325) [ diluteB4L10temp ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L10skipadd,
+
+Layer (326) [ diluteB4L10skipouttrans ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (327) [ diluteB4L10skip ]  skipini Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L10skipouttrans,
+
+Layer (328) [ diluteB4L10temp2 ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB4L10temp,
+
+Layer (329) [ postprocessingAdd ]  skipadd Trainable layer: initialize weight
+	Receive input from layer(s): diluteB1L1skip, diluteB1L2skip, diluteB1L3skip, diluteB1L4skip, diluteB1L5skip, diluteB1L6skip, diluteB1L7skip, diluteB1L8skip, diluteB1L9skip, diluteB1L10skip, diluteB2L1skip, diluteB2L2skip, diluteB2L3skip, diluteB2L4skip, diluteB2L5skip, diluteB2L6skip, diluteB2L7skip, diluteB2L8skip, diluteB2L9skip, diluteB2L10skip, diluteB3L1skip, diluteB3L2skip, diluteB3L3skip, diluteB3L4skip, diluteB3L5skip, diluteB3L6skip, diluteB3L7skip, diluteB3L8skip, diluteB3L9skip, diluteB3L10skip, diluteB4L1skip, diluteB4L2skip, diluteB4L3skip, diluteB4L4skip, diluteB4L5skip, diluteB4L6skip, diluteB4L7skip, diluteB4L8skip, diluteB4L9skip, diluteB4L10skip,
+
+Layer (330) [ postprocessingL1 ]  feedforward_tanh 
+	Trainable layer: re-read weight
+Layer (331) [ postprocessingL2 ]  feedforward_tanh 
+	Trainable layer: re-read weight
+Layer (332) [ output ]  feedforward_identity 
+	Trainable layer: re-read weight
+Layer (333) [ postoutput ]  mdn 
+	Skip reading MV
+	MDN softmax (uvSig [0], uvT [0.500000], genM [0])
+	MDN layer distribution parameter number: 1024
+
+Creating the feedback link:
+	Reading previous layer [0-0] dim
+	From mdn [0-1024]	Look Back []
+
+Wavenet with external input layer exInputAdd
+Network construction done.
+
+Network summary:
+     Name		Type
+(0) input		input [size: 1]
+(1) exInputL1		externalloader [size: 61, bias: 1.0, weights: 0]
+(2) exInputSkip		skipini [size: 61, bias: 1.0, weights: 0]
+(3) exInputL2		blstm [size: 64, bias: 1.0, weights: 24256]
+(4) exInputL3		cnn [size: 60, bias: 1.0, weights: 11580]
+(5) exInputAdd		skipcat [size: 61, bias: 1.0, weights: 0]
+(6) feedbackBottom		feedback [size: 1024, bias: 1.0, weights: 0]
+(7) causalEmbedding		feedforward_identity [size: 64, bias: 1.0, weights: 65600]
+(8) causalSkip		skipini [size: 64, bias: 1.0, weights: 0]
+(9) diluteB1L1cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(10) diluteB1L1wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(11) diluteB1L1out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(12) diluteB1L1skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(13) diluteB1L1temp		skipini [size: 64, bias: 1.0, weights: 0]
+(14) diluteB1L1skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(15) diluteB1L1skip		skipini [size: 256, bias: 1.0, weights: 0]
+(16) diluteB1L1temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(17) diluteB1L2cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(18) diluteB1L2wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(19) diluteB1L2out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(20) diluteB1L2skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(21) diluteB1L2temp		skipini [size: 64, bias: 1.0, weights: 0]
+(22) diluteB1L2skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(23) diluteB1L2skip		skipini [size: 256, bias: 1.0, weights: 0]
+(24) diluteB1L2temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(25) diluteB1L3cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(26) diluteB1L3wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(27) diluteB1L3out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(28) diluteB1L3skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(29) diluteB1L3temp		skipini [size: 64, bias: 1.0, weights: 0]
+(30) diluteB1L3skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(31) diluteB1L3skip		skipini [size: 256, bias: 1.0, weights: 0]
+(32) diluteB1L3temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(33) diluteB1L4cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(34) diluteB1L4wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(35) diluteB1L4out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(36) diluteB1L4skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(37) diluteB1L4temp		skipini [size: 64, bias: 1.0, weights: 0]
+(38) diluteB1L4skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(39) diluteB1L4skip		skipini [size: 256, bias: 1.0, weights: 0]
+(40) diluteB1L4temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(41) diluteB1L5cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(42) diluteB1L5wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(43) diluteB1L5out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(44) diluteB1L5skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(45) diluteB1L5temp		skipini [size: 64, bias: 1.0, weights: 0]
+(46) diluteB1L5skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(47) diluteB1L5skip		skipini [size: 256, bias: 1.0, weights: 0]
+(48) diluteB1L5temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(49) diluteB1L6cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(50) diluteB1L6wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(51) diluteB1L6out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(52) diluteB1L6skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(53) diluteB1L6temp		skipini [size: 64, bias: 1.0, weights: 0]
+(54) diluteB1L6skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(55) diluteB1L6skip		skipini [size: 256, bias: 1.0, weights: 0]
+(56) diluteB1L6temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(57) diluteB1L7cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(58) diluteB1L7wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(59) diluteB1L7out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(60) diluteB1L7skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(61) diluteB1L7temp		skipini [size: 64, bias: 1.0, weights: 0]
+(62) diluteB1L7skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(63) diluteB1L7skip		skipini [size: 256, bias: 1.0, weights: 0]
+(64) diluteB1L7temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(65) diluteB1L8cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(66) diluteB1L8wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(67) diluteB1L8out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(68) diluteB1L8skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(69) diluteB1L8temp		skipini [size: 64, bias: 1.0, weights: 0]
+(70) diluteB1L8skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(71) diluteB1L8skip		skipini [size: 256, bias: 1.0, weights: 0]
+(72) diluteB1L8temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(73) diluteB1L9cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(74) diluteB1L9wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(75) diluteB1L9out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(76) diluteB1L9skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(77) diluteB1L9temp		skipini [size: 64, bias: 1.0, weights: 0]
+(78) diluteB1L9skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(79) diluteB1L9skip		skipini [size: 256, bias: 1.0, weights: 0]
+(80) diluteB1L9temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(81) diluteB1L10cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(82) diluteB1L10wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(83) diluteB1L10out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(84) diluteB1L10skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(85) diluteB1L10temp		skipini [size: 64, bias: 1.0, weights: 0]
+(86) diluteB1L10skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(87) diluteB1L10skip		skipini [size: 256, bias: 1.0, weights: 0]
+(88) diluteB1L10temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(89) diluteB2L1cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(90) diluteB2L1wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(91) diluteB2L1out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(92) diluteB2L1skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(93) diluteB2L1temp		skipini [size: 64, bias: 1.0, weights: 0]
+(94) diluteB2L1skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(95) diluteB2L1skip		skipini [size: 256, bias: 1.0, weights: 0]
+(96) diluteB2L1temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(97) diluteB2L2cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(98) diluteB2L2wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(99) diluteB2L2out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(100) diluteB2L2skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(101) diluteB2L2temp		skipini [size: 64, bias: 1.0, weights: 0]
+(102) diluteB2L2skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(103) diluteB2L2skip		skipini [size: 256, bias: 1.0, weights: 0]
+(104) diluteB2L2temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(105) diluteB2L3cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(106) diluteB2L3wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(107) diluteB2L3out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(108) diluteB2L3skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(109) diluteB2L3temp		skipini [size: 64, bias: 1.0, weights: 0]
+(110) diluteB2L3skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(111) diluteB2L3skip		skipini [size: 256, bias: 1.0, weights: 0]
+(112) diluteB2L3temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(113) diluteB2L4cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(114) diluteB2L4wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(115) diluteB2L4out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(116) diluteB2L4skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(117) diluteB2L4temp		skipini [size: 64, bias: 1.0, weights: 0]
+(118) diluteB2L4skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(119) diluteB2L4skip		skipini [size: 256, bias: 1.0, weights: 0]
+(120) diluteB2L4temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(121) diluteB2L5cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(122) diluteB2L5wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(123) diluteB2L5out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(124) diluteB2L5skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(125) diluteB2L5temp		skipini [size: 64, bias: 1.0, weights: 0]
+(126) diluteB2L5skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(127) diluteB2L5skip		skipini [size: 256, bias: 1.0, weights: 0]
+(128) diluteB2L5temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(129) diluteB2L6cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(130) diluteB2L6wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(131) diluteB2L6out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(132) diluteB2L6skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(133) diluteB2L6temp		skipini [size: 64, bias: 1.0, weights: 0]
+(134) diluteB2L6skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(135) diluteB2L6skip		skipini [size: 256, bias: 1.0, weights: 0]
+(136) diluteB2L6temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(137) diluteB2L7cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(138) diluteB2L7wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(139) diluteB2L7out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(140) diluteB2L7skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(141) diluteB2L7temp		skipini [size: 64, bias: 1.0, weights: 0]
+(142) diluteB2L7skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(143) diluteB2L7skip		skipini [size: 256, bias: 1.0, weights: 0]
+(144) diluteB2L7temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(145) diluteB2L8cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(146) diluteB2L8wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(147) diluteB2L8out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(148) diluteB2L8skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(149) diluteB2L8temp		skipini [size: 64, bias: 1.0, weights: 0]
+(150) diluteB2L8skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(151) diluteB2L8skip		skipini [size: 256, bias: 1.0, weights: 0]
+(152) diluteB2L8temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(153) diluteB2L9cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(154) diluteB2L9wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(155) diluteB2L9out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(156) diluteB2L9skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(157) diluteB2L9temp		skipini [size: 64, bias: 1.0, weights: 0]
+(158) diluteB2L9skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(159) diluteB2L9skip		skipini [size: 256, bias: 1.0, weights: 0]
+(160) diluteB2L9temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(161) diluteB2L10cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(162) diluteB2L10wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(163) diluteB2L10out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(164) diluteB2L10skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(165) diluteB2L10temp		skipini [size: 64, bias: 1.0, weights: 0]
+(166) diluteB2L10skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(167) diluteB2L10skip		skipini [size: 256, bias: 1.0, weights: 0]
+(168) diluteB2L10temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(169) diluteB3L1cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(170) diluteB3L1wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(171) diluteB3L1out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(172) diluteB3L1skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(173) diluteB3L1temp		skipini [size: 64, bias: 1.0, weights: 0]
+(174) diluteB3L1skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(175) diluteB3L1skip		skipini [size: 256, bias: 1.0, weights: 0]
+(176) diluteB3L1temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(177) diluteB3L2cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(178) diluteB3L2wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(179) diluteB3L2out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(180) diluteB3L2skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(181) diluteB3L2temp		skipini [size: 64, bias: 1.0, weights: 0]
+(182) diluteB3L2skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(183) diluteB3L2skip		skipini [size: 256, bias: 1.0, weights: 0]
+(184) diluteB3L2temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(185) diluteB3L3cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(186) diluteB3L3wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(187) diluteB3L3out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(188) diluteB3L3skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(189) diluteB3L3temp		skipini [size: 64, bias: 1.0, weights: 0]
+(190) diluteB3L3skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(191) diluteB3L3skip		skipini [size: 256, bias: 1.0, weights: 0]
+(192) diluteB3L3temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(193) diluteB3L4cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(194) diluteB3L4wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(195) diluteB3L4out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(196) diluteB3L4skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(197) diluteB3L4temp		skipini [size: 64, bias: 1.0, weights: 0]
+(198) diluteB3L4skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(199) diluteB3L4skip		skipini [size: 256, bias: 1.0, weights: 0]
+(200) diluteB3L4temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(201) diluteB3L5cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(202) diluteB3L5wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(203) diluteB3L5out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(204) diluteB3L5skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(205) diluteB3L5temp		skipini [size: 64, bias: 1.0, weights: 0]
+(206) diluteB3L5skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(207) diluteB3L5skip		skipini [size: 256, bias: 1.0, weights: 0]
+(208) diluteB3L5temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(209) diluteB3L6cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(210) diluteB3L6wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(211) diluteB3L6out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(212) diluteB3L6skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(213) diluteB3L6temp		skipini [size: 64, bias: 1.0, weights: 0]
+(214) diluteB3L6skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(215) diluteB3L6skip		skipini [size: 256, bias: 1.0, weights: 0]
+(216) diluteB3L6temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(217) diluteB3L7cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(218) diluteB3L7wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(219) diluteB3L7out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(220) diluteB3L7skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(221) diluteB3L7temp		skipini [size: 64, bias: 1.0, weights: 0]
+(222) diluteB3L7skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(223) diluteB3L7skip		skipini [size: 256, bias: 1.0, weights: 0]
+(224) diluteB3L7temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(225) diluteB3L8cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(226) diluteB3L8wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(227) diluteB3L8out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(228) diluteB3L8skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(229) diluteB3L8temp		skipini [size: 64, bias: 1.0, weights: 0]
+(230) diluteB3L8skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(231) diluteB3L8skip		skipini [size: 256, bias: 1.0, weights: 0]
+(232) diluteB3L8temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(233) diluteB3L9cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(234) diluteB3L9wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(235) diluteB3L9out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(236) diluteB3L9skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(237) diluteB3L9temp		skipini [size: 64, bias: 1.0, weights: 0]
+(238) diluteB3L9skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(239) diluteB3L9skip		skipini [size: 256, bias: 1.0, weights: 0]
+(240) diluteB3L9temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(241) diluteB3L10cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(242) diluteB3L10wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(243) diluteB3L10out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(244) diluteB3L10skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(245) diluteB3L10temp		skipini [size: 64, bias: 1.0, weights: 0]
+(246) diluteB3L10skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(247) diluteB3L10skip		skipini [size: 256, bias: 1.0, weights: 0]
+(248) diluteB3L10temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(249) diluteB4L1cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(250) diluteB4L1wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(251) diluteB4L1out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(252) diluteB4L1skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(253) diluteB4L1temp		skipini [size: 64, bias: 1.0, weights: 0]
+(254) diluteB4L1skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(255) diluteB4L1skip		skipini [size: 256, bias: 1.0, weights: 0]
+(256) diluteB4L1temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(257) diluteB4L2cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(258) diluteB4L2wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(259) diluteB4L2out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(260) diluteB4L2skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(261) diluteB4L2temp		skipini [size: 64, bias: 1.0, weights: 0]
+(262) diluteB4L2skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(263) diluteB4L2skip		skipini [size: 256, bias: 1.0, weights: 0]
+(264) diluteB4L2temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(265) diluteB4L3cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(266) diluteB4L3wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(267) diluteB4L3out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(268) diluteB4L3skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(269) diluteB4L3temp		skipini [size: 64, bias: 1.0, weights: 0]
+(270) diluteB4L3skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(271) diluteB4L3skip		skipini [size: 256, bias: 1.0, weights: 0]
+(272) diluteB4L3temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(273) diluteB4L4cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(274) diluteB4L4wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(275) diluteB4L4out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(276) diluteB4L4skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(277) diluteB4L4temp		skipini [size: 64, bias: 1.0, weights: 0]
+(278) diluteB4L4skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(279) diluteB4L4skip		skipini [size: 256, bias: 1.0, weights: 0]
+(280) diluteB4L4temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(281) diluteB4L5cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(282) diluteB4L5wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(283) diluteB4L5out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(284) diluteB4L5skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(285) diluteB4L5temp		skipini [size: 64, bias: 1.0, weights: 0]
+(286) diluteB4L5skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(287) diluteB4L5skip		skipini [size: 256, bias: 1.0, weights: 0]
+(288) diluteB4L5temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(289) diluteB4L6cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(290) diluteB4L6wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(291) diluteB4L6out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(292) diluteB4L6skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(293) diluteB4L6temp		skipini [size: 64, bias: 1.0, weights: 0]
+(294) diluteB4L6skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(295) diluteB4L6skip		skipini [size: 256, bias: 1.0, weights: 0]
+(296) diluteB4L6temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(297) diluteB4L7cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(298) diluteB4L7wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(299) diluteB4L7out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(300) diluteB4L7skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(301) diluteB4L7temp		skipini [size: 64, bias: 1.0, weights: 0]
+(302) diluteB4L7skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(303) diluteB4L7skip		skipini [size: 256, bias: 1.0, weights: 0]
+(304) diluteB4L7temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(305) diluteB4L8cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(306) diluteB4L8wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(307) diluteB4L8out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(308) diluteB4L8skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(309) diluteB4L8temp		skipini [size: 64, bias: 1.0, weights: 0]
+(310) diluteB4L8skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(311) diluteB4L8skip		skipini [size: 256, bias: 1.0, weights: 0]
+(312) diluteB4L8temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(313) diluteB4L9cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(314) diluteB4L9wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(315) diluteB4L9out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(316) diluteB4L9skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(317) diluteB4L9temp		skipini [size: 64, bias: 1.0, weights: 0]
+(318) diluteB4L9skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(319) diluteB4L9skip		skipini [size: 256, bias: 1.0, weights: 0]
+(320) diluteB4L9temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(321) diluteB4L10cnn		cnn [size: 128, bias: 1.0, weights: 24704]
+(322) diluteB4L10wavc		wavnetc [size: 64, bias: 1.0, weights: 7808]
+(323) diluteB4L10out		feedforward_identity [size: 64, bias: 1.0, weights: 4160]
+(324) diluteB4L10skipadd		skipadd [size: 64, bias: 1.0, weights: 0]
+(325) diluteB4L10temp		skipini [size: 64, bias: 1.0, weights: 0]
+(326) diluteB4L10skipouttrans		feedforward_identity [size: 256, bias: 1.0, weights: 16640]
+(327) diluteB4L10skip		skipini [size: 256, bias: 1.0, weights: 0]
+(328) diluteB4L10temp2		skipadd [size: 64, bias: 1.0, weights: 0]
+(329) postprocessingAdd		skipadd [size: 256, bias: 1.0, weights: 0]
+(330) postprocessingL1		feedforward_tanh [size: 256, bias: 1.0, weights: 65792]
+(331) postprocessingL2		feedforward_tanh [size: 512, bias: 1.0, weights: 131584]
+(332) output		feedforward_identity [size: 1024, bias: 1.0, weights: 525312]
+(333) postoutput		mdn [size: 1]
+Total weights: 2956604
+
+
+Creating the optimizer... 
+ Optimization Techinique: Adam
+Max training epochs:       100
+Max epochs until new best: 100
+Validation error every:    1
+Test error every:          1
+Learning rate:             0.0001
+Momentum:                  0
+
+Restoring state from 'epoch022.autosave'... done.
+
+Starting training...
+Print error per sequence / per timestep / secondary error (optional)
+ Epoch | Duration |           Training error         |           Validation error       |           Test error             |New best 
+-------+----------+----------------------------------+----------------------------------+----------------------------------+---------
+     1 |  17051.9 |   32147.002 /     3.215/    0.000|   29890.385 /     2.986/    0.000|                                  |  yes ADAM
+     2 |  17046.9 |   29210.092 /     2.922/    0.000|   28597.098 /     2.857/    0.000|                                  |  yes ADAM
+     3 |  17027.0 |   28316.666 /     2.832/    0.000|   27929.941 /     2.791/    0.000|                                  |  yes ADAM
+     4 |  17022.3 |   27668.582 /     2.767/    0.000|   27382.113 /     2.736/    0.000|                                  |  yes ADAM
+     5 |  17026.0 |   27210.787 /     2.722/    0.000|   27021.393 /     2.700/    0.000|                                  |  yes ADAM
+     6 |  17025.1 |   26880.896 /     2.689/    0.000|   26951.207 /     2.693/    0.000|                                  |  yes ADAM
+     7 |  17124.6 |   26647.143 /     2.665/    0.000|   26539.359 /     2.652/    0.000|                                  |  yes ADAM
+     8 |  17112.9 |   26460.441 /     2.647/    0.000|   26541.896 /     2.652/    0.000|                                  |  no  ADAM
+     9 |  17088.4 |   26306.740 /     2.631/    0.000|   26182.080 /     2.616/    0.000|                                  |  yes ADAM
+    10 |  17097.2 |   26186.691 /     2.619/    0.000|   26259.736 /     2.624/    0.000|                                  |  no  ADAM
+    11 |  17325.5 |   26072.889 /     2.608/    0.000|   26135.584 /     2.611/    0.000|                                  |  yes ADAM
+    12 |  17331.6 |   25983.439 /     2.599/    0.000|   25933.742 /     2.591/    0.000|                                  |  yes ADAM
+    13 |  17069.3 |   25401.934 /     2.541/    0.000|   25432.225 /     2.541/    0.000|                                  |  yes ADAM
+    14 |  17077.7 |   25353.039 /     2.536/    0.000|   25384.625 /     2.536/    0.000|                                  |  yes ADAM
+    15 |  17043.9 |   25329.594 /     2.534/    0.000|   25448.822 /     2.543/    0.000|                                  |  no  ADAM
+    16 |  17063.1 |   25353.834 /     2.536/    0.000|   25410.293 /     2.539/    0.000|                                  |  no  ADAM
+    17 |  17109.2 |   25337.533 /     2.534/    0.000|   25426.490 /     2.540/    0.000|                                  |  no  ADAM
+    18 |  17073.9 |   25327.850 /     2.533/    0.000|   25442.613 /     2.542/    0.000|                                  |  no  ADAM
+    19 |  17116.0 |   25286.600 /     2.529/    0.000|   25334.381 /     2.531/    0.000|                                  |  yes ADAM
+    20 |  17284.5 |   25252.586 /     2.526/    0.000|   25305.939 /     2.528/    0.000|                                  |  yes ADAM
+    21 |  17115.7 |   25226.391 /     2.523/    0.000|   25256.660 /     2.523/    0.000|                                  |  yes ADAM
+    22 |  17056.9 |   25217.371 /     2.522/    0.000|   25266.516 /     2.524/    0.000|                                  |  no  ADAM
+    23 | 

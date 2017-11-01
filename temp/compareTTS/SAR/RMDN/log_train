@@ -1,0 +1,108 @@
+Configuration Infor:
+	Training Mode: Started in hybrid online/batch
+		Mini-batches (parallel 15 sequences each) will be shuffled during training.
+		Writting network  to 'trained_network.jsn'.
+	Validation every 1 epochs.
+
+	Training epoch number maximum: 50
+
+	Training epoch number no lowest validation error: 5
+	Autosave after EVERY EPOCH enabled.
+	Utilizing the GPU on 15 sequences in parallel.
+
+	Initialization method:
+		Uniform dist. with layer-wise range
+
+		Random seed: 3839368179
+
+Using device #0 (Tesla P100-PCIE-16GB)
+Reading network from 'epoch016.autosave'... done.
+
+Loading training set '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc1' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc2' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc3' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc4' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc5' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc6' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc7' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc8' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc9' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc10' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc11' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc12' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc13' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc14' '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_TRAIN/data.nc15' ...
+using cache file: /tmp/xwtemp/0f2c-9b26-0e74-1fa2
+... done.
+Loaded fraction:  100%
+Sequences:        29016
+Sequence lengths: 219..3920
+Total timesteps:  35264368
+
+Loading validation set '/work/smg/wang/PROJ/WE/DNNAM/DATA/F009/DATA_VAL/data.nc1' ...
+using cache file: /tmp/xwtemp/7402-a5ef-3c81-54e5
+... done.
+Loaded fraction:  100%
+Sequences:        500
+Sequence lengths: 451..3101
+Total timesteps:  617803
+
+Creating the neural network...
+Layer (0) [ input ]  input 
+Layer (1) [ forward_1 ]  feedforward_tanh Trainable layer: re-read weight
+Layer (2) [ forward_2 ]  feedforward_tanh Trainable layer: re-read weight
+Layer (3) [ blstm_level_1 ]  blstm Trainable layer: re-read weight
+Layer (4) [ blstm_level_2 ]  blstm Trainable layer: re-read weight
+Layer (5) [ output ]  feedforward_identity Trainable layer: re-read weight
+Layer (6) [ postoutput ]  mdn 
+	MDN mixture: trainable:  0, tieVariance 0, #parameter 0
+	MDN mixture: trainable:  0, tieVariance 0, #parameter 0
+	MDN mixture: trainable:  0, tieVariance 0, #parameter 0
+	MDN sigmoid (conVal [0])
+	MDN mixture: trainable:  0, tieVariance 0, #parameter 0
+	MDN layer distribution parameter number: 521
+
+Network construction done.
+
+Network summary:
+     Name		Type
+(0) input		input [size: 389]
+(1) forward_1		feedforward_tanh [size: 512, bias: 1.0, weights: 199680]
+(2) forward_2		feedforward_tanh [size: 512, bias: 1.0, weights: 262656]
+(3) blstm_level_1		blstm [size: 256, bias: 1.0, weights: 657152]
+(4) blstm_level_2		blstm [size: 256, bias: 1.0, weights: 395008]
+(5) output		feedforward_identity [size: 521, bias: 1.0, weights: 133897]
+(6) postoutput		mdn [size: 259]
+Total weights: 1648393
+
+
+Creating the optimizer... 
+ Optimization Techinique: SGD + AdaGrad (with LR 0.001)
+Max training epochs:       50
+Max epochs until new best: 5
+Validation error every:    1
+Test error every:          1
+Learning rate:             4e-06
+Momentum:                  0
+
+Restoring state from 'epoch016.autosave'... done.
+
+Re-initialize .autosave using another network is unnecessary
+Starting training...
+Print error per sequence / per timestep / secondary error (optional)
+ Epoch | Duration |           Training error         |           Validation error       |           Test error             |New best 
+-------+----------+----------------------------------+----------------------------------+----------------------------------+---------
+     1 |   1387.5 |  397020.688 /   326.674/    0.000|  404667.875 /   327.506/    0.000|                                  |  yes SGD
+     2 |   1465.3 |  395687.969 /   325.577/    0.000|  404527.562 /   327.392/    0.000|                                  |  yes SGD
+     3 |   1540.3 |  395589.281 /   325.496/    0.000|  404511.594 /   327.379/    0.000|                                  |  yes SGD
+     4 |   1713.2 |  395585.906 /   325.493/    0.000|  404481.938 /   327.355/    0.000|                                  |  yes SGD
+     5 |   1666.6 |  395596.781 /   325.502/    0.000|  404640.062 /   327.483/    0.000|                                  |  no  SGD
+     6 |   1697.4 |  395578.281 /   325.487/    0.000|  404698.969 /   327.531/    0.000|                                  |  no  SGD
+     7 |   1738.7 |  395592.094 /   325.499/    0.000|  404770.062 /   327.588/    0.000|                                  |  no  SGD
+     8 |   1719.2 |  395598.250 /   325.504/    0.000|  405149.312 /   327.895/    0.000|                                  |  no  SGD
+     9 |   1720.8 |  395619.000 /   325.521/    0.000|  404907.469 /   327.699/    0.000|                                  |  no  To ADAGRAD
+    10 |   1720.6 |  395116.719 /   325.107/    0.000|  404290.281 /   327.200/    0.000|                                  |  yes ADAGRAD
+    11 |   1721.9 |  395051.594 /   325.054/    0.000|  404291.344 /   327.201/    0.000|                                  |  no  ADAGRAD
+    12 |   1730.0 |  395027.094 /   325.034/    0.000|  404292.188 /   327.202/    0.000|                                  |  no  ADAGRAD
+    13 |   1728.2 |  395012.938 /   325.022/    0.000|  404267.406 /   327.181/    0.000|                                  |  yes ADAGRAD
+    14 |   1731.3 |  395001.562 /   325.013/    0.000|  404288.281 /   327.198/    0.000|                                  |  no  ADAGRAD
+    15 |   1729.4 |  394992.812 /   325.005/    0.000|  404298.875 /   327.207/    0.000|                                  |  no  ADAGRAD
+    16 |   1729.5 |  394987.906 /   325.001/    0.000|  404265.844 /   327.180/    0.000|                                  |  yes ADAGRAD
+    17 |   1412.5 |  394969.469 /   324.986/    0.000|  404266.562 /   327.181/    0.000|                                  |  no  ADAGRAD
+    18 |   1495.5 |  394968.938 /   324.986/    0.000|  404267.562 /   327.182/    0.000|                                  |  no  ADAGRAD
+    19 |   1571.7 |  394969.125 /   324.986/    0.000|  404268.250 /   327.182/    0.000|                                  |  no  ADAGRAD
+    20 |   1615.2 |  394969.500 /   324.986/    0.000|  404268.719 /   327.183/    0.000|                                  |  no  ADAGRAD
+    21 |   1702.2 |  394969.188 /   324.986/    0.000|  404269.312 /   327.183/    0.000|                                  |  no  Finished
+
+No new lowest error since 5 epochs. Training stopped.
+Lowest validation error: 404266.000000
+
+Storing the trained network in 'trained_network.jsn'... done.
+Removing cache file(s) ...
